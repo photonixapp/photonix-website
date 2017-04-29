@@ -1,0 +1,8 @@
+version: "2"
+
+services:
+  website:
+    container_name: pm-website
+    build: .
+    ports:
+     - "8889:80"

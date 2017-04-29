@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Photo Manager Cast Receiver</title>
+    <style type="text/css">
+      body {
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+      }
+      #message {
+        height: 720px;
+        width: 1280px;
+        text-align: center;
+        display: table-cell;
+        vertical-align: middle;
+        color: #333;
+        background-color: #000;
+        font-weight: bold;
+        font-family: sans-serif;
+        font-size: 40px;
+      }
+      #photo {
+        height: 720px;
+        width: 1280px;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 0;
+        opacity: 0;
+        -webkit-transition: opacity 500ms ease;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="message">Photo Manager</div>
+    <div id="photo"></div>
+
+    <script type="text/javascript" src="//www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js"></script>
+    <script type="text/javascript">
+      window.onload = function() {
+        if (typeof cast !== 'undefined') {
+          cast.receiver.logger.setLevelValue(0)
+          window.castReceiverManager = cast.receiver.CastReceiverManager.getInstance()
+
+          castReceiverManager.onReady = function(event) {
+            window.castReceiverManager.setApplicationState('Application status is ready...')
+          }
+
+          castReceiverManager.onSenderConnected = function(event) {}
+
+          castReceiverManager.onSenderDisconnected = function(event) {
+            if (window.castReceiverManager.getSenders().length == 0) {
+              window.close()
+            }
+          }
+
+          castReceiverManager.onSystemVolumeChanged = function(event) {}
+
+          window.messageBus = window.castReceiverManager.getCastMessageBus('urn:x-cast:uk.co.epixstudios.photomanager')
+
+          window.messageBus.onMessage = function(event) {
+            handleMessage(event.data)
+            window.messageBus.send(event.senderId, event.data)
+          }
+
+          window.castReceiverManager.start({statusText: 'Application is starting'})
+        }
+      }
+
+      var el = document.getElementById('photo')
+      var img = new Image()
+      var imgUrl = ''
+
+      showImage = function() {
+        el.style.opacity = 0
+        setTimeout(function(el, imgUrl) {
+          el.style.backgroundImage = 'url(' + imgUrl + ')'
+          el.style.opacity = 1
+        }.bind(null, el, imgUrl), 900)
+      }
+
+      img.onload = showImage
+
+      loadImage = function(url) {
+        imgUrl = url
+        img.src = url
+      }
+
+      handleMessage = function(text) {
+        loadImage(text)
+        window.castReceiverManager.setApplicationState(text)
+      }
+    </script>
+  </body>
+</html>
