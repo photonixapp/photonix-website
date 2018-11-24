@@ -1,7 +1,7 @@
-FROM debian:jessie
+FROM debian:stretch
 
 RUN apt-get update && \
-    apt-get install -y nginx-light=1.6.2-5+deb8u4 && \
+    apt-get install -y nginx-light=1.10.3-1+deb9u1 && \
         apt-get clean && \
             rm -rf /var/lib/apt/lists/* \
                    /tmp/* \
