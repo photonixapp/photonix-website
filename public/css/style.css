@@ -1,5 +1,5 @@
 body {
-  background: #232323;
+  background: #1d1d1d;
   font-family: 'Lato', sans-serif;
   margin: 0;
   padding: 0;
@@ -12,6 +12,10 @@ p {
   line-height: 1.6em;
   font-size: 20px;
 }
+a {
+  outline: 0;
+}
+
 header {
   background: #292929;
   margin-bottom: 100px;
@@ -19,6 +23,7 @@ header {
   text-align: center;
   color: #ddd;
 }
+
 .devices {
   width: 1100px;
   margin: 0 auto;
@@ -26,6 +31,7 @@ header {
 }
 .cta {
   text-align: center;
+  font-weight: bold;
   margin-bottom: 120px;
 }
 .cta a {
@@ -35,6 +41,29 @@ header {
   color: #fff;
   font-size: 26px;
   text-decoration: none;
+}
+.cta a:hover {
+  background: #12b9de;
+}
+footer {
+  max-width: 700px;
+  margin: 0 auto 120px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+footer .link {
+  width: 100px;
+  text-align: center;
+  flex-grow: 1;
+  margin: 0 20px;
+}
+footer .link a {
+  color: #ddd;
+  text-decoration: none;
+}
+footer .link a:hover {
+  color: #fff;
 }
 
 @media all and (max-width: 1100px) {
@@ -48,6 +77,16 @@ header {
   header {
     padding: 60px 50px 30px;
     margin-bottom: 80px;
+  }
+  footer {
+    display: block;
+  }
+  footer .link {
+    width: 100%;
+    margin: 0 0 20px;
+  }
+  footer .link a img {
+    width: 64px;
   }
 }
 @media all and (max-width: 500px) {

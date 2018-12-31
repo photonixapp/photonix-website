@@ -1,0 +1,36 @@
+{
+  "color": {},
+  "object": {
+    "20180124": {
+      "files": [
+        {
+          "filename": "faster_rcnn_inception_resnet_v2_atrous_lowproposals_oid_2018_01_28_frozen_inference_graph.pb.xz",
+          "sha256": "d621f545c284c4e1eec17fd27a4ba580c30588d7d67a706a646889d354979b9f",
+          "locations": ["https://epixstudios.co.uk/filer/canonical/1545931215/13/"],
+          "decompress": true
+        },
+        {
+          "filename": "oid_bbox_trainable_label_map.pbtxt",
+          "sha256": "f2ed36c57e8eebd0fb7f01905298afcdeb9031b78ceb021a895ac7bfd2f6433c",
+          "locations": ["https://epixstudios.co.uk/filer/canonical/1545924483/12/"]
+        }
+      ]
+    }
+  },
+  "style": {
+    "20180624": {
+      "files": [
+        {
+          "filename": "graph.pb",
+          "sha256": "01065730eda536877d6d8b8e033d4e5702331f052d8a3d2ef6b5a174e6ca3093",
+          "locations": ["https://epixstudios.co.uk/filer/canonical/1545247275/11/"]
+        },
+        {
+          "filename": "labels.txt",
+          "sha256": "b9336a342ce3a93d7013f5c90d428bc6b8113cc0cec33ce382037099f429225e",
+          "locations": ["https://epixstudios.co.uk/filer/canonical/1545247247/10/"]
+        }
+      ]
+    }
+  }
+}
