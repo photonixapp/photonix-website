@@ -32,5 +32,29 @@
         }
       ]
     }
+  },
+  "location": {
+    "20190109": {
+      "files": [
+        {
+          "filename": "TM_WORLD_BORDERS-0.3.dbf.xz",
+          "sha256": "f4b57e1dcb48c142b52ed5aabe661c568691e45683b4f0400b535a44c53a3991",
+          "locations": ["https://epixstudios.co.uk/filer/canonical/1547023408/19/"],
+          "decompress": true
+        },
+        {
+          "filename": "TM_WORLD_BORDERS-0.3.shp.xz",
+          "sha256": "5da77c0ffad5338935e872435cb4884741e9e527266cc7e27533f9d59c656122",
+          "locations": ["https://epixstudios.co.uk/filer/canonical/1547023382/18/"],
+          "decompress": true
+        },
+        {
+          "filename": "cities1000.txt.xz",
+          "sha256": "5adb1005378c1e9034f34583319177f1eeacdcc1555ec33cd8b3aad72ad64e74",
+          "locations": ["https://epixstudios.co.uk/filer/canonical/1547023374/17/"],
+          "decompress": true
+        }
+      ]
+    }
   }
 }
