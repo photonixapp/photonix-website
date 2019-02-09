@@ -1,12 +1,22 @@
 body {
   background: #1d1d1d;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 300;
   margin: 0;
   padding: 0;
 }
 h1 {
-  font-size: 48px;
+  font-size: 64px;
+  font-weight: 300;
+  margin: 0 0 10px 0;
+  line-height: 1;
+  color: #fff;
+}
+h2 {
+  font-size: 26px;
+  font-weight: 300;
   margin: 0 0 60px;
+  line-height: 1;
 }
 p {
   line-height: 1.6em;
@@ -22,6 +32,10 @@ header {
   padding: 80px 80px 40px;
   text-align: center;
   color: #ddd;
+}
+img.logo {
+  width: 100px;
+  margin: 0 0 20px 0;
 }
 
 .devices {
@@ -91,8 +105,13 @@ footer .link a:hover {
 }
 @media all and (max-width: 500px) {
   h1 {
-    font-size: 36px;
-    margin: 0 0 50px;
+    font-size: 56px;
+  }
+  h2 {
+    font-size: 22px;
+  }
+  img.logo {
+    width: 85px;
   }
   p {
     font-size: 18px;
@@ -106,9 +125,6 @@ footer .link a:hover {
   }
 }
 @media all and (max-width: 400px) {
-  h1 {
-    margin: 0 0 30px;
-  }
   p {
     font-size: 16px;
   }
