@@ -15,6 +15,21 @@
           "locations": ["https://epixstudios.co.uk/filer/canonical/1545924483/12/"]
         }
       ]
+    },
+    "20190407": {
+        "files": [
+          {
+            "filename": "ssd_mobilenet_v2_oid_v4_2018_12_12_frozen_inference_graph.pb.xz",
+            "sha256": "a61f3dd215fffe4b44a3ca3d9feb58020a2356230dd8b4aaeaf039b2001033ea",
+            "locations": ["https://epixstudios.co.uk/filer/canonical/1554654528/29/"],
+            "decompress": true
+          },
+          {
+            "filename": "oid_v4_label_map.pbtxt",
+            "sha256": "49147a2f9864544a89708f37492d216fbeaa30b2b4b0bb2f967b6d7a851cec32",
+            "locations": ["https://epixstudios.co.uk/filer/canonical/1554702375/30/"]
+          }
+        ]
     }
   },
   "style": {
