@@ -1,3 +1,10 @@
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
 body {
   background: #1d1d1d;
   font-family: 'Nunito', sans-serif;
@@ -46,7 +53,7 @@ img.logo {
 .cta {
   text-align: center;
   font-weight: bold;
-  margin-bottom: 120px;
+  margin-bottom: 100px;
 }
 .cta a {
   background: #00afd2;
@@ -59,6 +66,39 @@ img.logo {
 .cta a:hover {
   background: #12b9de;
 }
+
+.signup {
+  background: #292929;
+  margin-bottom: 100px;
+  padding: 40px 80px 40px;
+  text-align: center;
+  color: #ddd;
+}
+.signup form {
+  margin: 20px 0;
+}
+.signup form input {
+  font-size: 20px;
+}
+.signup form input[type="submit"] {
+  background: #00afd2;
+  border-radius: 3px;
+  padding: 10px 25px;
+  color: #fff;
+  font-size: 20px;
+  text-decoration: none;
+  border: 0;
+  cursor: pointer;
+}
+.signup form input[type="email"] {
+  border-radius: 3px;
+  font-size: 20px;
+  padding: 10px 10px;
+  border: 0;
+  margin-right: 10px;
+  width: 300px;
+}
+
 footer {
   max-width: 700px;
   margin: 0 auto 120px;
@@ -91,6 +131,16 @@ footer .link a:hover {
   header {
     padding: 60px 50px 30px;
     margin-bottom: 80px;
+  }
+  .signup {
+    padding: 20px 40px 20px;
+  }
+  .signup form input[type="submit"] {
+    width: 100%;
+  }
+  .signup form input[type="email"] {
+    width: 100%;
+    margin-bottom: 10px;
   }
   footer {
     display: block;

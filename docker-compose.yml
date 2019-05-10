@@ -5,4 +5,16 @@ services:
     container_name: pm-website
     build: .
     ports:
-     - "8889:80"
+      - "8889:80"
+    volumes:
+      - ./photonix:/srv/photonix
+      - ./tests:/srv/tests
+      - ./test.py:/srv/test.py
+      - ./ui/public:/srv/ui/public
+      - ./ui/src:/srv/ui/src
+      - ./ui/static:/srv/ui/static
+      - ./data/photos:/data/photos
+      - ./data/raw-photos-processed:/data/raw-photos-processed
+      - ./data/cache:/data/cache
+      - ./data/models:/data/models
+      - ./system/supervisord.conf:/etc/supervisord.conf
