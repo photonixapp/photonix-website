@@ -2,7 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
 
+# import requests
+
 from .models import Subscription
+
 
 @csrf_exempt
 def signup(request):
@@ -12,6 +15,12 @@ def signup(request):
         return
     
     Subscription(email=email).save()
+
+    requests.post('https://skylark.epixstudios.co.uk/webhook/', params={
+        'title': "New Photonix mailing list subscription",
+        'body': 'Domain: {}  Total: {}'.format(email.split('@')[-1], Subscription.objects.count()),
+        'color': '#12b9de',
+    })
 
     context = {
         'email': email

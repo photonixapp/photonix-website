@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '*#6&-3%#yav&ez9j&-1ncu(8z@(usk4d5jl0u^^f@h(k@y8(pk'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('ENV', 'prd') != 'prd'
 
-ALLOWED_HOSTS = ['photonix.org']
+ALLOWED_HOSTS = ['localhost', 'photonix.org']
 
 
 # Application definition

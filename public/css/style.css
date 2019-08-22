@@ -63,6 +63,7 @@ img.logo {
   color: #fff;
   font-size: 26px;
   text-decoration: none;
+  font-weight: 300;
 }
 .cta a:hover {
   background: #12b9de;
