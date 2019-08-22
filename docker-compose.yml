@@ -2,12 +2,14 @@ version: "2"
 
 services:
   website:
-    container_name: pm-website
+    container_name: photonix-website
     build: .
     ports:
       - "8889:80"
     volumes:
+      - ./project:/srv/project
       - ./photonix:/srv/photonix
+      - ./mailinglist:/srv/mailinglist
       - ./tests:/srv/tests
       - ./test.py:/srv/test.py
       - ./ui/public:/srv/ui/public
@@ -18,3 +20,5 @@ services:
       - ./data/cache:/data/cache
       - ./data/models:/data/models
       - ./system/supervisord.conf:/etc/supervisord.conf
+    environment:
+      ENV: dev
