@@ -5,7 +5,7 @@ services:
     container_name: photonix-website
     build: .
     ports:
-      - "8889:80"
+      - "8880:80"
     volumes:
       - ./project:/srv/project
       - ./photonix:/srv/photonix
@@ -22,3 +22,34 @@ services:
       - ./system/supervisord.conf:/etc/supervisord.conf
     environment:
       ENV: dev
+      MATOMO_BASE_URL: http://matomo/
+      MATOMO_SITE_ID: 1
+      MATOMO_TOKEN_AUTH: a35b4469f1c38d222822a32a413b1991
+
+  matomo-mysql:
+    container_name: matomo-mysql
+    image: mysql:5.7
+    restart: always
+    volumes:
+     - ./volumes/mysql:/var/lib/mysql
+    ports:
+     - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: matomo
+
+  matomo:
+    container_name: matomo
+    image: matomo:3.11.0-apache
+    restart: always
+    ports:
+     - "8008:80"
+    environment:
+      MATOMO_DATABASE_HOST: matomo-mysql
+      MATOMO_DATABASE_USERNAME: root
+      MATOMO_DATABASE_PASSWORD: password
+      MATOMO_DATABASE_DBNAME: matomo
+    volumes:
+      - ./volumes/matomo/config:/var/www/html/config
+      - ./volumes/matomo/ssmtp.conf:/etc/ssmtp/ssmtp.conf
+      - ./volumes/matomo/revaliases:/etc/ssmtp/revaliases
