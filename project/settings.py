@@ -28,6 +28,8 @@ DEBUG = os.environ.get('ENV', 'prd') != 'prd'
 
 ALLOWED_HOSTS = ['localhost', 'photonix.org']
 
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 
 # Application definition
 

@@ -1,4 +1,4 @@
-https://github.com/damianmoore/matomo-monorail/releases/download/v0.1.1/matomo_monorail-0.1.2.tar.gz
+https://github.com/damianmoore/matomo-monorail/releases/download/v0.1.2/matomo_monorail-0.1.2.tar.gz
 Django==2.2.2
 gunicorn==19.9.0
 mysqlclient==1.3.13
