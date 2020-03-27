@@ -1,4 +1,5 @@
 from django.contrib.syndication.views import Feed
+import markdown
 
 from .models import Post
 
@@ -15,4 +16,4 @@ class BlogFeed(Feed):
         return item.title
 
     def item_description(self, item):
-        return item.content.rendered
+        return markdown.Markdown().convert(item.content)

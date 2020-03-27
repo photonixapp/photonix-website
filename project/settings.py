@@ -39,9 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sitemaps',
     'django.contrib.staticfiles',
     'easy_thumbnails',
     'filer',
+    'markdownify',
     'pagedown.apps.PagedownConfig',
 
     'mailinglist',
@@ -142,3 +144,22 @@ MATOMO_SITE_ID = os.environ.get('MATOMO_SITE_ID')
 MATOMO_TOKEN_AUTH = os.environ.get('MATOMO_TOKEN_AUTH')
 
 THUMBNAIL_HIGH_RESOLUTION = True
+
+MARKDOWNIFY_WHITELIST_TAGS = [
+    'a',
+    'abbr',
+    'acronym',
+    'b',
+    'blockquote',
+    'em',
+    'i',
+    'li',
+    'ol',
+    'p',
+    'strong',
+    'ul',
+    'h2',
+    'h3',
+    'h4',
+    'h5',
+]

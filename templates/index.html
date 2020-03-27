@@ -14,28 +14,12 @@
   <div class="cta">
     <a href="https://demo.photonix.org/">Try live demo now<div class="button-cover"></div></a>     
   </div>
-  <div class="signup">
-    <div>
-      <p>Please sign up to the mailing list so we can notify you of our version 1.0 release and other important news. We will not pass your details on to any other party and you can unsubscribe at any time.</p>
-      <form method="post" action="/mailinglist/signup">
-        <input type="email" name="email" placeholder="user@domain.com" />
-        <input type="submit" value="Sign up" />
-      </form>
-    </div>
-  </div>
-  <div class="intro">
+  {% include 'snippets/mailinglist_signup.html' %}
+  <div class="block">
     <p>Images are everywhere in our lives today but all too often these gems end up as just files and folders on a hard drive — never to be seen again. Professional photographers spend a lot of time on photo editing so it's important that those photos (and associated raw files) can be easily retrieved. Compared to the amount of time spent on a shoot, the time spent in a photo editor such as photoshop or lightroom can be as long, if not more. Photo editing software has evolved a lot over the years but often your photo management tool (if you have one) can feel stuck in the past. If you are struggling to find software that will help manage your photos then we think we may have the solution. Photo organization can be a tough nut to crack. Maybe you let icloud photo library, google photos picasa take charge of your daily snaps but find managing your professional SLR image files a much less slick affair.</p>
     <img src="/static/images/pipeline.svg" class="pipeline" />
     <p>What are the benefits to a photo organizer? Well, you can think as your photos as going through a pipeline — first you are going to be out and about with your camera actually taking the photos. After shooting you'll typically download the files onto your computer and do your editing. It's after this editing stage where the waters can get a bit murky and there is no obvious path to take. You'll have some more files now and probably some more folders but where should they live for the long term?</p>
     <p>Photonix is photo management software done right. It will organize your photos, raw files and other pictures by importing your existing collection from folders on your computer. It can handle many file formats including raw images from all the main camera manufacturers.</p>
   </div>
-  <div class="signup">
-    <div>
-      <p>Please sign up to the mailing list so we can notify you of our version 1.0 release and other important news. We will not pass your details on to any other party and you can unsubscribe at any time.</p>
-      <form method="post" action="/mailinglist/signup">
-        <input type="email" name="email" placeholder="user@domain.com" />
-        <input type="submit" value="Sign up" />
-      </form>
-    </div>
-  </div>
+  {% include 'snippets/mailinglist_signup.html' %}
 {% endblock %}

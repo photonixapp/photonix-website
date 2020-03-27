@@ -1,17 +1,22 @@
 {% extends "base.html" %}
+{% load markdownify %}
 
 {% block extrahead %}
-    <link rel="alternate" type="application/atom+xml" title="Damian Moore's Blog Feed" href="{% url 'blog-post-feed' %}" />
+  <link rel="alternate" type="application/atom+xml" title="Photonix Blog Feed" href="{% url 'blog-post-feed' %}" />
 {% endblock %}
 
 {% block content %}
+  <header>
+    <h1>{{ object.title }}</h1>
+    <p>{{ object.created }}</p>
+  </header>
+  <div class="block">
     <div class="post">
-        <h1>{{ object.title }}</h1>
-        {{ object.created }}
-        <div class="tags">
-            {% for tag in object.tags.all %}<span class="tag">{{ tag }}</span>{% endfor %}
-        </div>
-
-        {{ object.content }}
+      <div class="tags">
+        {% for tag in object.tags.all %}<span class="tag">{{ tag }}</span>{% endfor %}
+      </div>
+      {{ object.content|markdownify }}
     </div>
+  </div>
+  {% include 'snippets/mailinglist_signup.html' %}
 {% endblock %}

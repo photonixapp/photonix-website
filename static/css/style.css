@@ -1,6 +1,7 @@
 html {
   height: 100%;
   box-sizing: border-box;
+  overflow-y: scroll;
 }
 *, *:before, *:after {
   box-sizing: inherit;
@@ -21,14 +22,15 @@ h1 {
   color: #fff;
 }
 h2 {
-  font-size: 26px;
+  font-size: 36px;
   font-weight: 300;
-  margin: 0 0 60px;
+  margin: 0 0 10px;
   line-height: 1;
 }
 p {
   line-height: 1.6em;
   font-size: 20px;
+  margin: 0 0 40px 0;
 }
 a {
   color: #ddd;
@@ -38,6 +40,23 @@ input {
   font-family: 'Nunito', sans-serif;
 }
 
+nav div {
+  max-width: 1040px;
+  margin: 0 auto;
+  text-align: right;
+}
+nav ul {
+  margin: 20px 0;
+}
+nav ul li {
+  list-style: none;
+  display: inline-block;
+  margin-left: 20px;
+  font-size: 20px;
+}
+nav ul a {
+  text-decoration: none;
+}
 header {
   background: #292929;
   margin-bottom: 100px;
@@ -48,6 +67,12 @@ header {
 header > div {
   max-width: 1040px;
   margin: 0 auto;
+}
+header h2 {
+  font-size: 26px;
+  font-weight: 300;
+  margin: 0 0 60px;
+  line-height: 1;
 }
 img.logo {
   width: 100px;
@@ -105,7 +130,7 @@ img.logo {
   margin: 0 auto;
 }
 .signup form {
-  margin: 20px 0;
+  margin-bottom: 10px;
 }
 .signup form input {
   font-size: 20px;
@@ -132,13 +157,13 @@ img.logo {
   width: 300px;
 }
 
-.intro {
+.block {
   padding: 0 80px;
   color: #ddd;
   max-width: 1200px;
   margin: 0 auto 100px;
 }
-.intro img {
+.block img {
   display: block;
   margin: 0 auto;
   max-width: 100%;
