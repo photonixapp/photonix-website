@@ -2,6 +2,8 @@ html {
   height: 100%;
   box-sizing: border-box;
   overflow-y: scroll;
+  font-size: 20px;
+  line-height: 1.6rem;
 }
 *, *:before, *:after {
   box-sizing: inherit;
@@ -15,29 +17,34 @@ body {
   color: #ddd;
 }
 h1 {
-  font-size: 64px;
+  font-size: 3rem;
   font-weight: 300;
-  margin: 0 0 10px 0;
+  margin: 0 0 0.5rem 0;
   line-height: 1;
   color: #fff;
 }
 h2 {
-  font-size: 36px;
+  font-size: 2rem;
   font-weight: 300;
-  margin: 0 0 10px;
+  margin: 0 0 2rem;
   line-height: 1;
 }
 p {
-  line-height: 1.6em;
-  font-size: 20px;
-  margin: 0 0 40px 0;
+  margin: 0 0 1rem 0;
 }
 a {
   color: #ddd;
   outline: 0;
 }
+ul {
+  margin: 0 0 1rem 0;
+  padding: 0 0 0 2rem;
+}
 input {
   font-family: 'Nunito', sans-serif;
+}
+h2 a {
+  text-decoration: none;
 }
 
 nav div {
@@ -46,21 +53,20 @@ nav div {
   text-align: right;
 }
 nav ul {
-  margin: 20px 0;
+  margin: 1rem 0;
 }
 nav ul li {
   list-style: none;
   display: inline-block;
-  margin-left: 20px;
-  font-size: 20px;
+  margin-left: 1rem;
 }
 nav ul a {
   text-decoration: none;
 }
 header {
   background: #292929;
-  margin-bottom: 100px;
-  padding: 80px 80px 40px;
+  margin-bottom: 5rem;
+  padding: 3rem 3rem 2rem;
   text-align: center;
   color: #ddd;
 }
@@ -69,14 +75,17 @@ header > div {
   margin: 0 auto;
 }
 header h2 {
-  font-size: 26px;
+  font-size: 1.5rem;
   font-weight: 300;
-  margin: 0 0 60px;
+  margin: 0 0 3rem;
   line-height: 1;
 }
 img.logo {
   width: 100px;
-  margin: 0 0 20px 0;
+  margin: 0 0 1rem 0;
+}
+img.right {
+  float: right;
 }
 
 .devices {
@@ -120,8 +129,8 @@ img.logo {
 
 .signup {
   background: #292929;
-  margin-bottom: 100px;
-  padding: 40px 80px 40px;
+  margin-bottom: 5rem;
+  padding: 2rem 4rem 2rem;
   text-align: center;
   color: #ddd;
 }
@@ -130,7 +139,7 @@ img.logo {
   margin: 0 auto;
 }
 .signup form {
-  margin-bottom: 10px;
+  margin-bottom: 0.5rem;
 }
 .signup form input {
   font-size: 20px;
@@ -158,15 +167,18 @@ img.logo {
 }
 
 .block {
-  padding: 0 80px;
+  padding: 0 2rem;
   color: #ddd;
   max-width: 1200px;
-  margin: 0 auto 100px;
+  margin: 0 auto 5rem;
 }
 .block img {
   display: block;
-  margin: 0 auto;
+  margin: 0 auto 1rem;
   max-width: 100%;
+}
+.post {
+  margin-bottom: 80px;
 }
 
 footer {
@@ -196,35 +208,31 @@ footer img {
 }
 
 @media all and (max-width: 1100px) {
+  nav div {
+    padding: 0 20px;
+  }
   .devices {
     width: 100%;
-    margin: 0 auto 40px;
+    margin: 0 auto 2rem;
     display: block;
   }
   .signup {
-    margin-bottom: 60px;
+    margin-bottom: 3rem;
   }
   .intro {
-    margin-bottom: 60px;
+    margin-bottom: 3rem;
   }
 }
 @media all and (max-width: 700px) {
-  header {
-    padding: 60px 50px 30px;
-    margin-bottom: 80px;
-  }
   .signup {
-    padding: 20px 40px 20px;
+    padding: 1.5rem 1.5rem 1rem 1.5rem;
   }
   .signup form input[type="submit"] {
     width: 100%;
   }
   .signup form input[type="email"] {
     width: 100%;
-    margin-bottom: 10px;
-  }
-  .intro {
-    padding: 0 60px;
+    margin-bottom: 0.5rem;
   }
   footer {
     display: block;
@@ -238,40 +246,27 @@ footer img {
   }
 }
 @media all and (max-width: 500px) {
-  h1 {
-    font-size: 56px;
+  html {
+    font-size: 18px;
   }
-  h2 {
-    font-size: 22px;
+  header {
+    padding: 3rem 1rem 2rem;
   }
   img.logo {
     width: 85px;
   }
-  p {
-    font-size: 18px;
-  }
-  header {
-    padding: 60px 30px 20px;
-    margin-bottom: 60px;
-  }
   .cta {
     margin-bottom: 70px;
   }
-  .intro {
-    padding: 0 30px;
+  .block {
+    padding: 0 1rem;
   }
   .cta a {
     font-size: 20px;
   }
 }
 @media all and (max-width: 400px) {
-  p {
+  html {
     font-size: 16px;
-  }
-  header {
-    padding: 40px 20px 20px;
-  }
-  .intro {
-    padding: 0 20px;
   }
 }

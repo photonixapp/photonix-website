@@ -10,7 +10,7 @@
     <p>Updates from the Photonix team</p>
   </header>
   <div class="block">
-    <a href="{% url 'blog-post-feed' %}">Blog feed</a>
+    <a href="{% url 'blog-post-feed' %}"><img src="/static/images/rss.svg" class="right" alt="RSS feed" title="RSS feed" /></a>
     {% for post in object_list %}
       <div class="post">
         <h2><a href="{% url 'blog-post-detail' slug=post.slug %}">{{ post.title }}</a></h2>

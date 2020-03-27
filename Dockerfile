@@ -26,7 +26,6 @@ COPY templates /srv/templates
 COPY utils /srv/utils
 COPY manage.py /srv/manage.py
 COPY .git /srv/.git
-RUN rm -rf /srv/.git/*
 
 ENV PYTHONPATH /srv
 
