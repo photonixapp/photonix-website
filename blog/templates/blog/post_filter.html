@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+    <link rel="alternate" type="application/atom+xml" title="Damian Moore's Blog Feed" href="{% url 'blog-post-feed' %}" />
+{% endblock %}
+
+{% block content %}
+    <a href="{% url 'blog-post-feed' %}">Blog feed</a>
+    {% for post in object_list %}
+        <div class="post">
+            <h1><a href="{% url 'blog-post-detail' slug=post.slug %}">{{ post.title }}</a></h1>
+
+            {% if post.photo %}
+                <a href="{% url 'blog-post-detail' slug=post.slug %}"><img src="{{ post.photo.get_display_url }}" alt="{{ post.photo.title }}" class="cover-photo" /></a>
+            {% endif %}
+
+            <div class="summary">
+                {{ post.created }}
+                <div class="tags">
+                    {% for tag in post.tags.all %}<span class="tag">{{ tag }}</span>{% endfor %}
+                </div>
+
+                <p><a href="{% url 'blog-post-detail' slug=post.slug %}">Read more&hellip;</a></p>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

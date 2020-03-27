@@ -11,6 +11,7 @@ body {
   font-weight: 300;
   margin: 0;
   padding: 0;
+  color: #ddd;
 }
 h1 {
   font-size: 64px;
@@ -33,6 +34,9 @@ a {
   color: #ddd;
   outline: 0;
 }
+input {
+  font-family: 'Nunito', sans-serif;
+}
 
 header {
   background: #292929;
@@ -40,6 +44,10 @@ header {
   padding: 80px 80px 40px;
   text-align: center;
   color: #ddd;
+}
+header > div {
+  max-width: 1040px;
+  margin: 0 auto;
 }
 img.logo {
   width: 100px;
@@ -57,16 +65,32 @@ img.logo {
   margin-bottom: 100px;
 }
 .cta a {
-  background: #00afd2;
-  border-radius: 3px;
-  padding: 15px 25px;
+  background: #2596ae;
+  background-image: url('../images/button_background.svg');
+  background-size: cover;
+  border-radius: 6px;
+  padding: 15px 30px;
   color: #fff;
   font-size: 26px;
   text-decoration: none;
   font-weight: 300;
+  box-shadow: 0 4px 20px #000;
+  transform: rotateZ(360deg);
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
 }
-.cta a:hover {
-  background: #12b9de;
+.cta a .button-cover {
+  background: #fff;
+  position: absolute;
+  width: 500px;
+  height: 100px;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+.cta a:hover .button-cover {
+  opacity: 0.1;
 }
 
 .signup {
@@ -76,6 +100,10 @@ img.logo {
   text-align: center;
   color: #ddd;
 }
+.signup > div {
+  max-width: 920px;
+  margin: 0 auto;
+}
 .signup form {
   margin: 20px 0;
 }
@@ -83,7 +111,7 @@ img.logo {
   font-size: 20px;
 }
 .signup form input[type="submit"] {
-  background: #00afd2;
+  background: #2596ae;
   border-radius: 3px;
   padding: 10px 25px;
   color: #fff;
@@ -92,27 +120,40 @@ img.logo {
   border: 0;
   cursor: pointer;
 }
+.signup form input[type="submit"]:hover {
+  background: #52acbf;
+}
 .signup form input[type="email"] {
   border-radius: 3px;
   font-size: 20px;
-  padding: 10px 10px;
+  padding: 10px 13px;
   border: 0;
   margin-right: 10px;
   width: 300px;
 }
 
+.intro {
+  padding: 0 80px;
+  color: #ddd;
+  max-width: 1200px;
+  margin: 0 auto 100px;
+}
+.intro img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
 footer {
-  max-width: 700px;
-  margin: 0 auto 120px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  margin: 0 auto 40px;
+  text-align: center;
 }
 footer .link {
-  width: 100px;
+  width: 160px;
   text-align: center;
-  flex-grow: 1;
-  margin: 0 20px;
+  margin: 0 20px 40px;
+  display: inline-block;
+  vertical-align: top;
 }
 footer .link a {
   color: #ddd;
@@ -121,12 +162,25 @@ footer .link a {
 footer .link a:hover {
   color: #fff;
 }
+footer .link a:hover img {
+  opacity: 1;
+}
+footer img {
+  width: 128px;
+  opacity: 0.9;
+}
 
 @media all and (max-width: 1100px) {
   .devices {
     width: 100%;
     margin: 0 auto 40px;
     display: block;
+  }
+  .signup {
+    margin-bottom: 60px;
+  }
+  .intro {
+    margin-bottom: 60px;
   }
 }
 @media all and (max-width: 700px) {
@@ -144,15 +198,18 @@ footer .link a:hover {
     width: 100%;
     margin-bottom: 10px;
   }
+  .intro {
+    padding: 0 60px;
+  }
   footer {
     display: block;
   }
   footer .link {
-    width: 100%;
-    margin: 0 0 20px;
+    width: 140px;
+    margin: 0 10px 20px;
   }
   footer .link a img {
-    width: 64px;
+    width: 96px;
   }
 }
 @media all and (max-width: 500px) {
@@ -172,6 +229,12 @@ footer .link a:hover {
     padding: 60px 30px 20px;
     margin-bottom: 60px;
   }
+  .cta {
+    margin-bottom: 70px;
+  }
+  .intro {
+    padding: 0 30px;
+  }
   .cta a {
     font-size: 20px;
   }
@@ -182,5 +245,8 @@ footer .link a:hover {
   }
   header {
     padding: 40px 20px 20px;
+  }
+  .intro {
+    padding: 0 20px;
   }
 }

@@ -40,8 +40,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'easy_thumbnails',
+    'filer',
+    'pagedown.apps.PagedownConfig',
+
     'mailinglist',
+    'blog',
     'matomo_monorail',
+    'utils',
 ]
 
 MIDDLEWARE = [
@@ -61,7 +67,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            Path(BASE_DIR) / 'public',
+            Path(BASE_DIR) / 'templates',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -81,24 +87,15 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-if os.environ.get('MYSQL_DATABASE'):
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': os.environ.get('MYSQL_DATABASE', 'courchevel'),
-            'USER': os.environ.get('MYSQL_USER', 'root'),
-            'PASSWORD': os.environ.get('MYSQL_PASSWORD', ''),
-            'HOST': os.environ.get('MYSQL_HOST', 'localhost'),
-            'PORT': '',
-        }
+DATABASES = {
+    'default': {
+        'ENGINE':   'django.db.backends.postgresql',
+        'HOST':     os.environ.get('POSTGRES_HOST', '127.0.0.1'),
+        'NAME':     os.environ.get('POSTGRES_DB', 'photonix_website'),
+        'USER':     os.environ.get('POSTGRES_USER', 'postgres'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'password'),
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        }
-    }
+}
 
 
 # Password validation
@@ -137,10 +134,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = '/static/'
-
-STATIC_ROOT = '/srv/static'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_collected')
+STATIC_URL = '/static-collected/'
 
 MATOMO_BASE_URL = os.environ.get('MATOMO_BASE_URL')
 MATOMO_SITE_ID = os.environ.get('MATOMO_SITE_ID')
 MATOMO_TOKEN_AUTH = os.environ.get('MATOMO_TOKEN_AUTH')
+
+THUMBNAIL_HIGH_RESOLUTION = True

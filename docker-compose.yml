@@ -6,50 +6,62 @@ services:
     build: .
     ports:
       - "8880:80"
+      - "8001:8001"
     volumes:
-      - ./project:/srv/project
-      - ./photonix:/srv/photonix
+      - ./blog:/srv/blog
       - ./mailinglist:/srv/mailinglist
+      - ./photonix:/srv/photonix
+      - ./project:/srv/project
+      - ./static:/srv/static
+      - ./system:/srv/system
+      - ./templates:/srv/templates
       - ./tests:/srv/tests
       - ./test.py:/srv/test.py
-      - ./ui/public:/srv/ui/public
-      - ./ui/src:/srv/ui/src
-      - ./ui/static:/srv/ui/static
-      - ./data/photos:/data/photos
-      - ./data/raw-photos-processed:/data/raw-photos-processed
-      - ./data/cache:/data/cache
-      - ./data/models:/data/models
-      - ./system/supervisord.conf:/etc/supervisord.conf
     environment:
       ENV: dev
+      POSTGRES_DB: photonix_website
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_HOST: postgres
       MATOMO_BASE_URL: http://matomo/
       MATOMO_SITE_ID: 1
       MATOMO_TOKEN_AUTH: a35b4469f1c38d222822a32a413b1991
 
-  matomo-mysql:
-    container_name: matomo-mysql
-    image: mysql:5.7
-    restart: always
-    volumes:
-     - ./volumes/mysql:/var/lib/mysql
-    ports:
-     - "3306:3306"
+  postgres:
+    container_name: photonix-website-postgres
+    image: postgres:12.2-alpine
+    # ports:
+    #   - '127.0.0.1:5432:5432'
     environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: matomo
+      POSTGRES_DB: photonix_website
+      POSTGRES_PASSWORD: password
+    volumes:
+      - ./volumes/postgres:/var/lib/postgresql/data
 
-  matomo:
-    container_name: matomo
-    image: matomo:3.11.0-apache
-    restart: always
-    ports:
-     - "8008:80"
-    environment:
-      MATOMO_DATABASE_HOST: matomo-mysql
-      MATOMO_DATABASE_USERNAME: root
-      MATOMO_DATABASE_PASSWORD: password
-      MATOMO_DATABASE_DBNAME: matomo
-    volumes:
-      - ./volumes/matomo/config:/var/www/html/config
-      - ./volumes/matomo/ssmtp.conf:/etc/ssmtp/ssmtp.conf
-      - ./volumes/matomo/revaliases:/etc/ssmtp/revaliases
+  # matomo-mysql:
+  #   container_name: matomo-mysql
+  #   image: mysql:5.7
+  #   restart: always
+  #   volumes:
+  #    - ./volumes/mysql:/var/lib/mysql
+  #   ports:
+  #    - "3306:3306"
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: password
+  #     MYSQL_DATABASE: matomo
+
+  # matomo:
+  #   container_name: matomo
+  #   image: matomo:3.11.0-apache
+  #   restart: always
+  #   ports:
+  #    - "8008:80"
+  #   environment:
+  #     MATOMO_DATABASE_HOST: matomo-mysql
+  #     MATOMO_DATABASE_USERNAME: root
+  #     MATOMO_DATABASE_PASSWORD: password
+  #     MATOMO_DATABASE_DBNAME: matomo
+  #   volumes:
+  #     - ./volumes/matomo/config:/var/www/html/config
+  #     - ./volumes/matomo/ssmtp.conf:/etc/ssmtp/ssmtp.conf
+  #     - ./volumes/matomo/revaliases:/etc/ssmtp/revaliases

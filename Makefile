@@ -8,10 +8,10 @@ stop:
 	docker-compose kill
 
 restart:
-	docker-compose restart photonix
+	docker-compose restart website
 
 clean:
 	docker-compose rm
 
 shell:
-	docker-compose exec photonix bash
+	docker-compose exec website bash

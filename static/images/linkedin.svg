@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   width="128"
+   height="128"
+   viewBox="0 0 33.866666 33.866668"
+   version="1.1"
+   id="svg854">
+  <defs
+     id="defs848">
+    <mask
+       fill="white"
+       height="44"
+       width="44"
+       y="0"
+       x="0"
+       maskUnits="objectBoundingBox"
+       maskContentUnits="userSpaceOnUse"
+       id="mask-4">
+      <ellipse
+         style="stroke-width:0.65293407"
+         id="use3918"
+         cx="-98.59333"
+         cy="19.852995"
+         rx="19.822554"
+         ry="19.822584" />
+    </mask>
+    <mask
+       fill="white"
+       height="44"
+       width="44"
+       y="0"
+       x="0"
+       maskUnits="objectBoundingBox"
+       maskContentUnits="userSpaceOnUse"
+       id="mask-8">
+      <ellipse
+         style="stroke-width:0.65293407"
+         id="use3926"
+         cx="-98.59333"
+         cy="19.852995"
+         rx="19.822554"
+         ry="19.822584" />
+    </mask>
+    <mask
+       fill="white"
+       height="44"
+       width="44"
+       y="0"
+       x="0"
+       maskUnits="objectBoundingBox"
+       maskContentUnits="userSpaceOnUse"
+       id="mask-8-3">
+      <ellipse
+         style="stroke-width:0.65293407"
+         id="use3926-6"
+         cx="-98.59333"
+         cy="19.852995"
+         rx="19.822554"
+         ry="19.822584" />
+    </mask>
+    <mask
+       fill="white"
+       height="44"
+       width="44"
+       y="0"
+       x="0"
+       maskUnits="objectBoundingBox"
+       maskContentUnits="userSpaceOnUse"
+       id="mask-8-6">
+      <ellipse
+         style="stroke-width:0.65293407"
+         id="use3926-2"
+         cx="-98.59333"
+         cy="19.852995"
+         rx="19.822554"
+         ry="19.822584" />
+    </mask>
+    <mask
+       fill="white"
+       height="44"
+       width="44"
+       y="0"
+       x="0"
+       maskUnits="objectBoundingBox"
+       maskContentUnits="userSpaceOnUse"
+       id="mask-8-0">
+      <ellipse
+         style="stroke-width:0.65293407"
+         id="use3926-9"
+         cx="-98.59333"
+         cy="19.852995"
+         rx="19.822554"
+         ry="19.822584" />
+    </mask>
+    <mask
+       fill="white"
+       height="44"
+       width="44"
+       y="0"
+       x="0"
+       maskUnits="objectBoundingBox"
+       maskContentUnits="userSpaceOnUse"
+       id="mask-8-2">
+      <circle
+         style="stroke-width:0.07000434"
+         id="use3926-61"
+         cx="1.5400954"
+         cy="334.2941"
+         r="1.5400954" />
+    </mask>
+    <mask
+       fill="white"
+       height="44"
+       width="44"
+       y="0"
+       x="0"
+       maskUnits="objectBoundingBox"
+       maskContentUnits="userSpaceOnUse"
+       id="mask-14">
+      <circle
+         style="stroke-width:0.07000434"
+         id="use3938"
+         cx="1.5400954"
+         cy="334.2941"
+         r="1.5400954" />
+    </mask>
+  </defs>
+  <metadata
+     id="metadata851">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     transform="translate(0,-263.13332)">
+    <g
+       transform="matrix(0.26458334,0,0,0.26458334,-36.261807,216.72018)"
+       id="linkedin">
+      <path
+         id="path4281"
+         d="m 167.88695,227.17044 h 13.79556 v 48.07921 h -13.79556 z m 6.54614,-6.01386 h -0.0998 c -4.99386,0 -8.23153,-3.67541 -8.23153,-8.3297 0,-4.74945 3.3334,-8.35232 8.42714,-8.35232 5.08954,0 8.21903,3.5938 8.31894,8.33873 0,4.65429 -3.2294,8.34329 -8.41467,8.34329 z m 62.44825,54.09764 H 221.23805 V 250.3694 c 0,-6.5124 -2.447,-10.95368 -7.82789,-10.95368 -4.11576,0 -6.4046,2.99561 -7.46997,5.89148 -0.39951,1.03332 -0.33727,2.47899 -0.33727,3.92919 v 26.01783 h -15.49759 c 0,0 0.1996,-44.07754 0,-48.08378 h 15.49759 v 7.54565 c 0.91554,-3.29921 5.86778,-8.00791 13.77058,-8.00791 9.80461,0 17.50766,6.92027 17.50766,21.80765 z"
+         style="fill:none;stroke:#ffffff;stroke-width:0.76799999;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;stroke-linejoin:round" />
+      <rect
+         ry="8.2033901"
+         y="193.80374"
+         x="155.43651"
+         height="91.231987"
+         width="91.231987"
+         id="rect7025"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:0.76801407;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    </g>
+  </g>
+</svg>
