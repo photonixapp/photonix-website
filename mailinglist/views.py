@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 
 import requests
@@ -12,9 +13,12 @@ def signup(request):
     email = request.POST.get('email')
 
     if not email:
-        return
+        raise TypeError('Invalid email address')
     
-    Subscription(email=email).save()
+    try:
+        Subscription(email=email).save()
+    except IntegrityError:
+        pass
 
     requests.post('https://skylark.epixstudios.co.uk/webhook/', params={
         'title': "New Photonix mailing list subscription",

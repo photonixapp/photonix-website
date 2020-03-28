@@ -3,7 +3,7 @@ from django.urls import reverse
 import django_filters
 from filer.fields.image import FilerImageField
 
-from utils.models import VersionedModel
+from utils.models import UUIDModel, VersionedModel
 
 
 POST_STATUSES = (
@@ -12,7 +12,7 @@ POST_STATUSES = (
 )
 
 
-class Post(VersionedModel):
+class Post(UUIDModel, VersionedModel):
     title = models.CharField(max_length=50)
     slug = models.SlugField(max_length=50)
     status = models.CharField(max_length=20, choices=POST_STATUSES, default=POST_STATUSES[0][0])

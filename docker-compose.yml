@@ -16,6 +16,7 @@ services:
       - ./system:/srv/system
       - ./templates:/srv/templates
       - ./tests:/srv/tests
+      - ./utils:/srv/utils
       - ./test.py:/srv/test.py
     environment:
       ENV: dev

@@ -7,10 +7,10 @@ from utils.admin import VersionedAdmin
 
 
 class PostAdmin(VersionedAdmin):
-    list_display = ('title', 'slug', 'status', 'created', 'updated')
-    list_filter = ('status', 'created', 'updated')
+    list_display = ('title', 'slug', 'status', 'created_at', 'updated_at')
+    list_filter = ('status', 'created_at', 'updated_at')
     search_fields = ('title', 'slug', 'status')
-    ordering = ('-created',)
+    ordering = ('-created_at',)
     prepopulated_fields = {"slug": ("title",)}
 
     formfield_overrides = {

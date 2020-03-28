@@ -5,7 +5,6 @@ class VersionedAdmin(admin.ModelAdmin):
     fieldsets = (
         ('Created/Updated', {
             'classes': ('collapse',),
-            'fields': ('created', 'updated')
+            'fields': ('created_at', 'updated_at')
         }),
     )
-    # readonly_fields = ['created', 'updated']

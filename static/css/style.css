@@ -48,8 +48,9 @@ h2 a {
 }
 
 nav div {
-  max-width: 1040px;
+  max-width: 1200px;
   margin: 0 auto;
+  padding: 0 2rem;
   text-align: right;
 }
 nav ul {
@@ -208,9 +209,6 @@ footer img {
 }
 
 @media all and (max-width: 1100px) {
-  nav div {
-    padding: 0 20px;
-  }
   .devices {
     width: 100%;
     margin: 0 auto 2rem;
@@ -248,6 +246,9 @@ footer img {
 @media all and (max-width: 500px) {
   html {
     font-size: 18px;
+  }
+  nav div {
+    padding: 0 1rem;
   }
   header {
     padding: 3rem 1rem 2rem;

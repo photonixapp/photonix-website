@@ -1,9 +1,11 @@
 from django.db import models
 from django.utils import timezone
 
+from utils.models import UUIDModel, VersionedModel
 
-class Subscription(models.Model):
-    email = models.EmailField(db_index=True)
+
+class Subscription(UUIDModel):
+    email = models.EmailField(unique=True, db_index=True)
     created_at = models.DateTimeField(blank=True, db_index=True)
 
     def __str__(self):

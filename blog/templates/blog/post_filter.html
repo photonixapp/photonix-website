@@ -20,7 +20,7 @@
         {% endif %}
 
         <div class="summary">
-          {{ post.created }}
+          {{ post.created_at }}
           <div class="tags">
             {% for tag in post.tags.all %}<span class="tag">{{ tag }}</span>{% endfor %}
           </div>
