@@ -19,8 +19,8 @@ class BlogSitemap(sitemaps.Sitemap):
 
     def lastmod(self, item):
         if type(item) == Post:
-            return item.created
-        return Post.objects.filter(status='published').order_by('-created')[0].created
+            return item.created_at
+        return Post.objects.filter(status='published').order_by('-created_at')[0].created_at
 
     def changefreq(self, item):
         if type(item) == Post:

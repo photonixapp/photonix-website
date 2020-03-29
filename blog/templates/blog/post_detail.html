@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% load markdownify %}
 
+{% block title %}{{ object.title }} | Photonix Photo Manager Blog{% endblock %}
+
 {% block extrahead %}
   <link rel="alternate" type="application/atom+xml" title="Photonix Blog Feed" href="{% url 'blog-post-feed' %}" />
 {% endblock %}
@@ -10,13 +12,15 @@
     <h1>{{ object.title }}</h1>
     <p>{{ object.created_at }}</p>
   </header>
-  <div class="block">
+
+  <section>
     <div class="post">
       <div class="tags">
         {% for tag in object.tags.all %}<span class="tag">{{ tag }}</span>{% endfor %}
       </div>
       {{ object.content|markdownify }}
     </div>
-  </div>
+  </section>
+
   {% include 'snippets/mailinglist_signup.html' %}
 {% endblock %}

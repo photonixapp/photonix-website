@@ -10,7 +10,7 @@ class BlogFeed(Feed):
     description = "Lastest updates about development of Photonix"
 
     def items(self):
-        return Post.objects.order_by('-created')[:100]
+        return Post.objects.order_by('-created_at')[:100]
 
     def item_title(self, item):
         return item.title

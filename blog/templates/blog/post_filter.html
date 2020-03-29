@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% block title %}Photonix Photo Manager Blog{% endblock %}
+
 {% block extrahead %}
   <link rel="alternate" type="application/atom+xml" title="Photonix Blog Feed" href="{% url 'blog-post-feed' %}" />
 {% endblock %}
@@ -9,7 +11,8 @@
     <h1>Blog posts</h1>
     <p>Updates from the Photonix team</p>
   </header>
-  <div class="block">
+
+  <section>
     <a href="{% url 'blog-post-feed' %}"><img src="/static/images/rss.svg" class="right" alt="RSS feed" title="RSS feed" /></a>
     {% for post in object_list %}
       <div class="post">
@@ -29,6 +32,7 @@
         </div>
       </div>
     {% endfor %}
-  </div>
+    </section>
+
   {% include 'snippets/mailinglist_signup.html' %}
 {% endblock %}

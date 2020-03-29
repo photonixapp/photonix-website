@@ -29,6 +29,12 @@ h2 {
   margin: 0 0 2rem;
   line-height: 1;
 }
+h3 {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin: 2rem 0 1rem;
+  line-height: 1;
+}
 p {
   margin: 0 0 1rem 0;
 }
@@ -39,6 +45,9 @@ a {
 ul {
   margin: 0 0 1rem 0;
   padding: 0 0 0 2rem;
+}
+strong {
+  font-weight: 600;
 }
 input {
   font-family: 'Nunito', sans-serif;
@@ -167,13 +176,13 @@ img.right {
   width: 300px;
 }
 
-.block {
+section {
   padding: 0 2rem;
   color: #ddd;
   max-width: 1200px;
   margin: 0 auto 5rem;
 }
-.block img {
+section img {
   display: block;
   margin: 0 auto 1rem;
   max-width: 100%;
@@ -259,7 +268,7 @@ footer img {
   .cta {
     margin-bottom: 70px;
   }
-  .block {
+  section {
     padding: 0 1rem;
   }
   .cta a {
