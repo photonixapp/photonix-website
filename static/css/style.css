@@ -115,7 +115,7 @@ img.right {
   border-radius: 6px;
   padding: 15px 30px;
   color: #fff;
-  font-size: 26px;
+  font-size: 1.25rem;
   text-decoration: none;
   font-weight: 300;
   box-shadow: 0 4px 20px #000;
@@ -176,6 +176,24 @@ img.right {
   width: 300px;
 }
 
+ul.in-page-menu {
+  padding: 0;
+  display: flex;
+  justify-content: space-evenly;
+}
+ul.in-page-menu li {
+  list-style: none;
+  display: inline-block;
+  margin: 0;
+}
+ul.in-page-menu li a {
+  background: #292929;
+  padding: 10px 25px;
+  border-radius: 3px;
+  text-decoration: none;
+  font-size: 1.25rem;
+}
+
 section {
   padding: 0 2rem;
   color: #ddd;
@@ -223,11 +241,22 @@ footer img {
     margin: 0 auto 2rem;
     display: block;
   }
-  .signup {
-    margin-bottom: 3rem;
-  }
   .intro {
     margin-bottom: 3rem;
+  }
+  ul.in-page-menu {
+    padding: 0;
+    display: block;
+  }
+  ul.in-page-menu li {
+    display: block;
+    margin-bottom: 2rem;
+  }
+  ul.in-page-menu li:last-child {
+    margin-bottom: 0;
+  }
+  ul.in-page-menu li a {
+    font-size: 1.25rem;
   }
 }
 @media all and (max-width: 700px) {

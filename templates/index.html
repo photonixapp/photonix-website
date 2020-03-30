@@ -19,13 +19,21 @@
   {% include 'snippets/mailinglist_signup.html' %}
 
   <section>
+    <ul class="in-page-menu">
+      <li><a href="#features">Main features</a></li>
+      <li><a href="#faq">Frequently asked questions</a></li>
+      <li><a href="#social">Social media updates</a></li>
+    </ul>
+  </section>
+
+  <section>
     <p>Images are everywhere in our lives today, but all too often these gems end up as just files and folders on a hard drive — never to be seen again. Professional photographers spend a lot of time on photo editing so it’s important that those photos (and associated RAW files) can be easily retrieved later on. Using a photo editor (such as Lightroom, Darktable or Photoshop) is time consuming so get more value from that. Photo editing software has evolved a lot over the years, but often your photo management tool can feel stuck in the past.</p>
     <p>Maybe you let iCloud Photo Library, Google Photos or Picasa take charge of your daily snaps but find managing your professional SLR image files a much less slick affair. If you’re struggling to find software that will help with photo organizing, we think this could be the solution.</p>
     <img src="/static/images/pipeline.svg" class="pipeline" />
   </section>
 
-  <section>
-    <h2>Features</h2>
+  <section id="features">
+    <h2>Main Features</h2>
 
     <h3>Image organizer</h3>
     <p>To have an organized collection of photos we believe each one should be tagged with as much useful information as possible. Tags are different from categories; a single photo can have many tags but could only be in a single category. This is why we think tagging is a lot better than trying to decide on a descriptive folder name to store it in. Having a database allows super fast filtering of photos by tags.</p>
@@ -76,7 +84,7 @@
 
   {% include 'snippets/mailinglist_signup.html' %}
 
-  <section>
+  <section id="faq">
     <h2>Frequently Asked Questions</h2>
 
     <h3>How would this photo organizer fit into my existing process?</h3>
@@ -102,5 +110,6 @@
     <p>Please add your email address to the mailing list form below and we’ll let you know when ready it is for the general public.</p>
   </section>
 
+  <div id="social"></div>
   {% include 'snippets/mailinglist_signup.html' %}
 {% endblock %}
