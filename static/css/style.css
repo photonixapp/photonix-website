@@ -205,6 +205,10 @@ section img {
   margin: 0 auto 1rem;
   max-width: 100%;
 }
+section img.ui {
+  border: 1px solid #ddd;
+  margin: 5rem 0;
+}
 .post {
   margin-bottom: 80px;
 }
