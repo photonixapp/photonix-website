@@ -14,7 +14,7 @@ body {
   font-weight: 300;
   margin: 0;
   padding: 0;
-  color: #ddd;
+  color: #bbb;
 }
 h1 {
   font-size: 3rem;
@@ -28,12 +28,14 @@ h2 {
   font-weight: 300;
   margin: 0 0 2rem;
   line-height: 1;
+  color: #ddd;
 }
 h3 {
   font-size: 1.5rem;
   font-weight: 300;
   margin: 2rem 0 1rem;
   line-height: 1;
+  color: #ddd;
 }
 p {
   margin: 0 0 1rem 0;
@@ -48,6 +50,7 @@ ul {
 }
 strong {
   font-weight: 600;
+  color: #ddd;
 }
 input {
   font-family: 'Nunito', sans-serif;
@@ -196,7 +199,6 @@ ul.in-page-menu li a {
 
 section {
   padding: 0 2rem;
-  color: #ddd;
   max-width: 1200px;
   margin: 0 auto 5rem;
 }
