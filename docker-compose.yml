@@ -9,6 +9,7 @@ services:
       - "8001:8001"
     volumes:
       - ./blog:/srv/blog
+      - ./geoipdb.mmdb:/srv/geoipdb.mmdb
       - ./mailinglist:/srv/mailinglist
       - ./photonix:/srv/photonix
       - ./project:/srv/project

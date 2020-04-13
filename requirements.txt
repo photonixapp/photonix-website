@@ -6,5 +6,6 @@ django-markdownify==0.8.0
 django-pagedown==2.0.3
 easy-thumbnails==2.7
 gunicorn==19.9.0
+maxminddb==1.5.2
 psycopg2-binary==2.8.4
 requests==2.20.0
