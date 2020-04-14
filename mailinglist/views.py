@@ -5,6 +5,7 @@ from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
+from matomo_monorail.utils import get_client_ip
 import requests
 
 from .models import Subscription
@@ -17,7 +18,7 @@ def signup(request):
     if not email:
         raise TypeError('Invalid email address')
 
-    ip = request.META['REMOTE_ADDR']
+    ip = get_client_ip(request)
     language = request.META['HTTP_ACCEPT_LANGUAGE'].split(',')[0]
 
     try:
