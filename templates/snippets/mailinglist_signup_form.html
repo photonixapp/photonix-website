@@ -1,0 +1,7 @@
+{% load mailinglist_tags %}
+
+<form method="post" action="/mailinglist/signup">
+  <input type="email" name="email" placeholder="user@domain.com" />
+  <input type="submit" value="Sign up" />
+  {% mailinglist_tracking_fields %}
+</form>

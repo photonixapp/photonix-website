@@ -16,6 +16,10 @@ class Subscription(UUIDModel):
     country = models.CharField(blank=True, max_length=50)
     region = models.CharField(blank=True, max_length=50)
     city = models.CharField(blank=True, max_length=50)
+    landing_page = models.CharField(blank=True, max_length=50)
+    source = models.CharField(blank=True, max_length=50)
+    medium = models.CharField(blank=True, max_length=50)
+    campaign = models.CharField(blank=True, max_length=50)
 
     def __str__(self):
         return '{}'.format(self.email)
