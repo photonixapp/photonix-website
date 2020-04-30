@@ -1,9 +1,6 @@
 <div class="signup">
   <div>
     <p>Please sign up to the mailing list so we can notify you of our version 1.0 release and other important&nbsp;news. We will not pass your details on to any other party and you can unsubscribe at any&nbsp;time.</p>
-    <form method="post" action="/mailinglist/signup">
-      <input type="email" name="email" placeholder="user@domain.com" />
-      <input type="submit" value="Sign up" />
-    </form>
+    {% include 'snippets/mailinglist_signup_form.html' %}
   </div>
 </div>

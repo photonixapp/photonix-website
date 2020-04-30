@@ -241,6 +241,20 @@ footer img {
   opacity: 0.9;
 }
 
+footer .copyright {
+  margin: 2rem 0 0 0;
+}
+
+.stripes-hr {
+  width: 100%;
+  display: flex;
+}
+.stripes-hr div {
+  height: 0.25rem;
+  display: inline-block;
+  flex-grow: 1;
+}
+
 @media all and (max-width: 1100px) {
   .devices {
     width: 100%;
