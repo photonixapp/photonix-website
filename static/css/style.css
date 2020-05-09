@@ -197,12 +197,12 @@ ul.in-page-menu li a {
   font-size: 1.25rem;
 }
 
-section {
+section, article {
   padding: 0 2rem;
   max-width: 1200px;
   margin: 0 auto 5rem;
 }
-section img {
+section img, article img {
   display: block;
   margin: 0 auto 1rem;
   max-width: 100%;
@@ -213,6 +213,19 @@ section img.ui {
 }
 .post {
   margin-bottom: 80px;
+}
+.gallery {
+  margin: 0;
+  padding: 0;
+}
+.post .gallery {
+  margin: 40px 0;
+}
+.post .gallery-2-cols img {
+  width: 50%;
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
 }
 
 footer {

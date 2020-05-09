@@ -138,6 +138,8 @@ USE_TZ = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_collected')
 STATIC_URL = '/static-collected/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 MATOMO_BASE_URL = os.environ.get('MATOMO_BASE_URL')
 MATOMO_SITE_ID = os.environ.get('MATOMO_SITE_ID')

@@ -19,6 +19,7 @@ services:
       - ./tests:/srv/tests
       - ./utils:/srv/utils
       - ./test.py:/srv/test.py
+      - ./volumes/media:/srv/media
     environment:
       ENV: dev
       POSTGRES_DB: photonix_website

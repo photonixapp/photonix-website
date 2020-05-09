@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load markdownify %}
+{% load markdownify markdown_extensions %}
 
 {% block title %}{{ object.title }} | Photonix Photo Manager Blog{% endblock %}
 
@@ -13,14 +13,14 @@
     <p>{{ object.created_at }}</p>
   </header>
 
-  <section>
+  <article>
     <div class="post">
       <div class="tags">
         {% for tag in object.tags.all %}<span class="tag">{{ tag }}</span>{% endfor %}
       </div>
-      {{ object.content|markdownify }}
+      {{ object.content|markdownify|format_extensions }}
     </div>
-  </section>
+  </article>
 
   {% include 'snippets/mailinglist_signup.html' %}
 {% endblock %}
