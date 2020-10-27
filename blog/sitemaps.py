@@ -9,7 +9,7 @@ class BlogSitemap(sitemaps.Sitemap):
         items = [
             'blog-post-list',
         ]
-        items.extend(Post.objects.filter(status='published'))
+        items.extend(Post.objects.filter(status='published').order_by('-created_at'))
         return items
 
     def priority(self, item):

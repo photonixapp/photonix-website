@@ -1,3 +1,3 @@
-# photo-manager-website
+# Photonix Website
 
-Website publicising the photo-manager project and Chromecast reciever
+Photonix website located at [photonix.org](https://photonix.org).

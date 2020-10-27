@@ -8,20 +8,21 @@
     <link rel="shortcut icon" href="/static/images/favicon.png">
     <link rel="sitemap" href="/sitemap.xml" type="application/xml" />
     <link href="https://fonts.googleapis.com/css?family=Nunito:300,600" rel="stylesheet" />
-    <meta name="description" content="Photonix is a photo management application that solves a lot of problems. Once set up it will ingest all the photos in your collection and start building up an image database of everything you could want to search and filter by. It makes your entire collection available to you, whichever device you’re using — as long as you can get to a web browser." />
+    <meta name="description" content="{% block meta_description %}Photonix is a photo management application that solves a lot of problems. Once set up it will ingest all the photos in your collection and start building up an image database of everything you could want to search and filter by. It makes your entire collection available to you, whichever device you’re using — as long as you can get to a web browser.{% endblock %}" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="theme-color" content="#000000" />
     <meta name="google-site-verification" content="7MIGlwoX3fZW6wg-XiFMU5R-Y808Ap4HT8661VfY_iQ" />
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Photonix Photo Manager" />
-    <meta name="twitter:description" content="Photonix is a photo management application that solves a lot of problems. Once set up it will ingest all the photos in your collection and start building up an image database of everything you could want to search and filter by. It makes your entire collection available to you, whichever device you’re using — as long as you can get to a web browser." />
+    <meta name="twitter:title" content="{% block twitter_title %}Photonix Photo Manager{% endblock %}" />
+    <meta name="twitter:description" content="{% block twitter_description %}Photonix is a photo management application that solves a lot of problems. Once set up it will ingest all the photos in your collection and start building up an image database of everything you could want to search and filter by. It makes your entire collection available to you, whichever device you’re using — as long as you can get to a web browser.{% endblock %}" />
     <meta name="twitter:site" content="@photonixapp" />
-    <meta property="og:title" content="Photonix Photo Manager" />
+    <meta name="twitter:image" content="{% block twitter_image %}https://photonix.org/static/images/devices.jpg{% endblock %}" />
+    <meta property="og:title" content="{% block og_title %}Photonix Photo Manager{% endblock %}" />
     <meta property="og:site_name" content="Photonix Photo Manager" />
     <meta property="og:url" content="https://photonix.org/" />
-    <meta property="og:description" content="Photonix is a photo management application that solves a lot of problems. Once set up it will ingest all the photos in your collection and start building up an image database of everything you could want to search and filter by. It makes your entire collection available to you, whichever device you’re using — as long as you can get to a web browser." />
+    <meta property="og:description" content="{% block og_description %}Photonix is a photo management application that solves a lot of problems. Once set up it will ingest all the photos in your collection and start building up an image database of everything you could want to search and filter by. It makes your entire collection available to you, whichever device you’re using — as long as you can get to a web browser.{% endblock %}" />
     <meta property="og:type" content="product" />
-    <meta property="og:image" content="https://photonix.org/static/images/devices.jpg" />
+    <meta property="og:image" content="{% block og_image %}https://photonix.org/static/images/devices.jpg{% endblock %}" />
     <meta property="og:locale" content="en_US" />
     {% block extrahead %}{% endblock %}
   </head>

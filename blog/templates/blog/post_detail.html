@@ -2,6 +2,11 @@
 {% load markdownify markdown_extensions %}
 
 {% block title %}{{ object.title }} | Photonix Photo Manager Blog{% endblock %}
+{% block meta_description %}{{ object.content|markdownify|strip_tags|truncatechars:1000 }}{% endblock %}
+{% block twitter_title %}{{ object.title }} | Photonix Photo Manager Blog{% endblock %}
+{% block twitter_description %}{{ object.content|markdownify|strip_tags|truncatechars:1000 }}{% endblock %}
+{% block og_title %}{{ object.title }} | Photonix Photo Manager Blog{% endblock %}
+{% block og_description %}{{ object.content|markdownify|strip_tags|truncatechars:1000 }}{% endblock %}
 
 {% block extrahead %}
   <link rel="alternate" type="application/atom+xml" title="Photonix Blog Feed" href="{% url 'blog-post-feed' %}" />
