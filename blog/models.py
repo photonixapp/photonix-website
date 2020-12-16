@@ -17,7 +17,8 @@ class Post(UUIDModel, VersionedModel):
     slug = models.SlugField(max_length=50)
     status = models.CharField(max_length=20, choices=POST_STATUSES, default=POST_STATUSES[0][0])
     content = models.TextField()
-    photo = FilerImageField(null=True, blank=True, on_delete=models.SET_NULL, related_name="post")
+    non_visible_content = models.TextField(blank=True, help_text='For including JS and similar at bottom of the page. Will not be run through Markdown processor.')
+    photo = FilerImageField(null=True, blank=True, on_delete=models.SET_NULL, related_name='post')
 
     def __str__(self):
         return self.title

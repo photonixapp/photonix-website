@@ -165,3 +165,4 @@ MARKDOWNIFY_WHITELIST_TAGS = [
     'h4',
     'h5',
 ]
+MARKDOWNIFY_BLEACH = False

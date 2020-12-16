@@ -24,6 +24,7 @@
         {% for tag in object.tags.all %}<span class="tag">{{ tag }}</span>{% endfor %}
       </div>
       {{ object.content|markdownify|format_extensions }}
+      {{ object.non_visible_content|safe }}
     </div>
   </article>
 
