@@ -96,6 +96,7 @@ header h2 {
 img.logo {
   width: 100px;
   margin: 0 0 1rem 0;
+  filter: invert(1);
 }
 img.right {
   float: right;
