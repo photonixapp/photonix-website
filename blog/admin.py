@@ -19,7 +19,7 @@ class PostAdmin(VersionedAdmin):
 
     fieldsets = (
         (None, {
-            'fields': ('title', 'slug', 'status', 'content', 'non_visible_content', 'photo',),
+            'fields': ('title', 'slug', 'status', 'content', 'non_visible_content', 'photo', 'share_image'),
         }),
     ) + VersionedAdmin.fieldsets
 

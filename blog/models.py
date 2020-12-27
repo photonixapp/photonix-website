@@ -19,6 +19,7 @@ class Post(UUIDModel, VersionedModel):
     content = models.TextField()
     non_visible_content = models.TextField(blank=True, help_text='For including JS and similar at bottom of the page. Will not be run through Markdown processor.')
     photo = FilerImageField(null=True, blank=True, on_delete=models.SET_NULL, related_name='post')
+    share_image = FilerImageField(null=True, blank=True, on_delete=models.SET_NULL, related_name='+')
 
     def __str__(self):
         return self.title

@@ -1,12 +1,14 @@
 {% extends "base.html" %}
-{% load markdownify markdown_extensions %}
+{% load markdownify markdown_extensions thumbnail %}
 
 {% block title %}{{ object.title }} | Photonix Photo Manager Blog{% endblock %}
 {% block meta_description %}{{ object.content|markdownify|strip_tags|truncatechars:1000 }}{% endblock %}
 {% block twitter_title %}{{ object.title }} | Photonix Photo Manager Blog{% endblock %}
 {% block twitter_description %}{{ object.content|markdownify|strip_tags|truncatechars:1000 }}{% endblock %}
+{% block twitter_image %}{% if object.share_image %}https://photonix.org{% thumbnail object.share_image 1920x1080 quality=60 crop %}{% else %}https://photonix.org/static/images/devices.jpg{% endif %}{% endblock twitter_image %}
 {% block og_title %}{{ object.title }} | Photonix Photo Manager Blog{% endblock %}
 {% block og_description %}{{ object.content|markdownify|strip_tags|truncatechars:1000 }}{% endblock %}
+{% block og_image %}{% if object.share_image %}https://photonix.org{% thumbnail object.share_image 1920x1080 quality=60 crop %}{% else %}https://photonix.org/static/images/devices.jpg{% endif %}{% endblock og_image %}
 
 {% block extrahead %}
   <link rel="alternate" type="application/atom+xml" title="Photonix Blog Feed" href="{% url 'blog-post-feed' %}" />
