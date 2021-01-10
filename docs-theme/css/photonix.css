@@ -1,0 +1,97 @@
+body, h1, h2, .rst-content .toctree-wrapper p.caption, h3, h4, h5, h6, legend, .btn, .rst-versions, input[type="text"], input[type="password"], input[type="email"], input[type="url"], input[type="date"], input[type="month"], input[type="time"], input[type="datetime"], input[type="datetime-local"], input[type="week"], input[type="number"], input[type="search"], input[type="tel"], input[type="color"] {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 300;
+}
+table {
+  margin-bottom: 24px;
+}
+tr:nth-child(even) {
+  background-color: #f5f5f5;
+}
+td {
+  padding: 2px 5px 6px 4px;
+}
+th {
+  text-align: left;
+  padding: 6px;
+}
+
+.stripes-hr {
+  width: 100%;
+  display: flex;
+  position: fixed;
+  z-index: 101;
+}
+.stripes-hr div {
+  height: 0.25rem;
+  display: inline-block;
+  flex-grow: 1;
+}
+
+nav.custom {
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  background: #1b1b1b;
+  height: 60px;
+}
+nav.custom div {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  text-align: right;
+}
+nav.custom ul {
+  margin: 1rem 0;
+}
+nav.custom ul li {
+  list-style: none;
+  display: inline-block;
+  margin-left: 1rem;
+}
+nav.custom ul a {
+  text-decoration: none;
+  color: #ddd;
+  outline: 0;
+  font-size: 20px;
+}
+
+.wy-nav-side {
+  margin-top: 60px;
+  background: #292929;
+}
+.wy-nav-content-wrap {
+  background: #fff;
+  margin-top: 60px;
+}
+.wy-nav-content {
+  background: #fff;
+}
+.wy-side-nav-search, .wy-nav-top {
+  background-color: #00A8A1;
+}
+.wy-side-nav-search input[type="text"] {
+  border-color: #009A95;
+}
+.wy-menu-vertical a {
+  padding: 8px 20px;
+}
+.wy-menu-vertical p.caption {
+  margin: 30px 0 10px;
+  padding: 0 20px;
+  font-size: 1.1rem;
+  font-weight: normal;
+}
+.rst-versions .rst-current-version {
+  background-color: #1b1b1b;
+}
+
+@media all and (max-width: 400px) {
+  nav.custom div {
+    padding: 0 1rem;
+  }
+  nav.custom ul a {
+    font-size: 16px;
+    line-height: 2rem;
+  }
+}

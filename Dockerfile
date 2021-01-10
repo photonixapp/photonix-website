@@ -19,6 +19,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY blog /srv/blog
 COPY docs /srv/docs
+COPY docs-theme /srv/docs-theme
 COPY mailinglist /srv/mailinglist
 COPY static /srv/static
 COPY project /srv/project

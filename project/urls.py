@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.contrib.sitemaps.views import sitemap
 from django.urls import include, path
+from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView
 from matomo_monorail.views import proxy_js, proxy_php
 
@@ -16,7 +17,7 @@ sitemaps = {
 
 urlpatterns = [
     path('matomo.js', proxy_js),
-    path('matomo.php', proxy_php),
+    path('matomo.php', csrf_exempt(proxy_php)),
     path('admin/', admin.site.urls),
     path('blog/', include('blog.urls')),
     path('ip/', ip),
