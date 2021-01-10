@@ -73,6 +73,9 @@ nav.custom ul a {
 .wy-side-nav-search input[type="text"] {
   border-color: #009A95;
 }
+.wy-menu-vertical {
+  margin-bottom: 100px;
+}
 .wy-menu-vertical a {
   padding: 8px 20px;
 }
