@@ -71,5 +71,17 @@
         }
       ]
     }
+  },
+  "face_detection": {
+    "20210120": {
+      "files": [
+        {
+          "filename": "mtcnn_weights.npy.xz",
+          "sha256": "82171d80e3d92676f58b5e8509213ee7fb3bd35eb11f4cbe1614f0dce6fe5986",
+          "locations": ["https://epixstudios.co.uk/filer/canonical/1611177518/177/"],
+          "decompress": true
+        }
+      ]
+    }
   }
 }
