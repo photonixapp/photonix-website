@@ -7,6 +7,7 @@
 {% block twitter_description %}{{ object.content|markdownify|strip_tags|truncatechars:1000 }}{% endblock %}
 {% block twitter_image %}{% if object.share_image %}https://photonix.org{% thumbnail object.share_image 1920x1080 quality=60 crop %}{% else %}https://photonix.org/static/images/devices.jpg{% endif %}{% endblock twitter_image %}
 {% block og_title %}{{ object.title }} | Photonix Photo Manager Blog{% endblock %}
+{% block og_url %}https://photonix.org/blog/{{object.slug}}/{% endblock %}
 {% block og_description %}{{ object.content|markdownify|strip_tags|truncatechars:1000 }}{% endblock %}
 {% block og_image %}{% if object.share_image %}https://photonix.org{% thumbnail object.share_image 1920x1080 quality=60 crop %}{% else %}https://photonix.org/static/images/devices.jpg{% endif %}{% endblock og_image %}
 
@@ -15,7 +16,7 @@
 {% endblock %}
 
 {% block content %}
-  <header>
+  <header style="background-image: url({% thumbnail object.photo 1920x960 quality=60 crop %});">
     <h1>{{ object.title }}</h1>
     <p>{{ object.created_at }}</p>
   </header>

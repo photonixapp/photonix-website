@@ -22,6 +22,8 @@ Details coming soon.
 
 This collection of models is currently being developed. There are a few different steps to the process. Facial recognition is different from most of the other types of analysis as it only becomes useful if the user can label the people they know. Because of this, parts of the model need to be re-trained when there is new data and then run against the detected, unknown faces.
 
+Papers With Code provides [benchmark comparisons of algorithms](https://paperswithcode.com/area/computer-vision/facial-recognition-and-modelling) for each step (and more).
+
 ### Face Detection
 
 We use a Convolutional Neural Network (CNN) called "Multi-task Cascaded Convolutional Network" (MTCNN) which is specialised in identifying faces in photos and features such as eyes, nose and mouth. You can find more details in the paper [Joint Face Detection and Alignment using Multi-task Cascaded Convolutional Networks](https://arxiv.org/pdf/1604.02878.pdf) written by Zhang, K et al. (2016) [ZHANG2016]. You can also see some examples images of what's detected at [the author's site](https://kpzhang93.github.io/SPL/index.html).
@@ -30,19 +32,19 @@ We use a modified version of a Python package called [mtcnn](https://github.com/
 
 The bounding box output of running this model against photos is used to create location-specific tags in the database. These tags are of unknown people at this stage but it's still useful to tag the information at this stage.
 
-### Transformation / Feature Alignment and Cropping
+### Face Alignment / Transformation and Cropping
 
 Because faces can be oriented and pointing in different directions we want to normalise them as much as possible. We will skew and rotate the face images to align all the eyes, nose and mouths consistently.
 
 The output images from this step can be cached for later steps.
 
-### Feature Embedding / Face Fingerprinting / Faceprinting
+### Feature Extraction / Embedding / Face Fingerprinting / Faceprinting
 
-Several Deep Neural Networks (DNNs) exist which can generate a multi-dimensional representation of each face.
+Several Deep Neural Networks (DNNs) exist which can generate a multi-dimensional representation of each face. FaceNet is one of the more famous examples. Papers With Code provides a [list of models sorted by accuracy](https://paperswithcode.com/sota/face-verification-on-labeled-faces-in-the).
 
 The outputted embeddings only need to be computed once to be re-used many times in the final re-training step.
 
-### Clustering / Classification
+### Similarity Calculation / Clustering / Classification
 
 This model will be computing which faces are most similar to each other. If an unknown face has a distance score within a defined threshold to it's nearest neighbour, it will get labelled.
 

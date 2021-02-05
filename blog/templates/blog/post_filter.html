@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load thumbnail %}
 
 {% block title %}Photonix Photo Manager Blog{% endblock %}
 {% block twitter_title %}{{ object.title }} | Photonix Photo Manager Blog{% endblock %}
@@ -10,19 +11,20 @@
 
 {% block content %}
   <header>
+    <a href="{% url 'blog-post-feed' %}"><img src="/static/images/rss.svg" class="icon" alt="RSS feed" title="RSS feed" /></a>
     <h1>Blog posts</h1>
     <p>Updates from the Photonix team</p>
   </header>
 
-  <section>
-    <a href="{% url 'blog-post-feed' %}"><img src="/static/images/rss.svg" class="right" alt="RSS feed" title="RSS feed" /></a>
+  <section class="post-list">
     {% for post in object_list %}
       <div class="post">
-        <h2><a href="{% url 'blog-post-detail' slug=post.slug %}">{{ post.title }}</a></h2>
 
-        {% if post.photo %}
-          <a href="{% url 'blog-post-detail' slug=post.slug %}"><img src="{{ post.photo.get_display_url }}" alt="{{ post.photo.title }}" class="cover-photo" /></a>
+        {% if post.share_image %}
+        <a href="{% url 'blog-post-detail' slug=post.slug %}"><img src="{% thumbnail post.share_image 960x540 quality=60 crop %}" alt="{{ post.title }}" class="cover-photo" /></a>
         {% endif %}
+
+        <h2><a href="{% url 'blog-post-detail' slug=post.slug %}">{{ post.title }}</a></h2>
 
         <div class="summary">
           {{ post.created_at }}

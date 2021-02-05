@@ -31,3 +31,12 @@ def gallery_dir(cols, path):
     except filer.models.foldermodels.Folder.DoesNotExist:
         pass
     return '<ul class="gallery gallery-{}-cols">{}</ul>'.format(cols, ''.join(images))
+
+
+def gallery_image(path):
+    width = 1120 * 2
+    parent = None
+    for component in path.split('/')[:-1]:
+        parent = Folder.objects.get(name=component, parent=parent)
+    file = parent.files.get(original_filename=path.split('/')[-1])
+    return '<a href="{}"><img src="{}" class="gallery-single-image" /></a>'.format(file.url, get_thumbnail(file, width, 999999))

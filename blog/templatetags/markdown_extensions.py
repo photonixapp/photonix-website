@@ -5,7 +5,7 @@ import re
 from django import template
 from django.template.defaultfilters import stringfilter
 
-from ..utils import gallery_dir
+from ..utils import gallery_dir, gallery_image
 
 
 register = template.Library()
@@ -21,6 +21,16 @@ def format_extensions(value):
             cols = matches.group(1)
             path = matches.group(2)
             contentElements.append(gallery_dir(cols, path))
+        else:
+            contentElements.append(item)
+
+    value = ''.join(contentElements)
+    contentElements = []
+    for item in re.split('(\[!gallery-image [\S]+\])', value):
+        if item.startswith('[!gallery-image '):
+            matches = re.match(r'\[!gallery-image ([\S]+)\]', item)
+            path = matches.group(1)
+            contentElements.append(gallery_image(path))
         else:
             contentElements.append(item)
 
