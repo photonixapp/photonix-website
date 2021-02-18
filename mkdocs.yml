@@ -11,5 +11,5 @@ nav:
       - Home: 'developer/index.md'
       - Frontend: 'developer/frontend.md'
       - Adding or Upgrading JS Packages: 'developer/adding_upgrading_js_packages.md'
-      - AI Models: 'developer/ai_models.md'
-      - Building Tensorflow: 'developer/building_tensorflow.md'
+      - Image Analysis: 'developer/image_analysis.md'
+      - Building for Production: 'developer/building.md'

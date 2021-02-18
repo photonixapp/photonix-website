@@ -10,8 +10,15 @@ There is a [`Makefile`](./Makefile) and separate Docker Compose file `docker-com
     make build
     make start
 
-If you get errors such as `Error starting userland proxy: listen tcp 0.0.0.0:5432: bind: address alerady in use` then you probably have an existing server such as Postgres listening on the standard port. You can change Photonix's services to use alternative port numbers by editing `docker/docker-compose.dev.yml` and setting `'5432:5432'` to be `'5433:5432'` for example. This is for Postgres but is it a similar solution for Redis or the webserver ports.
+You should now be able to access the app in your browser at [http://localhost:8888/](http://localhost:8888/).
 
 If you want to access the Bash or Python shells for development, you can use the following command.
 
     make shell
+
+
+## Common Problems
+
+### Port Number Clashes
+
+If you get errors such as `Error starting userland proxy: listen tcp 0.0.0.0:5432: bind: address alerady in use` then you probably have an existing server such as Postgres listening on the standard port. You can change Photonix's services to use alternative port numbers by editing `docker/docker-compose.dev.yml` and setting `'5432:5432'` to be `'5433:5432'` for example. This is for Postgres but is it a similar solution for Redis or the webserver ports.

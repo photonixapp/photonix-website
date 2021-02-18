@@ -2,6 +2,9 @@ body, h1, h2, .rst-content .toctree-wrapper p.caption, h3, h4, h5, h6, legend, .
   font-family: 'Nunito', sans-serif;
   font-weight: 300;
 }
+h2 {
+  margin-top: 4rem;
+}
 table {
   margin-bottom: 24px;
 }
@@ -54,6 +57,10 @@ nav.custom ul a {
   color: #ddd;
   outline: 0;
   font-size: 20px;
+}
+
+footer {
+  margin-top: 4rem;
 }
 
 .wy-nav-side {
