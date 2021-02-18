@@ -24,6 +24,7 @@ services:
       - ./utils:/srv/utils
       - ./test.py:/srv/test.py
       - ./volumes/media:/srv/media
+      - /home/damian/projects/matomo-monorail/matomo_monorail:/usr/local/lib/python3.6/site-packages/matomo_monorail
     environment:
       ENV: dev
       POSTGRES_DB: photonix_website
@@ -32,7 +33,7 @@ services:
       POSTGRES_HOST: postgres
       MATOMO_BASE_URL: http://matomo/
       MATOMO_SITE_ID: 1
-      MATOMO_TOKEN_AUTH: a35b4469f1c38d222822a32a413b1991
+      MATOMO_TOKEN_AUTH: 38506f6771744c2a8e2398f513d0ccc0
 
   postgres:
     container_name: photonix-website-postgres
@@ -48,7 +49,6 @@ services:
   # matomo-mysql:
   #   container_name: matomo-mysql
   #   image: mysql:5.7
-  #   restart: always
   #   volumes:
   #    - ./volumes/mysql:/var/lib/mysql
   #   ports:
@@ -59,8 +59,7 @@ services:
 
   # matomo:
   #   container_name: matomo
-  #   image: matomo:3.11.0-apache
-  #   restart: always
+  #   image: matomo:4.1.1-apache
   #   ports:
   #    - "8008:80"
   #   environment:
@@ -68,7 +67,7 @@ services:
   #     MATOMO_DATABASE_USERNAME: root
   #     MATOMO_DATABASE_PASSWORD: password
   #     MATOMO_DATABASE_DBNAME: matomo
+  #   links:
+  #     - matomo-mysql
   #   volumes:
   #     - ./volumes/matomo/config:/var/www/html/config
-  #     - ./volumes/matomo/ssmtp.conf:/etc/ssmtp/ssmtp.conf
-  #     - ./volumes/matomo/revaliases:/etc/ssmtp/revaliases

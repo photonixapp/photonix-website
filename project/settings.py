@@ -26,9 +26,21 @@ SECRET_KEY = '*#6&-3%#yav&ez9j&-1ncu(8z@(usk4d5jl0u^^f@h(k@y8(pk'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('ENV', 'prd') != 'prd'
 
-ALLOWED_HOSTS = ['localhost', 'photonix.org']
+ALLOWED_HOSTS = ['*']
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+if 'DJANGO_ADMINS' in os.environ:
+    # Environment variable in the form DJANGO_ADMINS="First Last,username@example.com;First Last 2,username2@example.com"
+    ADMINS = [admin.split(',') for admin in os.environ.get('DJANGO_ADMINS').split(';')]
+
+SERVER_EMAIL = 'photonix-website@localhost'
+EMAIL_HOST = os.environ.get('EMAIL_HOST', None)
+EMAIL_PORT = os.environ.get('EMAIL_PORT', None)
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', None)
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', None)
+EMAIL_USE_TLS = os.environ.get('EMAIL_USE_SSL', True)
+EMAIL_USE_SSL = os.environ.get('EMAIL_USE_SSL', False)
 
 
 # Application definition

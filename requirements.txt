@@ -1,4 +1,4 @@
-https://github.com/damianmoore/matomo-monorail/releases/download/v0.1.2/matomo_monorail-0.1.2.tar.gz
+https://github.com/damianmoore/matomo-monorail/releases/download/v0.1.6/matomo_monorail-0.1.6.tar.gz
 Django==3.0.7
 django-filer==1.7.0
 django-filter==2.2.0
