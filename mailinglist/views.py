@@ -20,7 +20,7 @@ def signup(request):
     campaign = request.POST.get('campaign', '')
 
     landing_page = ''
-    referer = request.META['HTTP_REFERER']
+    referer = request.META.get('HTTP_REFERER', '')
     regex = r'\/landing\/(\S+)\/'
     try:
         landing_page = re.search(regex, referer).group(1)

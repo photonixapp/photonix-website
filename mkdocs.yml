@@ -5,8 +5,10 @@ theme:
 nav:
     - Home: 'index.md'
     - Configuration: 'configuration.md'
+    - Users and Libraries: 'users_libraries.md'
     - Upgrading: 'upgrading.md'
     - Reverse Proxies: 'reverse_proxies.md'
+    - Sustainability: 'sustainability.md'
     - Developer:
       - Home: 'developer/index.md'
       - Frontend: 'developer/frontend.md'
