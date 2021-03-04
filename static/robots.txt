@@ -1,3 +1,5 @@
+Sitemap: https://photonix.org/sitemap.xml
+Sitemap: https://photonix.org/docs/sitemap.xml
 User-agent: *
 Disallow: /matomo.php
 Disallow: /landing/

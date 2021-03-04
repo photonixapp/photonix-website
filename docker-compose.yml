@@ -1,13 +1,13 @@
-version: "2"
+version: '2'
 
 services:
   website:
     container_name: photonix-website
     build: .
     ports:
-      - "8880:80"
-      - "8001:8001"
-      - "8002:8002"
+      - '8880:80'
+      - '8001:8001'
+      - '8002:8002'
     volumes:
       - ./blog:/srv/blog
       - ./docs:/srv/docs

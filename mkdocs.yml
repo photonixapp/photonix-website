@@ -1,16 +1,19 @@
 site_name: Photonix Documentation
+site_url: https://photonix.org/docs/
 theme:
   name: readthedocs
   custom_dir: docs-theme/
 nav:
-    - Home: 'index.md'
-    - Configuration: 'configuration.md'
-    - Users and Libraries: 'users_libraries.md'
-    - Upgrading: 'upgrading.md'
-    - Reverse Proxies: 'reverse_proxies.md'
-    - Sustainability: 'sustainability.md'
-    - Developer:
+  - Home: 'index.md'
+  - Installing: 'installing.md'
+  - Configuration: 'configuration.md'
+  - Users and Libraries: 'users_libraries.md'
+  - Upgrading: 'upgrading.md'
+  - Reverse Proxies: 'reverse_proxies.md'
+  - Sustainability: 'sustainability.md'
+  - Developer:
       - Home: 'developer/index.md'
+      - Testing: 'developer/testing.md'
       - Frontend: 'developer/frontend.md'
       - Adding or Upgrading JS Packages: 'developer/adding_upgrading_js_packages.md'
       - Image Analysis: 'developer/image_analysis.md'
