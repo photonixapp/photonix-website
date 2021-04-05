@@ -1,7 +1,28 @@
 {% extends "base.html" %}
 
+{% block extrabody %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
+<script>
+VANTA.WAVES({
+  el: "#header",
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  scale: 1.00,
+  scaleMobile: 1.00,
+  color: 0x91318,
+  shininess: 29.00,
+  waveHeight: 30.00,
+  waveSpeed: 0.45
+})
+</script>
+{% endblock %}
+
 {% block content %}
-  <header>
+  <header id="header">
     <img src="/static/images/logo.svg" class="logo" alt="Photonix logo" />
     <h1>Photonix</h1>
     <h2>Photo Manager</h2>
