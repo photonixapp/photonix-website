@@ -30,7 +30,7 @@ def gallery_dir(cols, path):
             )
     except filer.models.foldermodels.Folder.DoesNotExist:
         pass
-    return '<ul class="gallery gallery-{}-cols">{}</ul>'.format(cols, ''.join(images))
+    return '<ul class="gallery gallery-cols gallery-{}-cols">{}</ul>'.format(cols, ''.join(images))
 
 
 def gallery_image(path):

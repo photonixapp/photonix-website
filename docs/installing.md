@@ -15,6 +15,14 @@ Installing these on recent versions of Debian, Ubuntu or Raspberry Pi OS can be 
     sudo apt install docker.io docker-compose
     sudo usermod -aG docker $USER
 
+If `usermod` is not available on your system then you can do it the manual way and edit `/etc/group` adding your username to end of the line that starts with `docker:`.
+
+Finally check Docker is running and you have the right permissions by running the following. You should see some table headings beginning with `CONTAINER ID` but you won't have any actual containers running yet.
+
+    docker ps
+
+If you still don't have permission, you may need to restart the whole machine.
+
 ## Setting up
 
 Create a new directory to run inside.
