@@ -24,5 +24,6 @@ urlpatterns = [
     path('landing/<slug:slug>/', landing),
     path('mailinglist/', include('mailinglist.urls')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    path('privacy-policy/', TemplateView.as_view(template_name='privacy_policy.html'), name='privacy-policy'),
     path('', TemplateView.as_view(template_name='index.html'), name='index'),
 ]

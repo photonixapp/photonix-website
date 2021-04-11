@@ -40,55 +40,65 @@
     </nav>
     {% block content %}{% endblock %}
     <footer>
-      <div class="link">
-        <a href="https://github.com/damianmoore/photonix">
-          <img src="/static/images/github.svg" class="github" alt="GitHub logo" /><br />
-          Open source code, bug and feature tracking on&nbsp;GitHub
-        </a>
+      <!-- <nav>
+        <div class="col">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="{% url 'privacy-policy' %}">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="col">
+          <h3>Company</h3>
+          <ul>
+            <li>About</li>
+          </ul>
+        </div>
+      </nav> -->
+      <div class="last">
+        <div class="copyright">© Photonix</div>
+        <div class="social">
+          <div class="link">
+            <a href="https://github.com/damianmoore/photonix">
+              <img src="/static/images/github.svg" class="github" alt="GitHub logo" title="Open source code, bug and feature tracking on GitHub" />
+            </a>
+          </div>
+          <div class="link">
+            <a href="https://www.reddit.com/r/photonix/">
+              <img src="/static/images/reddit.svg" class="github" alt="Reddit logo" title="Community discussions on Reddit" />
+            </a>
+          </div>
+          <div class="link">
+            <a href="https://gitter.im/photonixapp/community">
+              <img src="/static/images/gitter.svg" class="gitter" alt="Gitter logo" title="Live chat discussions on Gitter" />
+            </a>
+          </div>
+          <div class="link">
+            <a href="https://hub.docker.com/r/damianmoore/photonix/">
+              <img src="/static/images/docker.svg" class="dockerhub" alt="Docker Hub logo" title="Automated build image on Docker Hub" />
+            </a>
+          </div>
+          <div class="link">
+            <a href="https://www.indiehackers.com/product/photonix-photo-organizer-app">
+              <img src="/static/images/indie_hackers.svg" class="indiehackers" alt="Indie Hackers logo" title="Project log on Indie Hackers" />
+            </a>
+          </div>
+          <div class="link">
+            <a href="https://www.instagram.com/photonixapp/">
+              <img src="/static/images/instagram.svg" class="instagram" alt="Instragram logo" title="Follow updates on Instagram" />
+            </a>
+          </div>
+          <div class="link">
+            <a href="https://twitter.com/photonixapp">
+              <img src="/static/images/twitter.svg" class="twitter" alt="Twitter logo" title="Follow updates on Twitter" />
+            </a>
+          </div>
+          <div class="link">
+            <a href="https://www.linkedin.com/company/photonixapp/">
+              <img src="/static/images/linkedin.svg" class="linkedin" alt="LinkedIn logo" title="Follow updates on LinkedIn" />
+            </a>
+          </div>
+        </div>
       </div>
-      <div class="link">
-        <a href="https://www.reddit.com/r/photonix/">
-          <img src="/static/images/reddit.svg" class="github" alt="Reddit logo" /><br />
-          Community discussions on&nbsp;Reddit
-        </a>
-      </div>
-      <div class="link">
-        <a href="https://gitter.im/photonixapp/community">
-          <img src="/static/images/gitter.svg" class="gitter" alt="Gitter logo" /><br />
-          Live chat discussions on Gitter
-        </a>
-      </div>
-      <div class="link">
-        <a href="https://hub.docker.com/r/damianmoore/photonix/">
-          <img src="/static/images/docker.svg" class="dockerhub" alt="Docker Hub logo" /><br />
-          Automated build image on&nbsp;Docker&nbsp;Hub
-        </a>
-      </div>
-      <div class="link">
-        <a href="https://www.indiehackers.com/product/photonix-photo-organizer-app">
-          <img src="/static/images/indie_hackers.svg" class="indiehackers" alt="Indie Hackers logo" /><br />
-          Project log on Indie Hackers
-        </a>
-      </div>
-      <div class="link">
-        <a href="https://www.instagram.com/photonixapp/">
-          <img src="/static/images/instagram.svg" class="instagram" alt="Instragram logo" /><br />
-          Follow updates on Instagram
-        </a>
-      </div>
-      <div class="link">
-        <a href="https://twitter.com/photonixapp">
-          <img src="/static/images/twitter.svg" class="twitter" alt="Twitter logo" /><br />
-          Follow updates on Twitter
-        </a>
-      </div>
-      <div class="link">
-        <a href="https://www.linkedin.com/company/photonixapp/">
-          <img src="/static/images/linkedin.svg" class="linkedin" alt="LinkedIn logo" /><br />
-          Follow updates on LinkedIn
-        </a>
-      </div>
-      <p class="copyright">© Copyright 2021 Photonix</p>
     </footer>
 
     {% include 'snippets/stripes_hr.html' %}
