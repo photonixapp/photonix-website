@@ -277,21 +277,47 @@ article h2 {
 }
 
 footer {
-  margin: 0 auto 5rem;
-  padding: 0 2rem;
+  padding: 2.5rem 2rem;
   text-align: center;
-
-  max-width: 1200px;
+  font-size: 0.9em;
+  background: #111;
 }
 footer nav {
-  grid-template-columns: repeat(4,1fr);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 1200px;
+  margin: 0 auto 2.5rem;
+  color: #999;
 }
 footer nav .col {
-  grid: min-content/auto;
+  width: 100%;
+}
+footer nav div {
+  text-align: right;
+  padding: 0;
+}
+footer nav h3 {
+  font-size: 28px;
+  margin-left: 2rem;
+}
+footer nav ul {
+  padding: 0;
+}
+footer nav li {
+  margin: 0;
+  display: block;
+}
+footer nav a, footer nav a:link {
+  color: #999;
+}
+footer nav a:hover {
+  color: #fff;
 }
 footer .last {
   display: flex;
   align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 footer .copyright {
   width: 100px;
@@ -301,11 +327,10 @@ footer .copyright {
 footer .social {
   flex: 1;
   text-align: right;
+  margin-right: -14px;
 }
 footer .link {
-  width: 74px;
   text-align: center;
-  margin: 0 5px;
   display: inline-block;
   vertical-align: top;
 }
@@ -381,13 +406,28 @@ hr {
   }
   footer {
     display: block;
+    padding: 1.5rem 2rem 1rem;
   }
-  footer .link {
+  /* footer .link {
     width: 140px;
     margin: 0 10px 20px;
   }
   footer .link a img {
     width: 96px;
+  } */
+  footer nav {
+    display: block;
+  }
+  footer .last {
+    display: block;
+  }
+  footer .last .copyright {
+    margin-bottom: 40px;
+    width: 100%;
+    text-align: right;
+  }
+  footer .social {
+    margin-right: -8px;
   }
 }
 @media all and (max-width: 500px) {
@@ -411,6 +451,19 @@ hr {
   }
   .cta a {
     font-size: 20px;
+  }
+  footer {
+    display: block;
+    padding: 1.5rem 1rem 1rem;
+  }
+  footer img {
+    width: 54px;
+  }
+  footer .social {
+    margin-right: -6px;
+  }
+  footer .last {
+    padding: 0;
   }
 }
 @media all and (max-width: 400px) {

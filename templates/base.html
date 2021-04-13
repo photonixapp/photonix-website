@@ -39,21 +39,39 @@
       </div>
     </nav>
     {% block content %}{% endblock %}
+
+    {% include 'snippets/stripes_hr.html' %}
     <footer>
-      <!-- <nav>
+      <nav>
+        <div class="col"></div>
+        <div class="col">
+          <h3>Product</h3>
+          <ul>
+            <li><a href="/docs/installing/">Photonix Server</a></li>
+            <li><a href="//demo.photonix.org/">Web Demo</a></li>
+            <li><a href="https://play.google.com/store/apps/details?id=org.photonix.mobile">Photonix for Android</a></li>
+            <li><a href="https://apps.apple.com/us/app/photonix-photo-manager/id1562462420#?platform=iphone">Photonix for iOS</a></li>
+          </ul>
+        </div>
+        <div class="col">
+          <h3>Organisation</h3>
+          <ul>
+            <li><a href="{% url 'blog-post-list' %}">Blog</a></li>
+            <li><a href="/docs/sustainability/">Sustainability</a></li>
+            <!-- <li>About</li>
+            <li>Sponsorship</li> -->
+          </ul>
+        </div>
         <div class="col">
           <h3>Resources</h3>
           <ul>
+            <li><a href="/docs/">Documentation</a></li>
             <li><a href="{% url 'privacy-policy' %}">Privacy Policy</a></li>
+            <!-- <li>Terms of Service</li>
+            <li>Contact</li> -->
           </ul>
         </div>
-        <div class="col">
-          <h3>Company</h3>
-          <ul>
-            <li>About</li>
-          </ul>
-        </div>
-      </nav> -->
+      </nav>
       <div class="last">
         <div class="copyright">© Photonix</div>
         <div class="social">
@@ -100,8 +118,6 @@
         </div>
       </div>
     </footer>
-
-    {% include 'snippets/stripes_hr.html' %}
 
     {% block extrabody %}{% endblock %}
     {% include 'snippets/piwik_tracking.html' %}
