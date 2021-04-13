@@ -21,7 +21,7 @@
       <div class="post">
 
         {% if post.share_image %}
-        <a href="{% url 'blog-post-detail' slug=post.slug %}"><img src="{% thumbnail post.share_image 960x540 quality=60 crop %}" alt="{{ post.title }}" class="cover-photo" /></a>
+        <a href="{% url 'blog-post-detail' slug=post.slug %}"><img src="{% thumbnail post.share_image 680x356 quality=60 crop %}" alt="{{ post.title }}" class="cover-photo" /></a>
         {% endif %}
 
         <h2><a href="{% url 'blog-post-detail' slug=post.slug %}">{{ post.title }}</a></h2>
