@@ -1,0 +1,18 @@
+{
+  "short_name": "Photonix",
+  "name": "Photonix Photo Manager",
+  "theme_color": "#ffffff",
+  "background_color": "#1d1d1d",
+  "related_applications": [
+    {
+      "platform": "play",
+      "id": "org.photonix.mobile",
+      "url": "https://play.google.com/store/apps/details?id=org.photonix.mobile"
+    },
+    {
+      "platform": "itunes",
+      "id": "org.photonix.mobile",
+      "url": "https://apps.apple.com/us/app/photonix-photo-manager/id1562462420"
+    }
+  ]
+}

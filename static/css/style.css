@@ -327,7 +327,7 @@ footer .copyright {
 footer .social {
   flex: 1;
   text-align: right;
-  margin-right: -14px;
+  margin-right: -10px;
 }
 footer .link {
   text-align: center;
@@ -363,6 +363,16 @@ hr {
   border: 0;
   border-bottom: 1px solid #333;
   margin: 2rem 0;
+}
+
+.app-badges {
+  margin: 2rem 0;
+  text-align: center;
+}
+.app-badges img {
+  display: inline-block;
+  height: 65px;
+  margin: 0 0.5rem;
 }
 
 @media all and (max-width: 1100px) {
@@ -464,6 +474,13 @@ hr {
   }
   footer .last {
     padding: 0;
+  }
+
+  .app-badges img {
+    display: block;
+    height: auto;
+    width: 200px;
+    margin: 1rem auto;
   }
 }
 @media all and (max-width: 400px) {
