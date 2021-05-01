@@ -34,7 +34,7 @@ Download the example Docker Compose file. Currently there is a separate `docker-
 
 If you are on an x86/amd64-based machine get the relevant example file here.
 
-    curl https://raw.githubusercontent.com/damianmoore/photonix/master/docker/docker-compose.example.yml > docker-compose.yml
+    curl https://raw.githubusercontent.com/photonixapp/photonix/master/docker/docker-compose.example.yml > docker-compose.yml
 
 If you are on an ARM/Raspberry Pi-based machine you can use this file but it will soon change.
 
@@ -50,22 +50,11 @@ Bring up Docker Compose which will pull and run the required Docker images.
 
 A few seconds after starting you should be able to go to [http://localhost:8888/](http://localhost:8888/) in your browser.
 
-You'll need to create a username, password and library. Right now this needs to be done on the command-line so run this in a new terminal window. Replace `USERNAME` with your own username.
-
-    docker-compose run photonix python photonix/manage.py createsuperuser --username USERNAME --email example@example.com
-    docker-compose run photonix python photonix/manage.py create_library USERNAME "My Library"
+When you first access Photonix it will guide you through the process of creating an admin user, password and your first library.
 
 You can move some photos into the folder `data/photos` and they should get detected and imported immediately. Once you have finished trying out the system you can edit the volume in the `docker-compose.yml` file where it says `./data/photos` to mount wherever you usually keep photos. System database, thumbnails and other cache data is stored separately from the photos so shouldn't pollute the area. You are responsible for keeping your own backups in case of error.
 
-<!---
-## Raspberry Pi
+You can add extra users and libraries but this needs to be done on the command-line right now so run this in a new terminal window. Replace `USERNAME` with your own username.
 
-```
-sudo apt update
-sudo apt install docker.io docker-compose
-sudo usermod -aG docker $USER
-# Log out and log back in
-nano docker-compose.yml
-docker-compose up
-```
--->
+    docker-compose run photonix python photonix/manage.py createsuperuser --username USERNAME --email example@example.com
+    docker-compose run photonix python photonix/manage.py create_library USERNAME "My Library"

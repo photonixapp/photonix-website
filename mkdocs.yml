@@ -18,3 +18,4 @@ nav:
       - Adding or Upgrading JS Packages: 'developer/adding_upgrading_js_packages.md'
       - Image Analysis: 'developer/image_analysis.md'
       - Building for Production: 'developer/building.md'
+      - Building Python Dependencies: 'developer/building_python_dependencies.md'
