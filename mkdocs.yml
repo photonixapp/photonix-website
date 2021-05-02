@@ -10,6 +10,7 @@ nav:
   - Users and Libraries: 'users_libraries.md'
   - Upgrading: 'upgrading.md'
   - Reverse Proxies: 'reverse_proxies.md'
+  - Organization: 'organization.md'
   - Sustainability: 'sustainability.md'
   - Developer:
       - Home: 'developer/index.md'

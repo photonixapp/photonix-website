@@ -4,7 +4,7 @@
 
 Assuming you already have Photonix running using Docker Compose, this will let you upgrade to the latest version with minimum downtime. Pulling the new image may take several minutes, depending on your download speed.
 
-```
+```bash
 docker-compose pull photonix
 docker-compose stop photonix
 docker-compose up -d photonix
@@ -18,7 +18,7 @@ It will regularly try and `docker pull` the images of your running services and 
 
 In most cases you can add it to  `docker-compose.yml` like so:
 
-```
+```yaml
 services:
   watchtower:
     container_name: watchtower

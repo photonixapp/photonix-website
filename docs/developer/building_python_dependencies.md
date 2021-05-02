@@ -2,7 +2,7 @@
 
 You shouldn't need to worry about this if you are just building production images but we like to have the steps documented in case we need to upgrade dependencies in future.
 
-Several Python packages are compiled (C extensions etc.) for performance reasons. Usually this in transparent to a developer installing via something like *pip* but there are a couple of packages where we had to put more effort in to building. The Python packages we build are uploaded to our [own PyPI server](https://pypi.epixstudios.co.uk/) and this gets searched when the main Docker images are built. There are often binary wheel packages missing from the [Official Python PyPI server](https://pypi.org/) especially for the ARM architectures so our PyPI server acts as a cache to speed up the main Docker builds.
+Several Python packages are compiled (C extensions etc.) for performance reasons. Usually this is transparent to a developer installing via something like *pip* but there are a couple of packages where we had to put more effort in to building. The Python packages we build are uploaded to our [own PyPI server](https://pypi.epixstudios.co.uk/) and this gets searched when the main Docker images are built. There are often binary wheel packages missing from the [Official Python PyPI server](https://pypi.org/) especially for the ARM architectures so our PyPI server acts as a cache to speed up the main Docker builds.
 
 
 ## Building Tensorflow

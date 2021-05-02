@@ -17,7 +17,7 @@ Note: It is easy to get blocked from LetsEncrypt for a period of time if you mak
 
 See the [Traefik docs](https://doc.traefik.io/traefik/) for more information.
 
-```
+```yaml
 services:
   traefik:
     image: "traefik:v2.2"
