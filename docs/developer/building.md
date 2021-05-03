@@ -3,6 +3,18 @@
 Photonix supports multiple architectures (amd64, arm32v7, arm64v8). We use Docker to build the server-side app image which provides a consistent runtime and can be run on Linux, Windows or MacOS. Building an amd64 image on a amd64 machine is simple enough and can be done with the standard Docker installation. For other architectures, we cross-compile using an experimental Docker extension called buildx.
 
 
+## Automated builds
+
+Docker images for all supported architectures get built automatically via GitHub Actions and Docker buildx. New releases can be created by tagging the latest commit on the `master` branch and this will trigger a new build.
+
+    git tag v1.0.0
+    git push --tags
+
+Pushed images end up on [our Docker Hub page](https://hub.docker.com/repository/docker/photonixapp/photonix/tags) tagged as `latest` and parts of the version number - in this example, `1.0.0`, `1.0` and `1`. You can view existing tags from the repo to determine the next version with `git tag`.
+
+More details about the buildx process can be read further down in the [Cross-compiled Docker Images](#cross-compiled-docker-images).
+
+
 ## Native Architecture Docker Image
 
 From the cloned respository you should be able to run the following to build for the current architecture:
@@ -13,9 +25,11 @@ To run the production image run the following:
 
     make start-prd
 
+
 ## Cross-compiled Docker Images
 
 If you want to compile for an architecture different to what you are running (e.g. compiling for ARM on an x86 machine), you'll need to have the *Docker buildx* extension installed and bootstrapped for cross-compilation. The following are simplified instructions but you can find the [source material here](https://jite.eu/2019/10/3/multi-arch-docker/).
+
 
 ### Setting up Docker buildx
 
