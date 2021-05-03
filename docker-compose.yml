@@ -12,7 +12,9 @@ services:
       - ./blog:/srv/blog
       - ./docs:/srv/docs
       - ./docs-theme:/srv/docs-theme
+      - ./faqs:/srv/faqs
       - ./geoipdb.mmdb:/srv/geoipdb.mmdb
+      - ./mailer:/srv/mailer
       - ./mailinglist:/srv/mailinglist
       - ./mkdocs.yml:/srv/mkdocs.yml
       - ./photonix:/srv/photonix
@@ -30,9 +32,14 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
       POSTGRES_HOST: postgres
-      MATOMO_BASE_URL: http://matomo/
-      MATOMO_SITE_ID: 1
-      MATOMO_TOKEN_AUTH: 38506f6771744c2a8e2398f513d0ccc0
+      # MATOMO_BASE_URL: http://matomo/
+      # MATOMO_SITE_ID: 1
+      # MATOMO_TOKEN_AUTH: 38506f6771744c2a8e2398f513d0ccc0
+      CELERY_BROKER_URL: redis://redis:6379/0
+      EMAIL_HOST: mail.epixstudios.co.uk
+      EMAIL_PORT: 587
+      EMAIL_HOST_USER: damian@epixstudios.co.uk
+      EMAIL_HOST_PASSWORD: E5nFMJtxrZLvYneFzG
 
   postgres:
     container_name: photonix-website-postgres
@@ -44,6 +51,12 @@ services:
       POSTGRES_PASSWORD: password
     volumes:
       - ./volumes/postgres:/var/lib/postgresql/data
+
+  redis:
+    container_name: photonix-website-redis
+    image: redis:6.2.2
+    ports:
+      - '6379:6379'
 
   # matomo-mysql:
   #   container_name: matomo-mysql
