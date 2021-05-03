@@ -24,7 +24,6 @@ services:
       - ./utils:/srv/utils
       - ./test.py:/srv/test.py
       - ./volumes/media:/srv/media
-      - /home/damian/projects/matomo-monorail/matomo_monorail:/usr/local/lib/python3.6/site-packages/matomo_monorail
     environment:
       ENV: dev
       POSTGRES_DB: photonix_website
