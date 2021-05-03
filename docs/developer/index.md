@@ -4,7 +4,7 @@
 
 There is a [`Makefile`](./Makefile) and separate Docker Compose file `docker-compose.dev.yml` that you should use if you want to work on the project. Check out the repo and this setup will build the image, mount the code as volumes, hot-reload JS changes to the browser and reload the Python server for most changes.
 
-    git clone git@github.com:damianmoore/photonix.git
+    git clone git@github.com:photonixapp/photonix.git
     cd photonix
     mkdir -p  data/photos
     make build

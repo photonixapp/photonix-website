@@ -5,7 +5,7 @@ This aims to detail the technical implementation of the image analysis and AI mo
 
 ## Color Analysis
 
-The aim of this model is to say how much of an image is close to a pre-defined palette. This code is located at [`photonix/classifiers/color/model.py`](https://github.com/damianmoore/photonix/blob/master/photonix/classifiers/color/model.py).
+The aim of this model is to say how much of an image is close to a pre-defined palette. This code is located at [`photonix/classifiers/color/model.py`](https://github.com/photonixapp/photonix/blob/master/photonix/classifiers/color/model.py).
 
 A set of colour names and their RGB values are pre-defined in the model code.
 
@@ -20,7 +20,7 @@ Only the names and scores of colors that received a match are returned and they 
 
 ## Location Detection
 
-The aim of this model is to extract GPS coordinates from an image and return two things — the name of the country the photo was taken in and the name of the town/city. This code is located at [`photonix/classifiers/location/model.py`](https://github.com/damianmoore/photonix/blob/master/photonix/classifiers/location/model.py).
+The aim of this model is to extract GPS coordinates from an image and return two things — the name of the country the photo was taken in and the name of the town/city. This code is located at [`photonix/classifiers/location/model.py`](https://github.com/photonixapp/photonix/blob/master/photonix/classifiers/location/model.py).
 
 We provide two data sources so that all processing can be done locally and quickly — no APIs need to be called. The data sources are:
 

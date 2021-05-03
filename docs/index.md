@@ -7,7 +7,7 @@ This site aims to help you run, use and get the most out of Photonix Photo Manag
 - [Main Photonix Website](https://photonix.org/)
 - [Open source code, bug and feature tracking on GitHub](https://github.com/photonixapp/photonix)
 - [Live chat discussions on Gitter ](https://gitter.im/photonixapp/community)
-- [Automated build image on Docker Hub](https://hub.docker.com/r/damianmoore/photonix/)
+- [Automated build image on Docker Hub](https://hub.docker.com/r/photonixapp/photonix/)
 - [Project log on Indie Hackers](https://www.indiehackers.com/product/photonix-photo-organizer-app)
 - [Follow updates on Instagram](https://www.instagram.com/photonixapp/)
 - [Follow updates on Twitter](https://twitter.com/photonixapp)

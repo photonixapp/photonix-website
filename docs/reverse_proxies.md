@@ -46,7 +46,7 @@ services:
 
   photonix:
     container_name: photonix
-    image: damianmoore/photonix:latest
+    image: photonixapp/photonix:latest
     restart: always
     ports:
       - '8888:80'

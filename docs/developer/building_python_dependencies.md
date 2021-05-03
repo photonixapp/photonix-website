@@ -9,7 +9,7 @@ Several Python packages are compiled (C extensions etc.) for performance reasons
 
 Tensorflow is the Machine Learning library we use for our more complex image analysis features. It allows us to create algorithms to do things like detecting and recognising objects in a photo or identifying a style.
 
-For maximum compatibility we compile our own builds of Tensorflow separately using the repository [tensorflow-builder](https://github.com/damianmoore/tensorflow-builder/). On the amd64 architecture we found the official binaries are built with a set of CPU instructions (e.g. AVX) aimed at recent CPUs which do not run on many home servers (e.g. Celeron CPUs). On the ARM platform there are a few official builds aimed at the Raspberry Pi but they are compiled against older versions of Python than we use.
+For maximum compatibility we compile our own builds of Tensorflow separately using the repository [tensorflow-builder](https://github.com/photonixapp/tensorflow-builder/). On the amd64 architecture we found the official binaries are built with a set of CPU instructions (e.g. AVX) aimed at recent CPUs which do not run on many home servers (e.g. Celeron CPUs). On the ARM platform there are a few official builds aimed at the Raspberry Pi but they are compiled against older versions of Python than we use.
 
 Beware that building will probably take many hours but scales well to multiple CPUs. We usually create the largest possible VPS on DigitalOcean with 32 CPU cores and it can build each architecture in about an hour (per architecture).
 
@@ -21,7 +21,7 @@ curl -fsSL https://get.docker.com -o get-docker.sh
 sh get-docker.sh
 
 # Clone Tensorflow Builder repo
-git clone https://github.com/damianmoore/tensorflow-builder.git
+git clone https://github.com/photonixapp/tensorflow-builder.git
 cd tensorflow-builder
 
 # Build for one or all of the following architectures
