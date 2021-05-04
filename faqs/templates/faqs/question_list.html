@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+
+{% block title %}Photonix - Frequently Asked Questions(FAQ){% endblock %}
+{% block twitter_title %}{{ object.title }} | Photonix - Frequently Asked Questions(FAQ){% endblock %}
+{% block og_title %}{{ object.title }} | Photonix - Frequently Asked Questions(FAQ){% endblock %}
+
+{% block content %}
+  <header>
+    
+    <h1>FAQ</h1>
+    <p>Photonix - Frequently Asked Questions(FAQ)</p>
+  </header>
+
+  <section class="post-list">
+    {% for question_obj in question_list %}
+      <div class="post">
+        <h2><a href="{% url 'question-detail' slug=question_obj.slug %}">{{ forloop.counter }}. {{ question_obj.question }}</a></h2>
+        <div class="summary">
+          {{ question_obj.created_at }}
+          <p><a href="{% url 'question-detail' slug=question_obj.slug %}">Read more&hellip;</a></p>
+        </div>
+      </div>
+    {% endfor %}
+    </section>
+
+  {% include 'snippets/mailinglist_signup.html' %}
+{% endblock %}

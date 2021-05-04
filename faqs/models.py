@@ -1,3 +1,41 @@
-from django.db import models
 
-# Create your models here.
+from django.db import models
+from django.urls import reverse
+from utils.models import UUIDModel, VersionedModel
+from django.utils.text import slugify
+from django.conf import settings
+import itertools
+
+
+class Question(UUIDModel, VersionedModel):
+    """Question model."""
+
+    question = models.TextField(verbose_name="Question", help_text='Question people asked.')
+    answer = models.TextField(verbose_name="Answer", null=True, blank=True, help_text='Answer of the question.')
+    slug = models.SlugField(null=True, blank=True, max_length=settings.QUESTION_SLUG_MAX_LENGTH)
+
+    def __str__(self):
+        """To show object."""
+        return '"{question}" by {id}'.format(question=self.question, id=self.id)
+
+    def get_absolute_url(self):
+        """Url for question detail page."""
+        return reverse('question-detail', kwargs={'slug': self.slug})
+
+    def _generate_slug(self):
+        max_length = self._meta.get_field('slug').max_length
+        value = self.question
+        slug_candidate = slug_original = slugify(value, allow_unicode=True)[:max_length]
+        for i in itertools.count(1):
+            if not Question.objects.filter(slug=slug_candidate).exists():
+                break
+            slug_candidate = '{}-{}'.format(slug_original, i)
+
+        self.slug = slug_candidate
+
+    def save(self, *args, **kwargs):
+        """Slug field will save only once when object created not updated."""
+        if not self.slug:
+            self._generate_slug()
+        super(Question, self).save(*args, **kwargs)
+

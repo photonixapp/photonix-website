@@ -57,11 +57,11 @@ INSTALLED_APPS = [
     'filer',
     'markdownify',
     'pagedown.apps.PagedownConfig',
-
     'mailinglist',
     'blog',
     'matomo_monorail',
     'utils',
+    'faqs',
 ]
 
 MIDDLEWARE = [
@@ -178,3 +178,5 @@ MARKDOWNIFY_WHITELIST_TAGS = [
     'h5',
 ]
 MARKDOWNIFY_BLEACH = False
+
+QUESTION_SLUG_MAX_LENGTH = 50

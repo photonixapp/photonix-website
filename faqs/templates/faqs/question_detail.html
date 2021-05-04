@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load markdownify markdown_extensions thumbnail %}
+
+{% block title %}{{ object.question }} | Photonix - Frequently Asked Questions(FAQ){% endblock %}
+{% block meta_description %}{{ object.answer|markdownify|strip_tags|truncatechars:1000 }}{% endblock %}
+{% block twitter_title %}{{ object.question }} | Photonix - Frequently Asked Questions(FAQ){% endblock %}
+{% block twitter_description %}{{ object.answer|markdownify|strip_tags|truncatechars:1000 }}{% endblock %}
+{% block og_title %}{{ object.question }} | Photonix - Frequently Asked Questions(FAQ){% endblock %}
+{% block og_url %}https://photonix.org/faqs/{{object.slug}}/{% endblock %}
+{% block og_description %}{{ object.answer|markdownify|strip_tags|truncatechars:1000 }}{% endblock %}
+
+
+{% block extrahead %}
+  <link rel="alternate" type="application/atom+xml" title="Photonix Blog Feed" href="{% url 'blog-post-feed' %}" />
+{% endblock %}
+
+{% block content %}
+  <header>
+    <h1>{{ object.question }}</h1>
+    <p>{{ object.created_at }}</p>
+  </header>
+
+  <article>
+    <div class="post">
+      {% if not object.answer %}No answer available{% endif %}{{ object.answer|markdownify|format_extensions }}
+    </div>
+  </article>
+
+  {% include 'snippets/mailinglist_signup.html' %}
+{% endblock %}
