@@ -13,6 +13,35 @@
 
 {% block extrahead %}
   <link rel="alternate" type="application/atom+xml" title="Photonix Blog Feed" href="{% url 'blog-post-feed' %}" />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ request.scheme }}://{{ request.META.HTTP_HOST }}{{ request.get_full_path }}"
+      },
+      "headline": "{{ object.title }}",
+      "image": [
+        "{{ request.scheme }}://{{ request.META.HTTP_HOST }}{% thumbnail object.share_image 1200x628 quality=80 crop %}",
+        "{{ request.scheme }}://{{ request.META.HTTP_HOST }}{% thumbnail object.photo 1920x960 quality=60 crop %}"
+      ],
+      "datePublished": "{{ object.created_at|date:"c" }}",
+      "dateModified": "{{ object.updated_at|date:"c" }}",
+      "author": {
+        "@type": "Person",
+        "name": "Damian Moore"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Photonix",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "{{ request.scheme }}://{{ request.META.HTTP_HOST }}/static/images/logo.svg"
+        }
+      }
+    }
+  </script>
 {% endblock %}
 
 {% block content %}

@@ -1,5 +1,30 @@
 {% extends "base.html" %}
 
+{% block extrahead %}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "url": "https://photonix.org/",
+        "logo": "{{ request.scheme }}://{{ request.META.HTTP_HOST }}/static/images/logo.svg"
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Photonix Photo Manager",
+        "operatingSystem": ["Android", "iOS"],
+        "applicationCategory": "MultimediaApplication",
+        "url": ["https://play.google.com/store/apps/details?id=org.photonix.mobile", "https://apps.apple.com/us/app/photonix-photo-manager/id1562462420#?platform=iphone"],
+        "offers": {
+          "@type": "Offer",
+          "price": "0"
+        }
+      }
+    </script>
+{% endblock %}
+
 {% block content %}
   <header>
     <img src="/static/images/logo.svg" class="logo" alt="Photonix logo" />
