@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load markdownify markdown_extensions thumbnail %}
+
+{% block title %}{{ object.title }} | Photonix Frequently Asked Questions{% endblock %}
+{% block meta_description %}{{ object.answer|markdownify|strip_tags|truncatechars:1000 }}{% endblock %}
+{% block twitter_title %}{{ object.title }} | Photonix Frequently Asked Questions{% endblock %}
+{% block twitter_description %}{{ object.answer|markdownify|strip_tags|truncatechars:1000 }}{% endblock %}
+{% block og_title %}{{ object.title }} | Photonix Frequently Asked Questions{% endblock %}
+{% block og_url %}https://photonix.org/faqs/{{object.slug}}/{% endblock %}
+{% block og_description %}{{ object.answer|markdownify|strip_tags|truncatechars:1000 }}{% endblock %}
+
+
+{% block extrahead %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [{
+      "@type": "Question",
+      "name": "{{ object.title }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ object.answer|markdownify|format_extensions }}"
+      }
+    }]
+  }
+  </script>
+{% endblock %}
+
+{% block content %}
+  <header>
+    <h1>{{ object.title }}</h1>
+    <p>{{ object.created_at }}</p>
+  </header>
+
+  <article>
+    <div class="post">
+      {% if not object.answer %}No answer available{% endif %}{{ object.answer|markdownify|format_extensions }}
+    </div>
+  </article>
+
+  {% include 'snippets/mailinglist_signup.html' %}
+{% endblock %}

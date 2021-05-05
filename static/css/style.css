@@ -56,6 +56,10 @@ strong {
 }
 input {
   font-family: 'Nunito', sans-serif;
+  border-radius: 3px;
+  font-size: 20px;
+  padding: 10px 13px;
+  border: 0;
 }
 h2 a {
   text-decoration: none;
@@ -151,6 +155,7 @@ img.right {
   opacity: 0.1;
 }
 
+
 .signup {
   background: #292929;
   margin-bottom: 5rem;
@@ -182,10 +187,6 @@ img.right {
   background: #52acbf;
 }
 .signup form input[type='email'] {
-  border-radius: 3px;
-  font-size: 20px;
-  padding: 10px 13px;
-  border: 0;
   margin-right: 10px;
   width: 300px;
 }
@@ -274,6 +275,11 @@ article h2 {
 .post .gallery-single-image {
   border: 1px solid #ddd;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
+}
+
+#faq-search {
+  width: 90%;
+  margin: 0 5% 50px;
 }
 
 footer {

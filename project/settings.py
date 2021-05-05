@@ -57,11 +57,11 @@ INSTALLED_APPS = [
     'filer',
     'markdownify',
     'pagedown.apps.PagedownConfig',
-
     'mailinglist',
     'blog',
     'matomo_monorail',
     'utils',
+    'faqs',
 ]
 
 MIDDLEWARE = [

@@ -47,14 +47,6 @@
   {% include 'snippets/mailinglist_signup.html' %}
 
   <section>
-    <ul class="in-page-menu">
-      <li><a href="#features">Main features</a></li>
-      <li><a href="#faq">Frequently asked questions</a></li>
-      <li><a href="#social">Social media updates</a></li>
-    </ul>
-  </section>
-
-  <section>
     <p>Images are everywhere in our lives today, but all too often these gems end up as just files and folders on a hard drive — never to be seen again. Professional photographers spend a lot of time on photo editing so it’s important that those photos (and associated RAW files) can be easily retrieved later on. Using a photo editor (such as Lightroom, Darktable or Photoshop) is time consuming so get more value from that process. Photo editing software has evolved a lot over the years, but often your photo management tool can feel stuck in the past.</p>
     <p>Maybe you let iCloud Photo Library, Google Photos or Picasa take charge of your daily snaps but find managing your professional SLR image files a much less slick affair. If you’re struggling to find software that will help with photo organizing, we think this could be the solution.</p>
     <img src="/static/images/pipeline.svg" class="pipeline" alt="Pipeline illustration from camera to computer to somewhere else" />
@@ -121,32 +113,4 @@
 
   {% include 'snippets/mailinglist_signup.html' %}
 
-  <section id="faq">
-    <h2>Frequently Asked Questions</h2>
-
-    <h3>How would this photo organizer fit into my existing process?</h3>
-    <p>Well, you can think of your photos as going through a pipeline. First you are going to be out and about with your digital camera actually taking the photos. After shooting you’ll typically download the files onto your computer and do your editing. It’s after this editing stage where the waters can get a bit murky and there is no obvious path to take. You’ll have some more files now and probably some more folders but where should they live for the long term?</p>
-    <p>We’ve tried to make this photo organizing software adapt to you so you don’t have to change for it. Some users will have an external hard drive or two for their files because they either won’t fit on their computer’s hard drive or as a backup. Other more advanced users may have a home server on their network so that they can share files between computers in their home.</p>
-    <p>As long as Photonix knows which folders new files (RAW and processed) will appear in, the photo organizer component will get to work, building its database. It can use the files directly if you are running on a single computer and need to save storage space or it can copy the files if running in a server/cloud scenario. Detected photos should show nearly instantly in Photonix’s user interface. The more advanced AI analysis will happen in the background (as it can take a bit of time) and then you’ll be able to use all the more advanced forms of search.</p>
-
-    <h3>Will Photonix work with my other software tools?</h3>
-    <p>We understand that keen photographers have their go-to editing tools and may want to experiment with other pieces of software from time to time. For this reason, we don’t require you to install plugins to integrate with us. You just need to tell Photonix which folders on your computers you are going to export edits to and it will continually watch it for changes in the background. This works with local folders, network mounted filesystems and external hard drives.</p>
-    <p>Because of this, it doesn’t matter whether you’re an Adobe Lightroom loyalist, a big Darktable fan, a Photoshop guru or prefer something else.</p>
-
-    <h3>Can Photonix help with organizing the RAW files that I use for editing?</h3>
-    <p>Yes, absolutely. We’re glad you asked! Photonix is photo management software for professionals, and we know this is an area that isn’t catered for with most services like Google Photos, Flickr, 500px and desktop applications such as Picasa, DigiKam and Shotwell. When it starts to organize your photos, it doesn’t just look at the JPEGs but reads all the main manufacturer’s RAW file formats (.CR2, .NEF, .DNG, .ARW, .RWL and more). If you have a RAW format that we can’t open then please let us know and we’ll try to support it. Don’t worry about the RAW files showing up as duplicates though — our de-duplication algorithm is usually smart enough to realise multiple files are actually the same photo — just a different "version". We aim to combine duplicate photos whether they’re JPEGs produced by the camera, RAW files or edits exported from Lightroom as TIFF.</p>
-
-    <h3>Can I treat Photonix as my backup solution?</h3>
-    <p>Best practices often suggest you should have 3 different copies of your files on 2 different types of media. Photonix software can be used in a few different ways.</p>
-    <p>If you are only going to run it so that it’s image files are stored on the same hard drive as you usually use, then it can’t offer any kind of backup.</p>
-    <p>If you are going to setup a home server and install Photonix on it in a way that copies files onto it’s hard drive whilst leaving the original versions on the original computer, then that will give you one backup. This will save you when one of the hard drives fail but if they’re both in the same location then it doesn’t offer anything in cases like flooding, fire and theft.</p>
-    <p>An upcoming feature will allow you to use cloud storage to store your pictures. This will provide you with safe storage in an off-site location and you you’ll be able to grow the size of your library without purchasing hard drives upfront.</p>
-
-    <h3>Can I start using it right now?</h3>
-    <p>The installation process requires quite a bit of technical know-how currently, but we are working on making it really simple. The source code is open source and other developers have been busily testing it out on their own images. By the time we reach our 1.0 release it will be ready for the general public to use. We’re building this free photo organizer in the open to produce the best solution through collaboration.</p>
-    <p>Please add your email address to the mailing list form below and we’ll let you know when ready it is for the general public.</p>
-  </section>
-
-  <div id="social"></div>
-  {% include 'snippets/mailinglist_signup.html' %}
 {% endblock %}

@@ -29,6 +29,7 @@ COPY utils /srv/utils
 COPY manage.py /srv/manage.py
 COPY mkdocs.yml /srv/mkdocs.yml
 COPY .git /srv/.git
+COPY docs /srv/faqs
 
 ENV PYTHONPATH /srv
 

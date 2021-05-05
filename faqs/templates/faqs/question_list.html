@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+
+{% block title %}Photonix Frequently Asked Questions{% endblock %}
+{% block twitter_title %}Photonix Frequently Asked Questions{% endblock %}
+{% block og_title %}Photonix Frequently Asked Questions{% endblock %}
+
+{% block content %}
+  <header>
+    <h1>FAQs</h1>
+    <p>Frequently Asked Questions</p>
+  </header>
+
+  <section class="post-list">
+    <input type="text" placeholder="Search" id="faq-search" />
+    {% for question_obj in question_list %}
+      <div class="post">
+        <h2 class="faq-question"><a href="{% url 'faqs-detail' slug=question_obj.slug %}">{{ question_obj.title }}</a></h2>
+      </div>
+    {% endfor %}
+  </section>
+
+  <script>
+    function filterResults(query) {
+      query = query.toLowerCase()
+      var questions = document.getElementsByClassName('faq-question');
+      var question = null
+
+      for (i = 0; i < questions.length; i++) {
+        question = questions[i]
+        if (question.innerText.toLowerCase().indexOf(query) > -1) {
+          question.style.display = 'block';
+        }
+        else {
+          question.style.display = 'none';
+        }
+      }
+    }
+
+    var el = document.getElementById('faq-search')
+
+    el.onkeyup = function(e) {
+      filterResults(e.target.value)
+    }
+  </script>
+
+  {% include 'snippets/mailinglist_signup.html' %}
+{% endblock %}
