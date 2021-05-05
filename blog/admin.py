@@ -11,7 +11,7 @@ class PostAdmin(VersionedAdmin):
     list_filter = ('status', 'created_at', 'updated_at')
     search_fields = ('title', 'slug', 'status')
     ordering = ('-created_at',)
-    prepopulated_fields = {"slug": ("title",)}
+    prepopulated_fields = {'slug': ('title',)}
 
     formfield_overrides = {
         models.TextField: {'widget': AdminPagedownWidget},

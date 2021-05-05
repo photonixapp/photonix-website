@@ -10,10 +10,11 @@ from utils.admin import VersionedAdmin
 class QuestionAdmin(VersionedAdmin):
     """To show question model in django-admin."""
 
-    list_display = ('question', 'answer', 'slug', 'created_at', 'updated_at')
+    list_display = ('title', 'answer_short', 'slug', 'created_at', 'updated_at')
     list_filter = ('created_at', 'updated_at')
-    search_fields = ('question', 'slug')
+    search_fields = ('title', 'answer', 'slug')
     ordering = ('-created_at',)
+    prepopulated_fields = {'slug': ('title',)}
 
     formfield_overrides = {
         models.TextField: {'widget': AdminPagedownWidget},
@@ -21,11 +22,12 @@ class QuestionAdmin(VersionedAdmin):
 
     fieldsets = (
         (None, {
-            'fields': ('question', 'answer', 'slug'),
+            'fields': ('title', 'answer', 'slug'),
         }),
     ) + VersionedAdmin.fieldsets
-    
-    readonly_fields = ['slug']
+
+    def answer_short(self, obj):
+        return obj.answer[:100] + '…'
 
 
 admin.site.register(Question, QuestionAdmin)

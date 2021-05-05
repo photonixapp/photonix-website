@@ -34,9 +34,9 @@
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="//demo.photonix.org/">Demo</a></li>
+          <li><a href="{% url 'faqs-list' %}">FAQs</a></li>
           <li><a href="{% url 'blog-post-list' %}">Blog</a></li>
           <li><a href="/docs/">Documentation</a></li>
-          <li><a href="{% url 'question-list' %}">FAQs</a></li>
         </ul>
       </div>
     </nav>
@@ -67,6 +67,7 @@
         <div class="col">
           <h3>Resources</h3>
           <ul>
+            <li><a href="{% url 'faqs-list' %}">FAQs</a></li>
             <li><a href="/docs/">Documentation</a></li>
             <li><a href="{% url 'privacy-policy' %}">Privacy Policy</a></li>
             <!-- <li>Terms of Service</li>

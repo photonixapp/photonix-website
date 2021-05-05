@@ -10,13 +10,13 @@ import itertools
 class Question(UUIDModel, VersionedModel):
     """Question model."""
 
-    question = models.TextField(verbose_name="Question", help_text='Question people asked.')
-    answer = models.TextField(verbose_name="Answer", null=True, blank=True, help_text='Answer of the question.')
-    slug = models.SlugField(null=True, blank=True, max_length=settings.QUESTION_SLUG_MAX_LENGTH)
+    title = models.CharField(max_length=200, verbose_name="Question", help_text='Question asked')
+    answer = models.TextField(verbose_name="Answer", null=True, blank=True, help_text='Answer to the question')
+    slug = models.SlugField(null=True, blank=True, max_length=100)
 
     def __str__(self):
         """To show object."""
-        return '"{question}" by {id}'.format(question=self.question, id=self.id)
+        return self.title
 
     def get_absolute_url(self):
         """Url for question detail page."""
@@ -24,7 +24,7 @@ class Question(UUIDModel, VersionedModel):
 
     def _generate_slug(self):
         max_length = self._meta.get_field('slug').max_length
-        value = self.question
+        value = self.title
         slug_candidate = slug_original = slugify(value, allow_unicode=True)[:max_length]
         for i in itertools.count(1):
             if not Question.objects.filter(slug=slug_candidate).exists():

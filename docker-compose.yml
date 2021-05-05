@@ -44,8 +44,8 @@ services:
   postgres:
     container_name: photonix-website-postgres
     image: postgres:12.2-alpine
-    # ports:
-    #   - '127.0.0.1:5432:5432'
+    ports:
+      - '127.0.0.1:5432:5432'
     environment:
       POSTGRES_DB: photonix_website
       POSTGRES_PASSWORD: password
