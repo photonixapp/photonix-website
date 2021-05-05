@@ -11,7 +11,20 @@
 
 
 {% block extrahead %}
-  <link rel="alternate" type="application/atom+xml" title="Photonix Blog Feed" href="{% url 'blog-post-feed' %}" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [{
+      "@type": "Question",
+      "name": "{{ object.question }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ object.answer|markdownify|format_extensions }}"
+      }
+    }]
+  }
+  </script>
 {% endblock %}
 
 {% block content %}
