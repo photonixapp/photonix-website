@@ -7,7 +7,7 @@ from faqs.models import Question
 class QuestionSitemap(sitemaps.Sitemap):
     def items(self):
         items = [
-            'question-list',
+            'faqs-list',
         ]
         items.extend(Question.objects.all().order_by('-created_at'))
         return items
@@ -31,5 +31,5 @@ class QuestionSitemap(sitemaps.Sitemap):
 
     def location(self, item):
         if type(item) == Question:
-            return reverse('question-detail', kwargs={'slug': item.slug})
+            return reverse('faqs-detail', kwargs={'slug': item.slug})
         return reverse(item)
