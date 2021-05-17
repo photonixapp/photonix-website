@@ -65,14 +65,36 @@ h2 a {
   text-decoration: none;
 }
 
-nav div {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  text-align: right;
+
+.container {
+  display: flex;
+  justify-content: flex-end;
 }
+
+.banner {
+  margin-right: 15px;
+  margin-top: 15px;
+  position: absolute;
+}
+
+.badge {
+  position: absolute;
+  top: -15px;
+  border: 1px solid black;
+  color: white;
+  background-color: brown;
+  border-radius: 50%;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  line-height: 25px;
+  text-align: center;
+  font-size: 14px;
+}
+
 nav ul {
-  margin: 1rem 0;
+  margin: 1rem 10rem 1rem;
+  padding: 0;
 }
 nav ul li {
   list-style: none;
@@ -112,6 +134,12 @@ img.logo {
   margin: 0 0 1rem 0;
   filter: invert(1);
 }
+
+img.gitlogo {
+  width: 50px;
+  filter: invert(1);
+}
+
 img.right {
   float: right;
 }
