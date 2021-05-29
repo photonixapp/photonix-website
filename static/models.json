@@ -6,30 +6,38 @@
         {
           "filename": "faster_rcnn_inception_resnet_v2_atrous_lowproposals_oid_2018_01_28_frozen_inference_graph.pb.xz",
           "sha256": "d621f545c284c4e1eec17fd27a4ba580c30588d7d67a706a646889d354979b9f",
-          "locations": ["https://epixstudios.co.uk/filer/canonical/1562586771/6/"],
+          "locations": [
+            "https://epixstudios.co.uk/filer/canonical/1562586771/6/"
+          ],
           "decompress": true
         },
         {
           "filename": "oid_bbox_trainable_label_map.pbtxt",
           "sha256": "f2ed36c57e8eebd0fb7f01905298afcdeb9031b78ceb021a895ac7bfd2f6433c",
-          "locations": ["https://epixstudios.co.uk/filer/canonical/1562586999/8/"]
+          "locations": [
+            "https://epixstudios.co.uk/filer/canonical/1562586999/8/"
+          ]
         }
       ]
     },
     "20190407": {
-        "files": [
-          {
-            "filename": "ssd_mobilenet_v2_oid_v4_2018_12_12_frozen_inference_graph.pb.xz",
-            "sha256": "a61f3dd215fffe4b44a3ca3d9feb58020a2356230dd8b4aaeaf039b2001033ea",
-            "locations": ["https://epixstudios.co.uk/filer/canonical/1562586896/7/"],
-            "decompress": true
-          },
-          {
-            "filename": "oid_v4_label_map.pbtxt",
-            "sha256": "49147a2f9864544a89708f37492d216fbeaa30b2b4b0bb2f967b6d7a851cec32",
-            "locations": ["https://epixstudios.co.uk/filer/canonical/1562587093/9/"]
-          }
-        ]
+      "files": [
+        {
+          "filename": "ssd_mobilenet_v2_oid_v4_2018_12_12_frozen_inference_graph.pb.xz",
+          "sha256": "a61f3dd215fffe4b44a3ca3d9feb58020a2356230dd8b4aaeaf039b2001033ea",
+          "locations": [
+            "https://epixstudios.co.uk/filer/canonical/1562586896/7/"
+          ],
+          "decompress": true
+        },
+        {
+          "filename": "oid_v4_label_map.pbtxt",
+          "sha256": "49147a2f9864544a89708f37492d216fbeaa30b2b4b0bb2f967b6d7a851cec32",
+          "locations": [
+            "https://epixstudios.co.uk/filer/canonical/1562587093/9/"
+          ]
+        }
+      ]
     }
   },
   "style": {
@@ -38,12 +46,16 @@
         {
           "filename": "graph.pb",
           "sha256": "01065730eda536877d6d8b8e033d4e5702331f052d8a3d2ef6b5a174e6ca3093",
-          "locations": ["https://epixstudios.co.uk/filer/canonical/1562587365/11/"]
+          "locations": [
+            "https://epixstudios.co.uk/filer/canonical/1562587365/11/"
+          ]
         },
         {
           "filename": "labels.txt",
           "sha256": "b9336a342ce3a93d7013f5c90d428bc6b8113cc0cec33ce382037099f429225e",
-          "locations": ["https://epixstudios.co.uk/filer/canonical/1562587398/12/"]
+          "locations": [
+            "https://epixstudios.co.uk/filer/canonical/1562587398/12/"
+          ]
         }
       ]
     }
@@ -54,31 +66,47 @@
         {
           "filename": "TM_WORLD_BORDERS-0.3.dbf.xz",
           "sha256": "f4b57e1dcb48c142b52ed5aabe661c568691e45683b4f0400b535a44c53a3991",
-          "locations": ["https://epixstudios.co.uk/filer/canonical/1562587554/13/"],
+          "locations": [
+            "https://epixstudios.co.uk/filer/canonical/1562587554/13/"
+          ],
           "decompress": true
         },
         {
           "filename": "TM_WORLD_BORDERS-0.3.shp.xz",
           "sha256": "5da77c0ffad5338935e872435cb4884741e9e527266cc7e27533f9d59c656122",
-          "locations": ["https://epixstudios.co.uk/filer/canonical/1562587630/14/"],
+          "locations": [
+            "https://epixstudios.co.uk/filer/canonical/1562587630/14/"
+          ],
           "decompress": true
         },
         {
           "filename": "cities1000.txt.xz",
           "sha256": "5adb1005378c1e9034f34583319177f1eeacdcc1555ec33cd8b3aad72ad64e74",
-          "locations": ["https://epixstudios.co.uk/filer/canonical/1562587729/15/"],
+          "locations": [
+            "https://epixstudios.co.uk/filer/canonical/1562587729/15/"
+          ],
           "decompress": true
         }
       ]
     }
   },
-  "face_detection": {
-    "20210120": {
+  "face": {
+    "20210528": {
       "files": [
         {
           "filename": "mtcnn_weights.npy.xz",
           "sha256": "82171d80e3d92676f58b5e8509213ee7fb3bd35eb11f4cbe1614f0dce6fe5986",
-          "locations": ["https://epixstudios.co.uk/filer/canonical/1611177518/177/"],
+          "locations": [
+            "https://epixstudios.co.uk/filer/canonical/1611177518/177/"
+          ],
+          "decompress": true
+        },
+        {
+          "filename": "facenet_weights.h5",
+          "sha256": "90659cc97bfda5999120f95d8e122f4d262cca11715a21e59ba024bcce816d5c",
+          "locations": [
+            "https://epixstudios.co.uk/filer/canonical/1622275807/180/"
+          ],
           "decompress": true
         }
       ]

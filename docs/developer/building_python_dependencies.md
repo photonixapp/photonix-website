@@ -11,7 +11,7 @@ Tensorflow is the Machine Learning library we use for our more complex image ana
 
 For maximum compatibility we compile our own builds of Tensorflow separately using the repository [tensorflow-builder](https://github.com/photonixapp/tensorflow-builder/). On the amd64 architecture we found the official binaries are built with a set of CPU instructions (e.g. AVX) aimed at recent CPUs which do not run on many home servers (e.g. Celeron CPUs). On the ARM platform there are a few official builds aimed at the Raspberry Pi but they are compiled against older versions of Python than we use.
 
-Beware that building will probably take many hours but scales well to multiple CPUs. We usually create the largest possible VPS on DigitalOcean with 32 CPU cores and it can build each architecture in about an hour (per architecture).
+Beware that building will probably take many hours but scales well to multiple CPUs. We usually create the largest possible VPS on [DigitalOcean](https://m.do.co/c/9b42114127be) (referral link benefits us both) with 32 CPU cores and it can build each architecture in about an hour (per architecture).
 
 These are the commands used to build on a fresh machine (Ubuntu 20.04).
 

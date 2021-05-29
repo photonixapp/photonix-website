@@ -30,13 +30,9 @@ Create a new directory to run inside.
     mkdir photonix
     cd photonix
 
-Download the example Docker Compose file. Currently there is a separate `docker-compose.yml` file for our experimental ARM/Raspberry Pi build.
-
-If you are on an x86/amd64-based machine get the relevant example file here.
+Download the example Docker Compose file. This works for x86/amd64 and arm32/arm64/Raspberry Pi architectures.
 
     curl https://raw.githubusercontent.com/photonixapp/photonix/master/docker/docker-compose.example.yml > docker-compose.yml
-
-If you are on an ARM/Raspberry Pi-based machine you can use this file but it will soon change.
 
 Make volume directories for data stored outside the container.
 

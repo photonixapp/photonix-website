@@ -16,3 +16,4 @@ Docker containers are commonly configured to run via envirnment varables. You wi
 | `ALLOWED_HOSTS`     | String        | `*`        | Restricts access for Django backend to be accessed from just a certain hostname. |
 | `ADMIN_USERNAME`    | String        |            | Creates a username for the admin user on first run. |
 | `ADMIN_PASSWORD`    | String        |            | Sets password for the admin user on first run. If this is set but `ADMIN_USERNAME` is not, the username will be `admin`. |
+| `DJANGO_SECRET_KEY` | String        | random     | Sets value for Django to use as a [secret key](https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-SECRET_KEY) (sessions, hashing, signing etc.). By default we automatically generate a cryptographically secure key on first run and store it in Redis for future. |
