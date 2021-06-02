@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.db import models
 from pagedown.widgets import AdminPagedownWidget
 
-from faqs.models import Question
+from faqs.models import Question, Testimonial
 from utils.admin import VersionedAdmin
 
 
@@ -31,3 +31,20 @@ class QuestionAdmin(VersionedAdmin):
 
 
 admin.site.register(Question, QuestionAdmin)
+
+
+class TestimonialAdmin(VersionedAdmin):
+    """To show Testimonial model in django-admin."""
+    formfield_overrides = {
+        models.TextField: {'widget': AdminPagedownWidget},
+    }
+    fieldsets = (
+        (None, {
+            'fields': ('profile_name', 'profile_url', 'comment'),
+        }),
+    ) + VersionedAdmin.fieldsets
+
+
+admin.site.register(Testimonial, TestimonialAdmin)
+
+

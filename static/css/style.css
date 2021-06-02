@@ -380,6 +380,12 @@ hr {
   height: 65px;
   margin: 0 0.5rem;
 }
+.reviews-container div { 
+  display: table-cell;
+  width: 33%; 
+  min-height: 50px; 
+  text-align: center;
+} 
 
 @media all and (max-width: 1100px) {
   .devices {
