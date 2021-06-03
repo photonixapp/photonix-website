@@ -25,19 +25,29 @@
     <meta property="og:type" content="product" />
     <meta property="og:image" content="{% block og_image %}https://photonix.org/static/images/devices.jpg{% endblock %}" />
     <meta property="og:locale" content="en_US" />
+    <script type='text/javascript' src='/static/js/jquery.min.js'></script>
     {% block extrahead %}{% endblock %}
   </head>
   <body>
     {% include 'snippets/stripes_hr.html' %}
     <nav>
-      <div>
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="//demo.photonix.org/">Demo</a></li>
-          <li><a href="{% url 'faqs-list' %}">FAQs</a></li>
-          <li><a href="{% url 'blog-post-list' %}">Blog</a></li>
-          <li><a href="/docs/">Documentation</a></li>
-        </ul>
+      <div class="container">
+        <div class= "nav-list">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="//demo.photonix.org/">Demo</a></li>
+            <li><a href="{% url 'faqs-list' %}">FAQs</a></li>
+            <li><a href="{% url 'blog-post-list' %}">Blog</a></li>
+            <li><a href="/docs/">Documentation</a></li>
+          </ul>
+        </div>
+        <!-- Wrapping the icon and badge -->
+        <div class="banner">
+          <span id="group">
+            <a href="https://github.com/photonixapp/photonix"><img src="/static/images/octocat.svg" class="githublogo" alt="GitHub logo" /></a>
+            <span class="badge"></span>
+          </span>
+        </div>
       </div>
     </nav>
     {% block content %}{% endblock %}
@@ -124,5 +134,29 @@
 
     {% block extrabody %}{% endblock %}
     {% include 'snippets/piwik_tracking.html' %}
+
+    <script>
+      // Create a request variable and assign a new XMLHttpRequest object to it.
+      var request = new XMLHttpRequest()
+      // Open a new connection, using the GET request on the URL endpoint
+      request.open('GET', 'https://api.github.com/orgs/photonixapp/repos', true)
+      request.onload = function () {
+        // Begin accessing JSON data here
+        var data = JSON.parse(this.response)
+
+        if (request.status >= 200 && request.status < 400) {
+          data.find((repo) => {
+            if (repo.name == 'photonix') {
+              document.getElementsByClassName('badge')[0].innerHTML = repo.stargazers_count
+              return true;
+            }
+            return false
+          })
+        } else {
+          console.log('error')
+        }
+      }
+      request.send()
+    </script>
   </body>
 </html>
