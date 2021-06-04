@@ -3,7 +3,6 @@ from django.db import models
 from django.urls import reverse
 from utils.models import UUIDModel, VersionedModel
 from django.utils.text import slugify
-from django.conf import settings
 import itertools
 
 
@@ -38,19 +37,3 @@ class Question(UUIDModel, VersionedModel):
         if not self.slug:
             self._generate_slug()
         super(Question, self).save(*args, **kwargs)
-
-
-class Testimonial(UUIDModel, VersionedModel):
-    """Testimonial model to store comments/reviews that users have made about Photonix."""
-
-    profile_name = models.CharField(max_length=50, verbose_name="Name", help_text='required 50 characters or fewer.')
-    profile_url = models.URLField(max_length=255, null=True, blank=True, verbose_name="URL")
-    comment = models.TextField(verbose_name="Comment")
-
-    def __str__(self):
-        """To show object."""
-        return self.profile_name
-
-
-
-

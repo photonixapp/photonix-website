@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load thumbnail %}
+{% load thumbnail testimonials %}
 
 {% block title %}Photonix Frequently Asked Questions{% endblock %}
 {% block twitter_title %}Photonix Frequently Asked Questions{% endblock %}
@@ -45,4 +45,7 @@
   </script>
 
   {% include 'snippets/mailinglist_signup.html' %}
+
+  {% random_tesimonals %}
+
 {% endblock %}

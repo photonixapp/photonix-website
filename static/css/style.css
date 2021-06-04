@@ -337,6 +337,7 @@ footer nav h3 {
 }
 footer nav ul {
   padding: 0;
+  margin: 0;
 }
 footer nav li {
   margin: 0;
@@ -409,12 +410,51 @@ hr {
   height: 65px;
   margin: 0 0.5rem;
 }
-.reviews-container div { 
-  display: table-cell;
-  width: 33%; 
-  min-height: 50px; 
+
+.testimonials-container {
+  display: flex;
+  margin: 0 -10px;
+  overflow: hidden;
+}
+.testimonials-container div {
+  flex: 1;
+  margin: 0 10px;
+  min-height: 50px;
   text-align: center;
-} 
+  background: #292929;
+  padding: 30px 20px 10px;
+  border-radius: 10px;
+}
+.testimonials-container img.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  margin: 0 auto;
+}
+.testimonials-container h4 {
+  margin: 10px 0 10px 0;
+  font-size: 20px;
+  line-height: 1;
+}
+.testimonials-container h4 a {
+  text-decoration: none;
+  font-weight: bold;
+}
+.testimonials-container h5 {
+  margin: 0 0 20px 0;
+  font-size: 14px;
+  line-height: 1;
+}
+.testimonials-container h5 a {
+  text-decoration: none;
+  font-weight: normal;
+}
+.testimonials-container p {
+  text-align: left;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
 
 @media all and (max-width: 1100px) {
   .devices {
@@ -479,6 +519,13 @@ hr {
   }
   footer .social {
     margin-right: -8px;
+  }
+  .testimonials-container {
+    display: block;
+  }
+  .testimonials-container div {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
   }
 }
 @media all and (max-width: 500px) {

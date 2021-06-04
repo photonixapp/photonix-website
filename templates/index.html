@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load testimonials_tags %}
+{% load testimonials %}
 
 {% block extrahead %}
     <script type="application/ld+json">
@@ -112,9 +112,6 @@
 
   {% include 'snippets/mailinglist_signup.html' %}
 
-  <section>
-    {% get_random_tesimonals %}
-    {% include 'snippets/testimonials_reviews.html' %}
-  </section>
+  {% random_tesimonals %}
 
 {% endblock %}

@@ -1,0 +1,35 @@
+{% load markdownify markdown_extensions thumbnail %}
+
+<section>
+	<div class="testimonials-container">	
+	{% for review in testimonials_list %} 
+		<div>
+			{% if review.avatar_url %}
+				{% if review.profile_url %}
+					<a href="{{review.profile_url}}"><img src="{{review.avatar_url}}" class="avatar" alt="{{review.profile_name}}" /></a>
+				{% else %}
+					<img src="{{review.avatar_url}}" class="avatar" alt="{{review.profile_name}}" />
+				{% endif %}
+			{% endif %}
+
+			<h4>
+				{% if review.profile_url %}
+					<a href="{{review.profile_url}}"><strong>{{review.profile_name}}</strong></a>
+				{% else %}
+					<strong>{{review.profile_name}}</strong>
+				{% endif %}
+			</h4>
+
+			<h5>
+				{% if review.comment_url %}
+					<a href="{{ review.comment_url }}">{{ review.created_at|date:"M Y" }}</a>
+				{% else %}
+					{{ review.created_at|date:"M Y" }}
+				{% endif %}
+			</h5>
+
+			{{review.comment|markdownify|format_extensions}}
+		</div>
+	{% endfor %}
+	</div>
+</section>

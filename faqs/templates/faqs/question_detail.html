@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load markdownify markdown_extensions thumbnail %}
+{% load markdownify markdown_extensions thumbnail testimonials %}
 
 {% block title %}{{ object.title }} | Photonix Frequently Asked Questions{% endblock %}
 {% block meta_description %}{{ object.answer|markdownify|strip_tags|truncatechars:1000 }}{% endblock %}
@@ -40,4 +40,7 @@
   </article>
 
   {% include 'snippets/mailinglist_signup.html' %}
+
+  {% random_tesimonals %}
+
 {% endblock %}

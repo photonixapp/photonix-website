@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'matomo_monorail',
     'utils',
     'faqs',
+    'testimonials',
 ]
 
 MIDDLEWARE = [

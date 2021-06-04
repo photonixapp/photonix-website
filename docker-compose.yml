@@ -23,6 +23,7 @@ services:
       - ./system:/srv/system
       - ./templates:/srv/templates
       - ./tests:/srv/tests
+      - ./testimonials:/srv/testimonials
       - ./utils:/srv/utils
       - ./test.py:/srv/test.py
       - ./volumes/media:/srv/media
