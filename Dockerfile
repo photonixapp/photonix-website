@@ -25,6 +25,7 @@ COPY static /srv/static
 COPY project /srv/project
 COPY system /srv/system
 COPY templates /srv/templates
+COPY testimonials /srv/testimonials
 COPY utils /srv/utils
 COPY manage.py /srv/manage.py
 COPY mkdocs.yml /srv/mkdocs.yml

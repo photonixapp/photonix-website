@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load thumbnail %}
+{% load thumbnail testimonials %}
 
 {% block title %}Photonix Photo Manager Blog{% endblock %}
 {% block twitter_title %}Photonix Photo Manager Blog{% endblock %}
@@ -39,4 +39,7 @@
     </section>
 
   {% include 'snippets/mailinglist_signup.html' %}
+
+  {% random_tesimonals %}
+
 {% endblock %}
