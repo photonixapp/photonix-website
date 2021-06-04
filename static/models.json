@@ -102,8 +102,8 @@
           "decompress": true
         },
         {
-          "filename": "facenet_weights.h5",
-          "sha256": "90659cc97bfda5999120f95d8e122f4d262cca11715a21e59ba024bcce816d5c",
+          "filename": "facenet_weights.h5.xz",
+          "sha256": "734333638ab9d24ef66b16da31e100d8728fb4862bc0ef49c7d30db6ac6b8118",
           "locations": [
             "https://epixstudios.co.uk/filer/canonical/1622275807/180/"
           ],

@@ -65,14 +65,37 @@ h2 a {
   text-decoration: none;
 }
 
-nav div {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  text-align: right;
+
+.container {
+  display: flex;
+  justify-content: flex-end;
 }
+
+.banner {
+  position: absolute;
+  margin-right: 8px;
+  margin-top: 19px;
+  padding: 0;
+}
+
+.badge {
+  position: absolute;
+  top: -14px;
+  right: -4px;
+  border: 1px solid black;
+  color: white;
+  background-color: #F54820;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  line-height: 27px;
+  text-align: center;
+  font-size: 12px;
+}
+
 nav ul {
-  margin: 1rem 0;
+  margin: 1rem 4rem 1rem 1rem;
+  padding: 0;
 }
 nav ul li {
   list-style: none;
@@ -112,6 +135,12 @@ img.logo {
   margin: 0 0 1rem 0;
   filter: invert(1);
 }
+
+img.githublogo {
+  width: 50px;
+  filter: invert(1);
+}
+
 img.right {
   float: right;
 }
@@ -455,9 +484,6 @@ hr {
 @media all and (max-width: 500px) {
   html {
     font-size: 18px;
-  }
-  nav div {
-    padding: 0 1rem;
   }
   header {
     padding: 3rem 1rem 2rem;
