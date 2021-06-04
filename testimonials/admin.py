@@ -8,7 +8,11 @@ from utils.admin import VersionedAdmin
 
 
 class TestimonialAdmin(VersionedAdmin):
-    """To show Testimonial model in django-admin."""
+    list_display = ('profile_name', 'comment', 'created_at')
+    list_filter = ('created_at', 'updated_at')
+    search_fields = ('profile_name', 'comment')
+    ordering = ('-created_at',)
+
     formfield_overrides = {
         models.TextField: {'widget': AdminPagedownWidget},
     }
