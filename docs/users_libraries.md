@@ -12,7 +12,7 @@ To run any of the following commands you will need to have Photonix currently ru
 
 You will be propted to create a library when you first run Photonix.
 
-To create an additional library and assign a user to it, run the following from the host machine where you have your `docker-compose.yml` file:
+To create an additional library and assign a user to it, run the following from the host machine where you have your `docker-compose.yml` file. Replace `USERNAME` and `LIBRARY NAME` with your own values.
 
     docker-compose exec photonix ./manage.py create_library USERNAME "LIBRARY NAME"
 
