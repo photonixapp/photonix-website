@@ -20,3 +20,4 @@ nav:
       - Image Analysis: 'developer/image_analysis.md'
       - Building for Production: 'developer/building.md'
       - Building Python Dependencies: 'developer/building_python_dependencies.md'
+      - Credits and Licenses: 'developer/credits_and_licenses.md'

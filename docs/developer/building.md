@@ -83,7 +83,7 @@ Buildx uses a different storage backed to standard Docker so build images will n
 
 For users upgrading Python dependencies, some packages with C extensions (e.g. Numpy and Matplotlib) will need compiling for ARM architectures which takes a long time. These packages can be automatically uploaded to our custom PyPI server to speed up future builds. You'll need write access to the PyPI server and specify authentication credentials with `--build-ags` as shown below.
 
-    docker buildx build --platform linux/amd64,linux/arm/v7,linux/arm64 --tag photonixapp/photonix --pusbehave differentlyh -f docker/Dockerfile.prd --build-arg PYPI_UPLOAD_USERNAME=YOUR_USERNAME --build-arg PYPI_UPLOAD_PASSWORD=YOUR_PASSWORD .
+    docker buildx build --platform linux/amd64,linux/arm/v7,linux/arm64 --tag photonixapp/photonix --push -f docker/Dockerfile.prd --build-arg PYPI_UPLOAD_USERNAME=YOUR_USERNAME --build-arg PYPI_UPLOAD_PASSWORD=YOUR_PASSWORD .
 
 ### Potential errors
 
