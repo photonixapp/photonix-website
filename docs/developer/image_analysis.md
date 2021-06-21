@@ -48,7 +48,7 @@ Details coming soon.
 
 ## Face Detection and Recognition
 
-This collection of models is currently being developed. There are a few different steps to the process. Facial recognition is different from most of the other types of analysis as it only becomes useful if the user can label the people they know. Because of this, parts of the model need to be re-trained when there is new data and then run against the detected, unknown faces.
+This model was completed in June 2021. There are a few different steps to the process. Facial recognition is different from our other types of analysis as it only becomes useful if the user can label the people they know. Because of this, part of the model is automatically re-trained to apply the user's own face labels.
 
 Papers With Code provides [benchmark comparisons of algorithms](https://paperswithcode.com/area/computer-vision/facial-recognition-and-modelling) for each step (and more).
 
@@ -58,22 +58,36 @@ We use a Convolutional Neural Network (CNN) called "Multi-task Cascaded Convolut
 
 We use a modified version of a Python package called [mtcnn](https://github.com/ipazc/mtcnn) by Iván de Paz Centeno. This implementation suited us as it was based around Keras and the Tensorflow framework. It also included a pre-trained weights file which we use out-of-the box. Our modifications were to replace the use of OpenCV with Pillow for image scaling operations. This saved space as we already already had Pillow installed for other areas of the application.
 
-The bounding box output of running this model against photos is used to create location-specific tags in the database. These tags are of unknown people at this stage but it's still useful to tag the information at this stage.
+The bounding box output of running this model against photos is used to create location-specific tags in the database. These tags are of unknown people at this stage but it's still useful to tag the information in the database at this step.
 
 ### Face Alignment / Transformation and Cropping
 
-Because faces can be oriented and pointing in different directions we want to normalise them as much as possible. We will skew and rotate the face images to align all the eyes, nose and mouths consistently.
-
-The output images from this step can be cached for later steps.
+Because faces can be oriented and pointing in different directions we want to normalise them as much as possible. We apply skew and rotate transformations to face images to align all the eyes, nose and mouths consistently. The code we use for this step comes from the [Deepface](https://github.com/serengil/deepface/) library by Sefik Ilkin Serengil (not to be confused with Facebook's DeepFace neural network architecture from 2014).
 
 ### Feature Extraction / Embedding / Face Fingerprinting / Faceprinting
 
 Several Deep Neural Networks (DNNs) exist which can generate a multi-dimensional representation of each face. FaceNet is one of the more famous examples. Papers With Code provides a [list of models sorted by accuracy](https://paperswithcode.com/sota/face-verification-on-labeled-faces-in-the).
 
-The outputted embeddings only need to be computed once to be re-used many times in the final re-training step.
+This is the model we chose to use as it was the best performing implementation included in the [Deepface](https://github.com/serengil/deepface/) library. We can compare it to others in future if they are noticeably better but FaceNet is quite performant, battle tested and produces output embeddings of a reasonable size. It is assumed that Google Photos is currently using FaceNet.
+
+When provided with a photo of a face, the neural network outputs an embedding vector (array) of 128 floating point values. You can think of these as features of the face such as width of mouth and together they make up a kind of fingerprint.
+
+The embedding of a face image only needs to be computed once and then it gets saved against the face tag in the database, ready for the next step.
 
 ### Similarity Calculation / Clustering / Classification
 
-This model will be computing which faces are most similar to each other. If an unknown face has a distance score within a defined threshold to it's nearest neighbour, it will get labelled.
+The face embeddings (or fingerprints) have been generated and saved but no two photos of the same face will match exactly. There are always slight variations caused by things like lighting, orientation, emotion and hair. We can however calculate how similar one embedding is to another using a distance formula. The recommended formula for FaceNet is the [Euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance) which can compare all 128 dimensions of our embedding and give us a single number as a result.
 
-The technique used here doesn't apparently matter too much. It can be something like an SVM which can be very quick to re-train and infer.
+A threshold is decided upon and if the Euclidean distance of two face embeddings is below this value then we assume the photos to be of the same person.
+
+Computing the distance between two embeddings is quite fast but as more and more photos of faces are added to your library the number of comparisons you would have to do between them increases exponentially. To solve this issue we implement an ANN (Approximate [Nearest Neighbors](https://en.wikipedia.org/wiki/Nearest_neighbor_search)) search index using the [Annoy](https://github.com/spotify/annoy) library. This is what Spotify uses to suggest similar songs you might like and it is able to do this for every user, every day across its entire library of tracks.
+
+The ANN is fast to generate and is re-created at 5-minutely intervals if new face tags have been added since last generation. A hybrid approach is used whereby any face tags added since last index generation are compared individually. This means that similar face photos imported within a short period of time will still match (it just takes a bit longer until the index catches up).
+
+### Labelling
+
+An interesting point to note is that similar faces can be grouped together even if we don't know who the person is. Because of this, if a face photo isn't similar enough to a face labelled by the user we create a random tag name in the form "Unknown person 123456" where the number is random. Grouping happens while photos are imported and the user just has to go and change the tag name to the person they know.
+
+We are slightly cautious while we are grouping faces together as it is much easier for a user to merge two groups that are actually the same rather than having to remove faces from a group.
+
+Our user interface shows bounding boxes for faces and allows quick approval, rejection and editing of automatic face tags.
