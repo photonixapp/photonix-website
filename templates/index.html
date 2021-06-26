@@ -34,7 +34,7 @@
     <h2>Photo Manager</h2>
     <div>
       <p>Photonix is a photo management application that streamlines the process of storing, presenting and re-discovering photos. Once set up it will ingest all the photos in your collection and start building up an image database of everything you could want to search and filter by. It makes your entire collection available to you, whichever device you’re using — as long as you can get to a web browser.</p>
-      <p>We think Photonix could work well for you if you’re a keen photographer. Its aim is to be invisible to your existing process (downloading photos from your camera, editing and saving) but to be there whenever and wherever you need to find a photo again. Smart filtering means you can get to the photo or album you need. Object recognition, location awareness, color analysis and a growing set of other algorithms can save you a lot of time.</p>
+      <p>We think Photonix could work well for you if you’re a keen photographer. Its aim is to be invisible to your existing process (downloading photos from your camera, editing and saving) but to be there whenever and wherever you need to find a photo again. Smart filtering means you can get to the photo or album you need. Face recognition, Object detection, location awareness, color analysis and a growing set of other algorithms can save you a lot of time.</p>
     </div>
   </header>
 
@@ -49,6 +49,7 @@
     <p>Images are everywhere in our lives today, but all too often these gems end up as just files and folders on a hard drive — never to be seen again. Professional photographers spend a lot of time on photo editing so it’s important that those photos (and associated RAW files) can be easily retrieved later on. Using a photo editor (such as Lightroom, Darktable or Photoshop) is time consuming so get more value from that process. Photo editing software has evolved a lot over the years, but often your photo management tool can feel stuck in the past.</p>
     <p>Maybe you let iCloud Photo Library, Google Photos or Picasa take charge of your daily snaps but find managing your professional SLR image files a much less slick affair. If you’re struggling to find software that will help with photo organizing, we think this could be the solution.</p>
     <img src="/static/images/pipeline.svg" class="pipeline" alt="Pipeline illustration from camera to computer to somewhere else" />
+    <p>If you’ve already tried out <a href="https://demo.photonix.org/"> the demo</a> and want to take the next step, please see our <a href="/docs/installing/">installation instructions</a>.</p>
   </section>
 
   <section id="features">
@@ -65,11 +66,13 @@
     <p>We think our photo management software excels in the area of smart features. In recent years, as you have probably seen in the news, there have been dramatic breakthroughs in the field of artificial intelligence (AI), machine learning and deep learning. It was these developments that inspired me to embark on this project. Google Photos has demonstrated what is possible in the area of object recognition and detection but there is a lot more that can be done. Google has been very open with their technology and we have been able to leverage some of the same frameworks and pretrained models that they have created.</p>
     <p>We currently provide the following smart tagging classifiers:</p>
     <ul>
+      <li><strong>Face</strong> — Detects faces and groups them with faces of the same person in your other photos. No training is required, just add your own labels to the people you recognise.</li>
       <li><strong>Object</strong> — Based on Google’s models but runs entirely within Photonix so no images are shared externally. The bounding box of each image is also stored, which can be used to determine its significance by size. This in turn helps with ordering results that are returned.</li>
       <li><strong>Style</strong> — Trained on an image dataset labelled according to artistic styles such as geometric, minimalist, noir. This is quite a curious tool to play with and might bring some serendipitous results.</li>
       <li><strong>Color</strong> — Starting with a simple palette, it finds the nearest color for each part of an image. The area of the each color within an image is used to calculate a significance weighting for each.</li>
       <li><strong>Location</strong> — Currently works off GPS data that cameras and phones often produce. A built-in map of the world allows it to determine country and nearest big city to tag it with. We aim to look at more intelligent feature recognition possibilities in future for photos that aren’t GPS tagged.</li>
     </ul>
+    <p>You can read more details of our algorithms in the <a href="/docs/developer/image_analysis/">image analysis documentation</a>.</p>
 
     <a href="/static/images/ui.jpg"><img src="/static/images/ui.jpg" class="ui" alt="Photonix user interface showing filters, object recognition and map view" /></a>
 
@@ -93,6 +96,7 @@
     <p>Maybe you’re setting up a home server running Photonix for your family. Maybe you’re thinking of using Photonix in your business processes with your colleagues. You can each have your own private library and then a separate shared library for collaboration.</p>
     <p>Typically there will be one admin user created at the start and this user can then create additional accounts later on. Users can have a variety of roles and restrictions. Users will be able to invite other users to view/collaborate on a photo library. Access to the shared library can be controlled per user, i.e. read-only or read-write.</p>
     <p>We use a framework called Django that means we’re not reinventing code to do things like authentication and authorization, improving security. All users will be able to use the full photo management features for searching and, if they have write permissions, the ability to tag and create albums.</p>
+    <p>You can find <a href="/docs/users_libraries/">instructions on creating libraries and users</a> in our documentation</p>
 
     <h3>Sharing online</h3>
     <p>We believe sharing should be easy and quick, whether it’s a single photo you want to send to your parents or whole photo albums you have prepared for a client shoot (e.g. a wedding). Unlike software such as Magix Photo Manager and Movavi Photo Manager, Photonix is built to be online.</p>
