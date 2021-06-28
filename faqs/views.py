@@ -10,7 +10,7 @@ class QuestionList(ListView):
     template_name = 'faqs/question_list.html'
     context_object_name = 'question_list'
     paginate_by = 10
-    queryset = Question.objects.all().order_by('-created_at')
+    queryset = Question.objects.all().order_by('?')
 
 
 class QuestionDetail(DetailView):
