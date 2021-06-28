@@ -411,6 +411,32 @@ hr {
   margin: 0 0.5rem;
 }
 
+.as-seen {
+  background: #292929;
+  margin-bottom: 5rem;
+  padding: 2rem 4rem 2rem;
+  text-align: center;
+  color: #ddd;
+}
+.as-seen > div {
+  max-width: 920px;
+  margin: 0 auto;
+}
+.as-seen .logos {
+  display: flex;
+}
+.as-seen .logos div {
+  flex: 1;
+  margin: 20px 20px 0 20px;
+}
+.as-seen .logos div img {
+  height: 60px;
+  opacity: 0.9;
+}
+.as-seen .logos div a:hover img {
+  opacity: 1;
+}
+
 .testimonials-container {
   display: flex;
   margin: 0 -10px;
@@ -519,6 +545,12 @@ hr {
   }
   footer .social {
     margin-right: -8px;
+  }
+  .as-seen {
+    padding: 1.5rem;
+  }
+  .as-seen .logos {
+    flex-direction: column;
   }
   .testimonials-container {
     display: block;

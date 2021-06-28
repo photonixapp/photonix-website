@@ -12,10 +12,10 @@ Docker containers are commonly configured to run via envirnment varables. You wi
 | `POSTGRES_DB`       | String        | `photonix` | Database name for Postgres database instance, will be auto-created on first run if it doesn't exist. |
 | `POSTGRES_USER`     | String        | `postgres` | Username for Postgres database. |
 | `POSTGRES_PASSWORD` | String        | `postgres` | Password for Postgres database. |
-| `POSTGRES_PORT`     | String        | `5432`     | Port for Postgres database. |
+| `POSTGRES_PORT`     | Integer       | `5432`     | Port for Postgres database. |
 | `REDIS_HOST`        | String        | `redis`    | Redis hostname, used for resource locking. |
-| `REDIS_PORT`        | String        | `6379`     | Redis port number. |
-| `REDIS_DB`          | String        | `0`        | Redis database number. |
+| `REDIS_PORT`        | Integer       | `6379`     | Redis port number. |
+| `REDIS_DB`          | Integer       | `0`        | Redis database number. |
 | `ALLOWED_HOSTS`     | String        | `*`        | Restricts access for Django backend to be accessed from just a certain hostname. |
 | `ADMIN_USERNAME`    | String        |            | Creates a username for the admin user on first run. |
 | `ADMIN_PASSWORD`    | String        |            | Sets password for the admin user on first run. If this is set but `ADMIN_USERNAME` is not, the username will be `admin`. |
