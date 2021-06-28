@@ -9,7 +9,7 @@ class StaticViewSitemap(sitemaps.Sitemap):
     changefreq = 'monthly'
 
     def items(self):
-        return ['index', 'privacy-policy']
+        return ['index', 'privacy-policy', 'support']
 
     def priority(self, item):
         priorities = {
