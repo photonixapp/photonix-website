@@ -34,13 +34,17 @@ Download the example Docker Compose file. This works for x86/amd64 and arm32/arm
 
     curl https://raw.githubusercontent.com/photonixapp/photonix/master/docker/docker-compose.example.yml > docker-compose.yml
 
-Make volume directories for data stored outside the container.
+Make volume directory for photo data to be stored outside the container.
 
-    mkdir -p  data/photos
+    mkdir -p data/photos
 
 ## Running
 
 Bring up Docker Compose which will pull and run the required Docker images.
+
+    docker-compose up -d
+
+The above command will run the service in the background. Instead, if you want to watch the logs (useful for debugging problems) you can use the following.
 
     docker-compose up
 
