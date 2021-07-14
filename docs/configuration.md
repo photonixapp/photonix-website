@@ -1,5 +1,23 @@
 # Configuration
 
+## Image analysis
+
+In the user interface you can enable and disable individual types of image analysis (ML/AI). If you want to limit the CPU and RAM resources taken up by image analysis you can switch off the most intensive ones or just ones you are not interested in.
+
+You can turn these on or off at any time. Newly imported photos still get queued up when turned off so will be analysed when/if you turn it back on.
+
+### Benchmarks
+
+Here are some benchmarks to help determine impact of each type of analysis. These are average times measured on a Raspberry Pi 4 for a single photo, single worker.
+
+| Analysis | Average time (seconds) |
+| -------- | ---------------------: |
+| Color    |                  2.083 |
+| Style    |                  2.240 |
+| Location |                  3.707 |
+| Face     |                 47.464 |
+| Object   |                 52.796 |
+
 ## Environment variables
 
 Docker containers are commonly configured to run via envirnment varables. You will see some default values that can be edited in your `docker-compose.yml` file. Here are details of what they mean.
