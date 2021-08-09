@@ -20,7 +20,7 @@
       "name": "{{ object.title }}",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "{{ object.answer|markdownify|format_extensions }}"
+        "text": "{{ object.answer|markdownify|format_extensions|striptags }}"
       }
     }]
   }

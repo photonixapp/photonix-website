@@ -25,7 +25,8 @@ Docker containers are commonly configured to run via envirnment varables. You wi
 | Variable Name       | Values        | Default    | Description  |
 | ------------------- | ------------- | ---------- | ------------ |
 | `ENV`               | `dev`, `prd`  |            | In `prd` mode, running code and services are as optimised as possible. Running in `dev` mode enables features like Webpack/React hot module reloading (HMR), Django Runserver (code auto-reloading), Storybook server etc. |
-| `DEMO`              | `0`, `1`      | `0`        | Starts the environment with a demo user account, library and downloads some demo photos. This is how the demo at https://demo.photonix.org/ runs. |
+| `DEMO`              | `0`, `1`      | `0`        | Starts the environment with a demo user account, library and downloads some demo photos. This is how the demo at https://demo.photonix.org/ runs. You are restricted from performing certain data-modifying actions. |
+| `SAMPLE_DATA`       | `0`, `1`      | `0`        | Creates same account, library and photos as in `DEMO` mode but still allows you to make modifying changes as a user (most useful for developers). |
 | `POSTGRES_HOST`     | String        | `postgres` | Host name for Postgres database instance. |
 | `POSTGRES_DB`       | String        | `photonix` | Database name for Postgres database instance, will be auto-created on first run if it doesn't exist. |
 | `POSTGRES_USER`     | String        | `postgres` | Username for Postgres database. |
