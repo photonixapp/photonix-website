@@ -1,0 +1,88 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+
+{% block extrahead %}
+    {{ block.super }}
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+
+    <style type="text/css">
+        #progress {
+            width: 50%;
+            border: 1px solid #595f65;
+            margin: 0 auto 25px;
+            -moz-border-radius: 3px;
+            -webkit-border-radius: 3px;
+            border-radius: 3px;
+        }
+        #progress_status {
+            width: 50%;
+            margin: 75px auto 25px;
+            text-align: center;
+            font-weight: bold;
+        }
+        #progress_percent {
+            box-sizing: border-box;
+            position: relative;
+            width: 100%;
+            text-align: right;
+            padding: 6px 8px;
+        }
+        #progress_bar {
+            width: 0%;
+            height: 100%;
+            -moz-box-shadow: #79aec8 0 0 2px inset !important;
+            -webkit-box-shadow: #79aec8 0 0 2px inset !important;
+            box-shadow: #79aec8 0 0 2px inset !important;
+            background-color: #417690 !important;
+            background-image: none !important;
+            background-image: -moz-linear-gradient(#79aec8,#417690) !important;
+            background-image: -webkit-linear-gradient(#79aec8,#417690) !important;
+            background-image: linear-gradient(#79aec8,#417690) !important
+            -webkit-transition: width 1s;
+            transition: width 1s;
+        }
+        #progress_message {
+            width: 50%;
+            text-align: center;
+            margin: 0 auto 25px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        (function($) {
+            function updateProgress() {
+                $.getJSON('?job_id={{ id }}&is_ajax=true', function(data) {
+                    $('#progress_bar').css('width', data.percent_complete + '%');
+                    $('#progress_status').html('Status: ' + data.status.toUpperCase());
+                    $('#progress_percent').html(data.percent_complete + '%');
+                    $('#progress_message').html('Sent messages to ' + data.num_messages_sent + ' of ' + data.num_recipients + ' recipients');
+                    if (data.percent_complete < 100) {
+                        setTimeout(updateProgress, 2000);
+                    }
+                });
+            }
+
+            setTimeout(updateProgress, 1000);
+        })(jQuery);
+    </script>
+{% endblock %}
+
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+    <a href="/admin/">{% trans "Home" %}</a> &rsaquo;
+    <a href="/admin/mailer/">Mailer</a> &rsaquo;
+    Mass Send
+</div>
+{% endblock %}
+
+{% block content %}
+    <h1>{{ job.template }}</h1>
+    <fieldset class="module aligned ">
+        <p>Please be patient while the emails get sent. It may take a while before you see any progress. If there is a problem do not attempt to re-send as you will end up spamming people.</p>
+        <div id="progress_status">Status: {{ status|upper }}</div>
+        <div id="progress">
+            <div id="progress_bar"><div id="progress_percent">{{ percent_complete }}%</div></div>
+        </div>
+        <div id="progress_message">Sent messages to {{ num_messages_sent }} of {{ num_recipients }} recipients</div>
+    </fieldset>
+{% endblock %}

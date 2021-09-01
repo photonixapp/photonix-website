@@ -1,0 +1,87 @@
+{% extends "admin/change_form.html" %}
+{% load i18n static %}
+
+{% block extrahead %}
+    {{ block.super }}
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+
+    <style type="text/css">
+        #template_preview {
+            margin: 20px 10px 10px 10px;
+        }
+        #template_preview pre {
+            padding-left: 0;
+        }
+        #template_preview p {
+            margin-left: 0;
+            padding-left: 0;
+            margin-bottom: 15px;
+        }
+        #template_preview hr {
+            margin: 15px 0;
+        }
+        .field-recipients {
+            display: none;
+        }
+    </style>
+{% endblock %}
+
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+    <a href="/admin/">{% trans "Home" %}</a> &rsaquo;
+    <a href="/admin/mailer/">Mailer</a> &rsaquo;
+    Marketing Send
+</div>
+{% endblock %}
+
+{% block field_sets %}
+<h1>Send Emails</h1>
+{% for fieldset in adminform %}
+    {% include "admin/includes/fieldset.html" %}
+{% endfor %}
+<h1>Preview</h1>
+<fieldset class="module aligned" style="display: none">
+    <div id="template_preview"></div>
+</fieldset>
+{% endblock %}
+
+{% block after_field_sets %}{{ block.super }}
+    <script type="text/javascript">
+        (function($) {
+            function previewTemplate(id) {
+                var customer_id = $('#id_recipients').val().split(',')[0];
+                $.get('/mailer/mass-send/preview/?template_id='+id+'&customer_id='+customer_id, function(data) {
+                    $('#template_preview').html(data);
+                    $('#template_preview').parent().show();
+                });
+            }
+
+            function confirmSubmit() {
+                var agree = confirm("Are you sure you wish to continue and send this template to {{ num_recipients }} recipients?");
+                if (agree) {
+                    return true;
+                }
+                return false;
+            }
+
+            $(document).ready(function() {
+                var input = $('#id_template');
+                input.change(function(e) {
+                    previewTemplate(e.target.value);
+                });
+                previewTemplate(input.val());
+
+                var form = $('#_form');
+                form.submit(function() {
+                    return confirmSubmit();
+                })
+            });
+        })(django.jQuery);
+    </script>
+{% endblock %}
+
+{% block submit_buttons_bottom %}
+    <div class="submit-row">
+        <input type="submit" value="Send to {{ num_recipients }} recipients now" class="default" name="_save"/>
+    </div>
+{% endblock %}

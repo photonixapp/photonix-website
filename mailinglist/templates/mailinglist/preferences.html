@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <header>
+    <h1>Mailing List Preferences</h1>
+  </header>
+  <section>
+    <div class="post">
+      {% if not email %}
+        <p>Invalid email address</p>
+      {% else %}
+        <p>Manage your mailing list subscription for the address <strong>{{ email }}</strong></p>
+        <form method="post">
+          <ul>
+            {{ form.as_ul }}
+          </ul>
+          <input type="hidden" name="email" value="{{ email }}" />
+          <input type="hidden" name="token" value="{{ token }}" />
+          {% csrf_token %}
+          <div style="text-align: right">
+            <input type="Submit" value="Save" />
+          </div>
+        </form>
+      {% endif %}
+    </div>
+  </section>
+{% endblock %}

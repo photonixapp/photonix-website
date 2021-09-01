@@ -1,0 +1,80 @@
+{% extends "admin/change_form.html" %}
+{% load static %}
+
+{% block after_field_sets %}{{ block.super }}
+
+    <style type="text/css">
+        .variable_examples .variable_example_help {
+            margin-left: 0;
+            padding-left: 10px;
+        }
+        .variable_examples dt {
+            width: 30%;
+            display: inline-block;
+        }
+        .variable_examples dd {
+            width: 60%;
+            display: inline-block;
+        }
+    </style>
+
+    <script type="text/javascript" src="{% static "mailer/js/lodash.min.js" %}"></script>
+
+    <script type="text/javascript">
+        (function($) {
+            var lastContent = ''
+
+            function nl2p(content) {
+                return '<p>' + content.replace(/\n([ \t]*\n)+/g, '</p><p>')
+                 .replace('\n', '<br />') + '</p>';
+            }
+
+            function copyPlain2Html() {
+                var editor = CKEDITOR.instances['id_content_html']
+                if (editor.getData().trim() == lastContent.trim()) {
+                    var content = $('#id_content_plain').val();
+                    content = nl2p(content);
+                    editor.setData(content);
+                    setTimeout(function() {
+                        lastContent = editor.getData();
+                    } , 100);
+                }
+            }
+
+            $(document).ready(function() {
+                var cp_input = $('#id_content_plain');
+                cp_input.keyup(_.debounce(copyPlain2Html, 500, {'maxWait': 2000}));
+            });
+        })(django.jQuery);
+    </script>
+
+    <fieldset class="module aligned variable_examples">
+    <h1>Template variable examples</h1>
+    <p class="variable_example_help">You can copy and paste these examples into your templates and they will get automatically replaced when sending. You can also use Django template logic and filters.</p>
+    <h2>Subscription</h2>
+    <dl>
+        <dt>&#123;&#123; subscription.email &#125;&#125;</dt>
+        <dd>joe@example.com</dd>
+        <dt>&#123;&#123; subscription.created_at &#125;&#125;</dt>
+        <dd></dd>
+        <dt>&#123;&#123; subscription.ip &#125;&#125;</dt>
+        <dd>127.0.0.1</dd>
+        <dt>&#123;&#123; subscription.language &#125;&#125;</dt>
+        <dd>en-US</dd>
+        <dt>&#123;&#123; subscription.country &#125;&#125;</dt>
+        <dd>United States</dd>
+        <dt>&#123;&#123; subscription.region &#125;&#125;</dt>
+        <dd>Florida</dd>
+        <dt>&#123;&#123; subscription.city &#125;&#125;</dt>
+        <dd>Tampa (Westshore Estates South)</dd>
+        <dt>&#123;&#123; subscription.landing_page &#125;&#125;</dt>
+        <dd></dd>
+        <dt>&#123;&#123; subscription.source &#125;&#125;</dt>
+        <dd></dd>
+        <dt>&#123;&#123; subscription.medium &#125;&#125;</dt>
+        <dd></dd>
+        <dt>&#123;&#123; subscription.campaign &#125;&#125;</dt>
+        <dd></dd>
+    </dl>
+    </fieldset>
+{% endblock %}

@@ -202,7 +202,7 @@ img.right {
 .signup form input {
   font-size: 20px;
 }
-.signup form input[type='submit'] {
+input[type='submit'] {
   background: #2596ae;
   border-radius: 3px;
   padding: 10px 25px;
@@ -212,7 +212,7 @@ img.right {
   border: 0;
   cursor: pointer;
 }
-.signup form input[type='submit']:hover {
+input[type='submit']:hover {
   background: #52acbf;
 }
 .signup form input[type='email'] {

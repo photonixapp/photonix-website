@@ -1,0 +1,6 @@
+{{ body }}
+
+
+--
+Photonix Photo Manager
+https://photonix.org/
