@@ -35,6 +35,7 @@ Docker containers are commonly configured to run via envirnment varables. You wi
 | `REDIS_HOST`        | String        | `redis`    | Redis hostname, used for resource locking. |
 | `REDIS_PORT`        | Integer       | `6379`     | Redis port number. |
 | `REDIS_DB`          | Integer       | `0`        | Redis database number. |
+| `REDIS_PASSWORD`    | String        |            | Redis password (not used by default). |
 | `ALLOWED_HOSTS`     | String        | `*`        | Restricts access for Django backend to be accessed from just a certain hostname. |
 | `ADMIN_USERNAME`    | String        |            | Creates a username for the admin user on first run. |
 | `ADMIN_PASSWORD`    | String        |            | Sets password for the admin user on first run. If this is set but `ADMIN_USERNAME` is not, the username will be `admin`. |
