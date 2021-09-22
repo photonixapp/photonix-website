@@ -1,5 +1,5 @@
 https://github.com/damianmoore/matomo-monorail/releases/download/v0.1.9/matomo_monorail-0.1.9.tar.gz
-Django==3.0.7
+Django==3.1.13
 django-filer==1.7.0
 django-filter==2.2.0
 django-markdownify==0.8.0
