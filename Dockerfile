@@ -1,4 +1,4 @@
-FROM python:3.6.8-slim-stretch
+FROM python:3.9-slim-bullseye
 
 RUN apt-get update && \
     apt-get install -y \
@@ -6,7 +6,6 @@ RUN apt-get update && \
         libpq-dev \
         nginx-light \
         python3-dev \
-        supervisor \
         && \
         apt-get clean && \
             rm -rf /var/lib/apt/lists/* \
@@ -31,6 +30,7 @@ COPY manage.py /srv/manage.py
 COPY mkdocs.yml /srv/mkdocs.yml
 COPY .git /srv/.git
 COPY faqs /srv/faqs
+COPY sponsors /srv/sponsors
 
 ENV PYTHONPATH /srv
 

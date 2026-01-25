@@ -13,10 +13,10 @@ services:
       - ./docs:/srv/docs
       - ./docs-theme:/srv/docs-theme
       - ./faqs:/srv/faqs
-      - ./geoipdb.mmdb:/srv/geoipdb.mmdb
       - ./mailer:/srv/mailer
       - ./mailinglist:/srv/mailinglist
       - ./mkdocs.yml:/srv/mkdocs.yml
+      - ./sponsors:/srv/sponsors
       - ./photonix:/srv/photonix
       - ./project:/srv/project
       - ./static:/srv/static
@@ -29,10 +29,11 @@ services:
       - ./volumes/media:/srv/media
     environment:
       ENV: dev
+      GEOIP_API_KEY:
       POSTGRES_DB: photonix_website
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
-      POSTGRES_HOST: postgres
+      POSTGRES_HOST: photonix-website-postgres
       # MATOMO_BASE_URL: http://matomo/
       # MATOMO_SITE_ID: 1
       # MATOMO_TOKEN_AUTH: 38506f6771744c2a8e2398f513d0ccc0
@@ -41,10 +42,18 @@ services:
       EMAIL_PORT: 587
       EMAIL_HOST_USER: damian@epixstudios.co.uk
       EMAIL_HOST_PASSWORD: E5nFMJtxrZLvYneFzG
+      PATREON_CREATOR_ID: photonixapp
+      PATREON_CLIENT_ID: 07Hp_-oN2UOB6EobA0IXVwTUprWE9Z98tZPlYCeALOkVEeGAnF4gSAKQaVbRxfi5
+      PATREON_CLIENT_SECRET: UjdDjdnX_h-CiZeqV5hD41olurgV9ou4D3lxpbP5MOJiekqkMjW8Az6ypt0tuFn_
+      PATREON_ACCESS_TOKEN: yFq99ZJgl44soyfRk4qffPW3qvr6DwQ8fiCPHinlVvU
+      PATREON_REFRESH_TOKEN: k1J3cPsoFGUOb1n_EF0QQt-rwpl-e_eSGfoFSz1fLck
+      PATREON_REDIRECT_URL: http://localhost:8880/sponsors/oauth/patreon/redirect/
+      PATREON_CAMPAIGN_ID: 7196846
+      MATTERMOST_WEBHOOK_URL: https://mattermost.epixstudios.co.uk/hooks/njo8miyj1jf7zcgedn8nn5oa3o
 
   postgres:
     container_name: photonix-website-postgres
-    image: postgres:12.2-alpine
+    image: postgres:17.5
     ports:
       - '127.0.0.1:5432:5432'
     environment:

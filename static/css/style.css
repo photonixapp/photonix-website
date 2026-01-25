@@ -437,6 +437,49 @@ hr {
   opacity: 1;
 }
 
+.sponsors {
+  background: #292929;
+  margin-bottom: 5rem;
+  padding: 2rem 4rem 2rem;
+  text-align: center;
+  color: #ddd;
+}
+.sponsors > div {
+  max-width: 920px;
+  margin: 0 auto;
+}
+.sponsors ul {
+  padding: 0;
+  margin: 0;
+}
+.sponsors ul li.sponsor {
+  list-style: none;
+  display: inline-block;
+  margin: 1rem 1rem 0;
+}
+.sponsors .sponsor-image {
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  margin: 0 auto;
+  background: #555;
+}
+.sponsors .sponsor img {
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+}
+.sponsors h4 {
+  margin: 10px 0 10px 0;
+  font-size: 20px;
+  line-height: 1;
+}
+.sponsors h5 {
+  margin: 0 0 20px 0;
+  font-size: 14px;
+  line-height: 1;
+}
+
 .testimonials-container {
   display: flex;
   margin: 0 -10px;

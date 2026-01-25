@@ -20,7 +20,6 @@ By using a cloud provider that is reliable, a decent size, and manages their res
 - [Equinix’s Sustainability Map](https://sustainability.equinix.com/map-of-initiatives/)
 - [Ofgem’s Renewable Energy Guarantees Origin (REGO) Programme](https://www.ofgem.gov.uk/environmental-programmes/rego)
 
-
 ## Software (Our Product)
 
 The software that makes up Photonix uses resources while running. We understand that if we become a popular product running all over the world then this has an environmental impact that we are partially responsible for. We can’t control how people will use our software but we can do things to promote a healthy environment.
@@ -34,4 +33,8 @@ The software that makes up Photonix uses resources while running. We understand 
 
 We use some additional third party tools to run the project. Examples of this are [GitHub](https://github.com/) for code hosting and project management, [Travis](https://travis-ci.org/) for continuous integration testing and [Docker Hub](https://hub.docker.com/) for software deployment. We believe that because these are large services with multiple tenants and we use them for short periods at a time, this is more efficient than hosting our own alternatives.
 
-We'd be happy to hear if you have any more suggestions.
+We’d be happy to hear if you have any more suggestions.
+
+## Office Space
+
+The majority work carried out by the main developer is from a home office. This home is powered by 100% renewable energy supplied by [Octopus Energy](https://octopus.energy/) in the UK. A share of a wind farm co-operative was purchased through a [Ripple Energy](https://rippleenergy.com/) scheme which currently powers all household energy needs. Where co-working spaces are used, clean-energy supplied ones are preferred. Due to the open source and decentralised nature of the project we can’t enforce sustainable energy usage but do highly encourage it.

@@ -9,7 +9,7 @@ class PostList(FilterView):
     model = Post
     filterset_class = PostFilter
     queryset = Post.objects.filter(status='published').order_by('-created_at')
-    paginate_by = 10
+    paginate_by = 50
 
 
 class PostDetail(DetailView):
