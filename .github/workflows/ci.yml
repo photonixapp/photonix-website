@@ -3,7 +3,7 @@ name: Build, push and deploy photonix-website
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build-and-push:
