@@ -30,7 +30,7 @@ COPY manage.py /srv/manage.py
 COPY mkdocs.yml /srv/mkdocs.yml
 COPY .git /srv/.git
 COPY faqs /srv/faqs
-COPY sponsors /srv/sponsors
+# COPY sponsors /srv/sponsors
 
 ENV PYTHONPATH /srv
 
