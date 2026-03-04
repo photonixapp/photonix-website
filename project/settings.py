@@ -65,7 +65,7 @@ INSTALLED_APPS = [
     'utils',
     'faqs',
     'testimonials',
-    'sponsors',
+    # 'sponsors',
 ]
 
 MIDDLEWARE = [
