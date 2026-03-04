@@ -9,7 +9,7 @@ jobs:
   build-and-push:
     runs-on: ubuntu-latest
     outputs:
-      tags: ${{ steps.meta.outputs.tags }}
+      image_tag: sha-${{ github.sha }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -85,9 +85,9 @@ jobs:
 
       - name: Deploy
         run: |
-          DOCKER_TAG=$(echo "${{ needs.build-and-push.outputs.tags }}" | sed -n '2p' | cut -d':' -f2)
-          echo "DOCKER_TAG: $DOCKER_TAG"
-          kubectl set image deployment/photonix-website photonix-website=${{ steps.login-ecr.outputs.registry }}/${{ secrets.ECR_REPOSITORY }}:${DOCKER_TAG} -n photonix
+          IMAGE=${{ steps.login-ecr.outputs.registry }}/${{ secrets.ECR_REPOSITORY }}:${{ needs.build-and-push.outputs.image_tag }}
+          echo "Deploying image: $IMAGE"
+          kubectl set image deployment/photonix-website photonix-website=$IMAGE -n photonix
 
       - name: Wait for pod to start
         run: |
