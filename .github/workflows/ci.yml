@@ -8,8 +8,6 @@ on:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
-    outputs:
-      image_tag: sha-${{ github.sha }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -85,9 +83,7 @@ jobs:
 
       - name: Deploy
         run: |
-          IMAGE=${{ steps.login-ecr.outputs.registry }}/${{ secrets.ECR_REPOSITORY }}:${{ needs.build-and-push.outputs.image_tag }}
-          echo "Deploying image: $IMAGE"
-          kubectl set image deployment/photonix-website photonix-website=$IMAGE -n photonix
+          kubectl rollout restart deployment/photonix-website -n photonix
 
       - name: Wait for pod to start
         run: |
