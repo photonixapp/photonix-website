@@ -3,8 +3,10 @@ FROM python:3.9-slim-bullseye
 RUN apt-get update && \
     apt-get install -y \
         build-essential \
+        libcairo2-dev \
         libpq-dev \
         nginx-light \
+        pkg-config \
         python3-dev \
         && \
         apt-get clean && \
