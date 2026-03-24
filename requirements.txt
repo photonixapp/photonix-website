@@ -1,7 +1,7 @@
 https://github.com/damianmoore/matomo-monorail/releases/download/v0.1.9/matomo_monorail-0.1.9.tar.gz
 bleach==4.1.0
 Django==3.1.13
-django-filer==2.2.6
+django-filer==3.3.0
 django-polymorphic==3.1.0
 django-filter==2.4.0
 django-markdownify==0.8.0
