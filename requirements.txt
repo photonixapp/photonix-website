@@ -9,7 +9,7 @@ django-pagedown==2.0.3
 easy-thumbnails==2.8.5
 gunicorn==19.9.0
 patreon==0.5.0
-Pillow==11.1.0
+Pillow==12.1.1
 psycopg2-binary==2.8.4
 requests==2.20.0
 supervisor==4.3.0
