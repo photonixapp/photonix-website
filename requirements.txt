@@ -7,7 +7,7 @@ django-filter==2.4.0
 django-markdownify==0.8.0
 django-pagedown==2.0.3
 easy-thumbnails==2.8.5
-gunicorn==19.9.0
+gunicorn==22.0.0
 patreon==0.5.0
 Pillow==11.1.0
 psycopg2-binary==2.8.4
