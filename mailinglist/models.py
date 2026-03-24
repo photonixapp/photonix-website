@@ -1,9 +1,8 @@
 import os
-from pathlib import Path
 
 from django.db import models
 from django.utils import timezone
-import maxminddb
+import requests
 
 from utils.models import UUIDModel
 
@@ -30,15 +29,21 @@ class Subscription(UUIDModel):
             self.created_at = now
 
         if self.ip and not self.country:
-            try:
-                geoipreader = maxminddb.open_database(Path(os.path.dirname(__file__)) / '..' / 'geoipdb.mmdb')
-                record = geoipreader.get(self.ip)
-                if record:
-                    self.country = record.get('country', {}).get('names', {}).get('en', None)
-                    self.region = record.get('subdivisions', [{}])[0].get('names', {}).get('en', None)
-                    self.city = record.get('city', {}).get('names', {}).get('en', None)
-            except FileNotFoundError:
-                pass
+            api_key = os.environ.get('GEOIP_API_KEY')
+            if api_key:
+                try:
+                    response = requests.get(
+                        f'https://geoip.epixstudios.co.uk/{self.ip}',
+                        headers={'Authorization': f'Bearer {api_key}'},
+                        timeout=5
+                    )
+                    if response.status_code == 200:
+                        data = response.json()
+                        self.country = data.get('country')
+                        self.region = data.get('subdivision')
+                        self.city = data.get('city')
+                except requests.RequestException:
+                    pass
 
         self.updated_at = now
         super(Subscription, self).save()

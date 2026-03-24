@@ -5,5 +5,5 @@ then
   python /srv/manage.py runserver 0.0.0.0:8000
 else
   >&2 echo "Starting Gunicorn server as in prd mode"
-  cd /srv && gunicorn -b 0.0.0.0:8000 project.wsgi
+  cd /srv && gunicorn -b 0.0.0.0:8000 --workers 3 --timeout 120 project.wsgi
 fi
