@@ -6,6 +6,7 @@
     <title>{% block title %}Photonix Photo Manager{% endblock %}</title>
     <link rel="stylesheet" type="text/css" href="/static/css/style.css?{% version_date %}" />
     <link rel="shortcut icon" href="/static/images/favicon.png">
+    <link rel="canonical" href="{% block canonical_url %}https://photonix.org{{ request.path }}{% endblock %}" />
     <link rel="sitemap" href="/sitemap.xml" type="application/xml" />
     <link rel="manifest" href="/manifest.json" />
     <link href="https://fonts.googleapis.com/css?family=Nunito:300,600&display=swap" rel="stylesheet" />
@@ -22,7 +23,7 @@
     <meta property="og:site_name" content="Photonix Photo Manager" />
     <meta property="og:url" content="{% block og_url %}https://photonix.org/{% endblock %}" />
     <meta property="og:description" content="{% block og_description %}Photonix is a photo management application that solves a lot of problems. Once set up it will ingest all the photos in your collection and start building up an image database of everything you could want to search and filter by. It makes your entire collection available to you, whichever device you’re using — as long as you can get to a web browser.{% endblock %}" />
-    <meta property="og:type" content="product" />
+    <meta property="og:type" content="{% block og_type %}website{% endblock %}" />
     <meta property="og:image" content="{% block og_image %}https://photonix.org/static/images/devices.jpg{% endblock %}" />
     <meta property="og:locale" content="en_US" />
     <script type='text/javascript' src='/static/js/jquery.min.js'></script>
@@ -123,7 +124,7 @@
           </div>
           <div class="link">
             <a href="https://www.instagram.com/photonixapp/">
-              <img src="/static/images/instagram.svg" class="instagram" alt="Instragram logo" title="Follow updates on Instagram" />
+              <img src="/static/images/instagram.svg" class="instagram" alt="Instagram logo" title="Follow updates on Instagram" />
             </a>
           </div>
           <div class="link">
@@ -167,7 +168,7 @@
             if (repo.name == 'photonix') {
               var badge = document.getElementsByClassName('badge')[0]
               badge.innerHTML = roundStargazers(repo.stargazers_count)
-              badge.title = repo.stargazers_count
+              badge.title = repo.stargazers_count.toLocaleString() + ' GitHub stars'
               return true
             }
             return false

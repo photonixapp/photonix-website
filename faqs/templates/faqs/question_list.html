@@ -1,9 +1,28 @@
 {% extends "base.html" %}
-{% load thumbnail testimonials %}
+{% load thumbnail testimonials markdownify markdown_extensions %}
 
 {% block title %}Photonix Frequently Asked Questions{% endblock %}
 {% block twitter_title %}Photonix Frequently Asked Questions{% endblock %}
 {% block og_title %}Photonix Frequently Asked Questions{% endblock %}
+
+{% block extrahead %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [{% for question_obj in question_list %}{% if not forloop.first %},{% endif %}
+      {
+        "@type": "Question",
+        "name": "{{ question_obj.title|escapejs }}",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "{{ question_obj.answer|markdownify|striptags|escapejs }}"
+        }
+      }{% endfor %}
+    ]
+  }
+  </script>
+{% endblock %}
 
 {% block content %}
   <header>
