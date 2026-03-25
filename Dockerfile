@@ -1,4 +1,4 @@
-FROM python:3.9-slim-bullseye
+FROM python:3.13-slim-trixie
 
 RUN apt-get update && \
     apt-get install -y \
@@ -16,7 +16,8 @@ RUN apt-get update && \
 
 WORKDIR /srv
 COPY requirements.txt /srv/requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir setuptools && \
+    pip install --no-cache-dir -r requirements.txt
 
 COPY blog /srv/blog
 COPY docs /srv/docs
