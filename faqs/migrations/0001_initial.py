@@ -5,11 +5,9 @@ import uuid
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
@@ -19,7 +17,10 @@ class Migration(migrations.Migration):
                 ('created_at', models.DateTimeField(blank=True, db_index=True)),
                 ('updated_at', models.DateTimeField(blank=True)),
                 ('title', models.CharField(help_text='Question asked', max_length=200, verbose_name='Question')),
-                ('answer', models.TextField(blank=True, help_text='Answer to the question', null=True, verbose_name='Answer')),
+                (
+                    'answer',
+                    models.TextField(blank=True, help_text='Answer to the question', null=True, verbose_name='Answer'),
+                ),
                 ('slug', models.SlugField(blank=True, max_length=100, null=True)),
             ],
             options={

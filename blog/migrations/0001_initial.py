@@ -8,7 +8,6 @@ import uuid
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -24,9 +23,23 @@ class Migration(migrations.Migration):
                 ('updated_at', models.DateTimeField(blank=True)),
                 ('title', models.CharField(max_length=50)),
                 ('slug', models.SlugField()),
-                ('status', models.CharField(choices=[('draft', 'Draft'), ('published', 'Published')], default='draft', max_length=20)),
+                (
+                    'status',
+                    models.CharField(
+                        choices=[('draft', 'Draft'), ('published', 'Published')], default='draft', max_length=20
+                    ),
+                ),
                 ('content', models.TextField()),
-                ('photo', filer.fields.image.FilerImageField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='post', to=settings.FILER_IMAGE_MODEL)),
+                (
+                    'photo',
+                    filer.fields.image.FilerImageField(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name='post',
+                        to=settings.FILER_IMAGE_MODEL,
+                    ),
+                ),
             ],
             options={
                 'abstract': False,

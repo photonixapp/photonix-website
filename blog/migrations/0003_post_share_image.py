@@ -7,7 +7,6 @@ import filer.fields.image
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         migrations.swappable_dependency(settings.FILER_IMAGE_MODEL),
         ('blog', '0002_post_non_visible_content'),
@@ -17,6 +16,12 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='post',
             name='share_image',
-            field=filer.fields.image.FilerImageField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to=settings.FILER_IMAGE_MODEL),
+            field=filer.fields.image.FilerImageField(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name='+',
+                to=settings.FILER_IMAGE_MODEL,
+            ),
         ),
     ]

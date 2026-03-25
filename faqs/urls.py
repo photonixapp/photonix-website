@@ -1,7 +1,6 @@
-
 from django.urls import path
-from faqs.views import QuestionList, QuestionDetail
 
+from faqs.views import QuestionDetail, QuestionList
 
 urlpatterns = [
     path('', QuestionList.as_view(), name='faqs-list'),

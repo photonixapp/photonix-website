@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('blog', '0001_initial'),
     ]
@@ -13,6 +12,9 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='post',
             name='non_visible_content',
-            field=models.TextField(blank=True, help_text='For including JS and similar at bottom of the page. Will not be run through Markdown processor.'),
+            field=models.TextField(
+                blank=True,
+                help_text='For including JS and similar at bottom of the page. Will not be run through Markdown processor.',
+            ),
         ),
     ]

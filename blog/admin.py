@@ -2,8 +2,9 @@ from django.contrib import admin
 from django.db import models
 from pagedown.widgets import AdminPagedownWidget
 
-from .models import Post
 from utils.admin import VersionedAdmin
+
+from .models import Post
 
 
 class PostAdmin(VersionedAdmin):
@@ -18,9 +19,12 @@ class PostAdmin(VersionedAdmin):
     }
 
     fieldsets = (
-        (None, {
-            'fields': ('title', 'slug', 'status', 'content', 'non_visible_content', 'photo', 'share_image'),
-        }),
+        (
+            None,
+            {
+                'fields': ('title', 'slug', 'status', 'content', 'non_visible_content', 'photo', 'share_image'),
+            },
+        ),
     ) + VersionedAdmin.fieldsets
 
 

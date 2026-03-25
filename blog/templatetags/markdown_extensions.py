@@ -1,12 +1,11 @@
+import re
 from html.parser import HTMLParser
 from io import StringIO
-import re
 
 from django import template
 from django.template.defaultfilters import stringfilter
 
 from ..utils import gallery_dir, gallery_image
-
 
 register = template.Library()
 
@@ -15,7 +14,7 @@ register = template.Library()
 @stringfilter
 def format_extensions(value):
     contentElements = []
-    for item in re.split('(\[!gallery-dir [\d]+ [\S]+\])', value):
+    for item in re.split(r'(\[!gallery-dir [\d]+ [\S]+\])', value):
         if item.startswith('[!gallery-dir '):
             matches = re.match(r'\[!gallery-dir ([\d]+) ([\S]+)\]', item)
             cols = matches.group(1)
@@ -26,7 +25,7 @@ def format_extensions(value):
 
     value = ''.join(contentElements)
     contentElements = []
-    for item in re.split('(\[!gallery-image [\S]+\])', value):
+    for item in re.split(r'(\[!gallery-image [\S]+\])', value):
         if item.startswith('[!gallery-image '):
             matches = re.match(r'\[!gallery-image ([\S]+)\]', item)
             path = matches.group(1)
@@ -43,7 +42,7 @@ class MLStripper(HTMLParser):
         super().__init__()
         self.reset()
         self.strict = False
-        self.convert_charrefs= True
+        self.convert_charrefs = True
         self.text = StringIO()
 
     def handle_data(self, d):

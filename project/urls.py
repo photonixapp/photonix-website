@@ -5,17 +5,13 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView
 from matomo_monorail.views import proxy_js, proxy_php
 
-from faqs.sitemaps import QuestionSitemap
 from blog.sitemaps import BlogSitemap
+from faqs.sitemaps import QuestionSitemap
+
 from .sitemaps import StaticViewSitemap
 from .views import ip, landing
 
-
-sitemaps = {
-    'static': StaticViewSitemap,
-    'blog': BlogSitemap,
-    'faqs': QuestionSitemap
-}
+sitemaps = {'static': StaticViewSitemap, 'blog': BlogSitemap, 'faqs': QuestionSitemap}
 
 urlpatterns = [
     path('matomo.js', proxy_js),

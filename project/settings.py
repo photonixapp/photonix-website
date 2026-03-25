@@ -108,10 +108,10 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE':   'django.db.backends.postgresql',
-        'HOST':     os.environ.get('POSTGRES_HOST', '127.0.0.1'),
-        'NAME':     os.environ.get('POSTGRES_DB', 'photonix_website'),
-        'USER':     os.environ.get('POSTGRES_USER', 'postgres'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'HOST': os.environ.get('POSTGRES_HOST', '127.0.0.1'),
+        'NAME': os.environ.get('POSTGRES_DB', 'photonix_website'),
+        'USER': os.environ.get('POSTGRES_USER', 'postgres'),
         'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'password'),
     }
 }

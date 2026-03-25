@@ -1,8 +1,7 @@
 from django.urls import path
 
 from .feeds import BlogFeed
-from .views import PostList, PostDetail
-
+from .views import PostDetail, PostList
 
 urlpatterns = [
     path('', PostList.as_view(), name='blog-post-list'),

@@ -1,8 +1,6 @@
-import json
-
-from easy_thumbnails.files import get_thumbnailer
 import filer
-from filer.models import Image, Folder
+from easy_thumbnails.files import get_thumbnailer
+from filer.models import Folder
 
 
 def get_thumbnail(obj, width=492, height=1000, crop=False):
@@ -16,7 +14,6 @@ def get_thumbnail(obj, width=492, height=1000, crop=False):
 
 
 def gallery_dir(cols, path):
-    files = []
     width = (1120 / int(cols)) * 2
     try:
         parent = None
@@ -25,9 +22,7 @@ def gallery_dir(cols, path):
 
         images = []
         for file in sorted(parent.files):
-            images.append(
-                '<a href="{}"><img src="{}" /></a>'.format(file.url, get_thumbnail(file, width, 999999))
-            )
+            images.append(f'<a href="{file.url}"><img src="{get_thumbnail(file, width, 999999)}" /></a>')
     except filer.models.foldermodels.Folder.DoesNotExist:
         pass
     return '<ul class="gallery gallery-cols gallery-{}-cols">{}</ul>'.format(cols, ''.join(images))
@@ -39,4 +34,4 @@ def gallery_image(path):
     for component in path.split('/')[:-1]:
         parent = Folder.objects.get(name=component, parent=parent)
     file = parent.files.get(original_filename=path.split('/')[-1])
-    return '<a href="{}"><img src="{}" class="gallery-single-image" /></a>'.format(file.url, get_thumbnail(file, width, 999999))
+    return f'<a href="{file.url}"><img src="{get_thumbnail(file, width, 999999)}" class="gallery-single-image" /></a>'

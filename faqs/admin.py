@@ -20,9 +20,12 @@ class QuestionAdmin(VersionedAdmin):
     }
 
     fieldsets = (
-        (None, {
-            'fields': ('title', 'answer', 'slug'),
-        }),
+        (
+            None,
+            {
+                'fields': ('title', 'answer', 'slug'),
+            },
+        ),
     ) + VersionedAdmin.fieldsets
 
     def answer_short(self, obj):

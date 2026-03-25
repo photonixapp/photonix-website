@@ -1,9 +1,9 @@
-from random import random
 import re
+from random import random
 from time import sleep
 
 from django.db import IntegrityError
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from matomo_monorail.utils import get_client_ip
@@ -25,7 +25,7 @@ def signup(request):
     regex = r'\/landing\/(\S+)\/'
     try:
         landing_page = re.search(regex, referer).group(1)
-    except:
+    except (AttributeError, IndexError):
         pass
 
     if not email:
@@ -35,20 +35,30 @@ def signup(request):
     language = request.META['HTTP_ACCEPT_LANGUAGE'].split(',')[0]
 
     try:
-        subscription = Subscription(email=email, ip=ip, language=language, source=source, medium=medium, campaign=campaign, landing_page=landing_page)
+        subscription = Subscription(
+            email=email,
+            ip=ip,
+            language=language,
+            source=source,
+            medium=medium,
+            campaign=campaign,
+            landing_page=landing_page,
+        )
         subscription.save()
         total_subscribers = Subscription.objects.count()
 
         notify_mattermost(
             text='🎉 New Photonix mailing list subscription',
-            attachments=[{
-                'title': 'User details',
-                "color": "#36a64f",
-                'fields': [
-                    {'title': 'Email', 'value': email, 'short': True},
-                    {'title': 'Total subscribers', 'value': f"{total_subscribers:,}", 'short': True},
-                ],
-            }]
+            attachments=[
+                {
+                    'title': 'User details',
+                    'color': '#36a64f',
+                    'fields': [
+                        {'title': 'Email', 'value': email, 'short': True},
+                        {'title': 'Total subscribers', 'value': f'{total_subscribers:,}', 'short': True},
+                    ],
+                }
+            ],
         )
 
     except IntegrityError:
@@ -56,9 +66,6 @@ def signup(request):
 
     sleep((random() / 2) + 0.5)  # Mitigate against timing-based attack of determining if email address is already in DB
 
-    context = {
-        'email': email
-    }
     return HttpResponseRedirect('/mailinglist/confirmation')
 
 
