@@ -29,7 +29,7 @@ class Post(UUIDModel, VersionedModel):
 
 
 class PostFilter(django_filters.FilterSet):
-    slug = django_filters.CharFilter(lookup_type='contains')
+    slug = django_filters.CharFilter(lookup_expr='contains')
 
     class Meta:
         model = Post

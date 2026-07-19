@@ -1,9 +1,6 @@
-FROM python:3.9-slim-bullseye
+FROM python:3.13-slim-trixie
 
-# bullseye left Debian's main mirrors when its LTS ended; the packages
-# now live on archive.debian.org only.
-RUN sed -i 's|deb.debian.org/debian|archive.debian.org/debian|; s|security.debian.org/debian-security|archive.debian.org/debian-security|; /bullseye-updates/d' /etc/apt/sources.list && \
-    apt-get update && \
+RUN apt-get update && \
     apt-get install -y \
         build-essential \
         libcairo2-dev \
