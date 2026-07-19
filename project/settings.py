@@ -145,9 +145,9 @@ TIME_ZONE = 'Europe/London'
 
 USE_I18N = True
 
-USE_L10N = True
-
 USE_TZ = True
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 
 # Static files (CSS, JavaScript, Images)
@@ -164,22 +164,26 @@ MATOMO_TOKEN_AUTH = os.environ.get('MATOMO_TOKEN_AUTH')
 
 THUMBNAIL_HIGH_RESOLUTION = True
 
-MARKDOWNIFY_WHITELIST_TAGS = [
-    'a',
-    'abbr',
-    'acronym',
-    'b',
-    'blockquote',
-    'em',
-    'i',
-    'li',
-    'ol',
-    'p',
-    'strong',
-    'ul',
-    'h2',
-    'h3',
-    'h4',
-    'h5',
-]
-MARKDOWNIFY_BLEACH = False
+MARKDOWNIFY = {
+    'default': {
+        'BLEACH': False,
+        'WHITELIST_TAGS': [
+            'a',
+            'abbr',
+            'acronym',
+            'b',
+            'blockquote',
+            'em',
+            'i',
+            'li',
+            'ol',
+            'p',
+            'strong',
+            'ul',
+            'h2',
+            'h3',
+            'h4',
+            'h5',
+        ],
+    },
+}
