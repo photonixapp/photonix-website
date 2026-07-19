@@ -5,7 +5,9 @@ You shouldn't need to worry about this if you are just building production image
 Several Python packages are compiled (C extensions etc.) for performance reasons. Usually this is transparent to a developer installing via something like *pip* but there are a couple of packages where we had to put more effort in to building. The Python packages we build are uploaded to our [own PyPI server](https://pypi.epixstudios.co.uk/) and this gets searched when the main Docker images are built. There are often binary wheel packages missing from the [Official Python PyPI server](https://pypi.org/) especially for the ARM architectures so our PyPI server acts as a cache to speed up the main Docker builds.
 
 
-## Building Tensorflow
+## Building Tensorflow (historical)
+
+**As of the 2026 ML overhaul, Photonix no longer depends on TensorFlow** — all image analysis runs on [ONNX Runtime](https://onnxruntime.ai/), which publishes official wheels for amd64 and arm64, so there is nothing to compile. The notes below are kept for the record from the TensorFlow era (2019-2026), when we compiled our own builds via [tensorflow-builder](https://github.com/photonixapp/tensorflow-builder/) for maximum CPU compatibility.
 
 Tensorflow is the Machine Learning library we use for our more complex image analysis features. It allows us to create algorithms to do things like detecting and recognising objects in a photo or identifying a style.
 

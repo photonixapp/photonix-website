@@ -58,3 +58,17 @@ You can add extra users and libraries but this needs to be done on the command-l
 
     docker-compose run photonix python photonix/manage.py createsuperuser --username USERNAME --email example@example.com
     docker-compose run photonix python photonix/manage.py create_library USERNAME "My Library"
+
+
+## Running image analysis in a separate container (optional)
+
+By default the main `photonix` container does everything, including image analysis. If analysis is competing with serving your photos — or you'd like it to run on a beefier machine — you can move all of it into the dedicated `photonixapp/photonix-ml` image, built from the same codebase.
+
+In your `docker-compose.yml`:
+
+1. Add `CLASSIFICATION_DISABLED: 1` to the main `photonix` service's `environment` section. It will then run no analysis workers at all.
+2. Add a `photonix-ml` service using the `photonixapp/photonix-ml:latest` image, with the same Postgres/Redis environment variables and the same `/data` volume mounts as the main service. The example compose file contains a ready-made commented-out block for this.
+
+The ML container processes the shared analysis queue directly, so it needs network access to the same Postgres and Redis and a shared mount of the photo and model volumes (e.g. over NFS if it runs on a different machine). It waits for the main container to apply database migrations before starting, so start-up order doesn't matter.
+
+Semantic search queries are still answered by the main container (encoding your search text is lightweight); only the per-photo analysis moves to the sidecar.

@@ -2,6 +2,8 @@
 
 This aims to detail the technical implementation of the image analysis and AI models included in Photonix.
 
+As of the 2026 ML overhaul, every neural model runs on [ONNX Runtime](https://onnxruntime.ai/) rather than TensorFlow. This cut the installed image size by over a gigabyte, reduced per-classifier memory several-fold and sped up analysis by 1-2 orders of magnitude (details per model below). Before inference, large photos are downscaled so their longest edge is 1024 pixels (configurable via `CLASSIFIER_MAX_INFERENCE_SIZE`) — detection outputs are stored as relative coordinates so nothing downstream changes.
+
 
 ## Color Analysis
 
@@ -25,7 +27,9 @@ The aim of this model is to extract GPS coordinates from an image and return two
 We provide two data sources so that all processing can be done locally and quickly — no APIs need to be called. The data sources are:
 
 - [World Borders Dataset from thematicmapping.org](http://thematicmapping.org/downloads/world_borders.php) (Creative Commons Attribution-Share Alike License). This contains a [shapefile](https://en.wikipedia.org/wiki/Shapefile) of all the countries.
-- [GeoNames Top 1000 cities](http://download.geonames.org/export/dump/) (Creative Commons Attribution 4.0 International License). This contains latitudes and longitudes for the 1000 most populated cities in the world.
+- [GeoNames cities1000](http://download.geonames.org/export/dump/) (Creative Commons Attribution 4.0 International License). This contains latitudes, longitudes and populations for all towns and cities in the world with a population over 1000.
+
+Since 2026 the GeoNames data ships as `cities.bin` — a compact binary built offline by [`scripts/build_location_cities.py`](https://github.com/photonixapp/photonix/blob/master/scripts/build_location_cities.py) containing only the columns we use (name, coordinates, country code, population). This shrank the download from 22 MB to 4.3 MB (1.6 MB compressed) and the in-memory representation is numpy arrays, so the per-photo city lookup is fully vectorised. Outputs were verified identical to the old TSV path across a global grid sweep before the switch.
 
 ### Country
 
@@ -35,48 +39,44 @@ One notable point is that the country polygons are not particularly detailed. Cu
 
 ### City
 
-This is much simpler than the calculation for country. We loop over all cities in our list and calculate the distance between it and our photo's coordinates using the [`haversine`](https://en.wikipedia.org/wiki/Haversine_formula) function. This is fairly simplistic as it assumes a spherical world and doesn't account for terrain but is good enough (and fast enough) for our use case. We exclude any cities that have a distance over 10km and return the nearest one (if any).
+This is much simpler than the calculation for country. We calculate the distance between every city and our photo's coordinates in one vectorised numpy pass using the [`haversine`](https://en.wikipedia.org/wiki/Haversine_formula) formula. This is fairly simplistic as it assumes a spherical world and doesn't account for terrain but is good enough (and fast enough) for our use case. We exclude any cities that have a distance over 10km and return the nearest one (if any).
 
 
 ## Style Classification
 
-Details coming soon.
+A small MobileNet-based classifier retrained on a hand-curated dataset of photographic styles (macro, serene, etc.) — the training scripts live at [`photonix/classifiers/style/`](https://github.com/photonixapp/photonix/tree/master/photonix/classifiers/style). Images are resized to 224 × 224 and normalised before inference. The model was converted from its original TensorFlow frozen graph to ONNX (17 MB, fp32) with verified output parity; a tag is only applied when a style scores above 0.66.
 
 ## Object Recognition
 
-Details coming soon.
+We use an SSD MobileNet v2 detector trained on [Open Images V4](https://storage.googleapis.com/openimages/web/factsfigures_v4.html), which gives us a rich vocabulary of ~600 everyday labels ("Sunglasses", "Wine glass"…) plus bounding boxes, which the UI shows as hoverable regions on the photo.
+
+Originally this ran as a TensorFlow frozen graph. During the ONNX migration we found the graph's embedded control-flow NMS (non-maximum suppression) made ONNX Runtime take about a minute to initialise the session, so the shipped model is a backbone-only conversion: the network outputs raw box encodings and class logits, and box decoding + NMS run as vectorised numpy in [`photonix/classifiers/object/model.py`](https://github.com/photonixapp/photonix/blob/master/photonix/classifiers/object/model.py). Detections are byte-identical to the original graph, the session now initialises in ~0.2 s, and a photo is analysed in ~0.1 s on a desktop CPU (vs several seconds before the migration).
 
 ## Face Detection and Recognition
 
-This model was completed in June 2021. There are a few different steps to the process. Facial recognition is different from our other types of analysis as it only becomes useful if the user can label the people they know. Because of this, part of the model is automatically re-trained to apply the user's own face labels.
+The original pipeline was completed in June 2021 (MTCNN + FaceNet on TensorFlow) and was replaced in 2026 with InsightFace's SCRFD detector and ArcFace embeddings on ONNX Runtime — shrinking the download from 91 MB to 16 MB and cutting analysis time and memory by an order of magnitude. There are a few different steps to the process. Facial recognition is different from our other types of analysis as it only becomes useful if the user can label the people they know. Because of this, part of the model is automatically re-trained to apply the user's own face labels.
 
 Papers With Code provides [benchmark comparisons of algorithms](https://paperswithcode.com/area/computer-vision/facial-recognition-and-modelling) for each step (and more).
 
 ### Face Detection
 
-We use a Convolutional Neural Network (CNN) called "Multi-task Cascaded Convolutional Network" (MTCNN) which is specialised in identifying faces in photos and features such as eyes, nose and mouth. You can find more details in the paper [Joint Face Detection and Alignment using Multi-task Cascaded Convolutional Networks](https://arxiv.org/pdf/1604.02878.pdf) written by Zhang, K et al. (2016) [ZHANG2016]. You can also see some examples images of what's detected at [the author's site](https://kpzhang93.github.io/SPL/index.html).
-
-We use a modified version of a Python package called [mtcnn](https://github.com/ipazc/mtcnn) by Iván de Paz Centeno. This implementation suited us as it was based around Keras and the Tensorflow framework. It also included a pre-trained weights file which we use out-of-the box. Our modifications were to replace the use of OpenCV with Pillow for image scaling operations. This saved space as we already already had Pillow installed for other areas of the application.
+We use [SCRFD](https://arxiv.org/abs/2105.04714) (the 500M-FLOPs variant from the [InsightFace](https://github.com/deepinsight/insightface) project), a modern anchor-free face detector that runs as a 2.5 MB ONNX model. It substantially out-performs the MTCNN detector we used from 2021-2026 — particularly on small, rotated and partially occluded faces — while being over an order of magnitude faster. Images are letterboxed into a 640 × 640 input; the decoded boxes and five facial keypoints (eyes, nose, mouth corners) are mapped back to full-resolution pixel space.
 
 The bounding box output of running this model against photos is used to create location-specific tags in the database. These tags are of unknown people at this stage but it's still useful to tag the information in the database at this step.
 
 ### Face Alignment / Transformation and Cropping
 
-Because faces can be oriented and pointing in different directions we want to normalise them as much as possible. We apply skew and rotate transformations to face images to align all the eyes, nose and mouths consistently. The code we use for this step comes from the [Deepface](https://github.com/serengil/deepface/) library by Sefik Ilkin Serengil (not to be confused with Facebook's DeepFace neural network architecture from 2014).
+Because faces can be oriented and pointing in different directions we want to normalise them as much as possible. Using the five keypoints from the detector, a similarity transform (the [Umeyama algorithm](https://en.wikipedia.org/wiki/Kabsch_algorithm)) warps each face onto ArcFace's canonical 112 × 112 template so eyes, nose and mouth land in consistent positions.
 
 ### Feature Extraction / Embedding / Face Fingerprinting / Faceprinting
 
-Several Deep Neural Networks (DNNs) exist which can generate a multi-dimensional representation of each face. FaceNet is one of the more famous examples. Papers With Code provides a [list of models sorted by accuracy](https://paperswithcode.com/sota/face-verification-on-labeled-faces-in-the).
-
-This is the model we chose to use as it was the best performing implementation included in the [Deepface](https://github.com/serengil/deepface/) library. We can compare it to others in future if they are noticeably better but FaceNet is quite performant, battle tested and produces output embeddings of a reasonable size. It is assumed that Google Photos is currently using FaceNet.
-
-When provided with a photo of a face, the neural network outputs an embedding vector (array) of 128 floating point values. You can think of these as features of the face such as width of mouth and together they make up a kind of fingerprint.
+Aligned faces are embedded with a MobileFaceNet recognition network trained with the [ArcFace](https://arxiv.org/abs/1801.07698) loss on the WebFace600K dataset (the `w600k_mbf` model from InsightFace, 13.6 MB ONNX). It outputs a 512-dimensional embedding which we L2-normalise. You can think of the dimensions as features of the face, and together they make up a kind of fingerprint. This replaced the 128-dimensional FaceNet embeddings used previously — when upgrading, Photonix automatically re-analyses previously scanned faces (existing person names are preserved by matching bounding-box positions) via the housekeeping job.
 
 The embedding of a face image only needs to be computed once and then it gets saved against the face tag in the database, ready for the next step.
 
 ### Similarity Calculation / Clustering / Classification
 
-The face embeddings (or fingerprints) have been generated and saved but no two photos of the same face will match exactly. There are always slight variations caused by things like lighting, orientation, emotion and hair. We can however calculate how similar one embedding is to another using a distance formula. The recommended formula for FaceNet is the [Euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance) which can compare all 128 dimensions of our embedding and give us a single number as a result.
+The face embeddings (or fingerprints) have been generated and saved but no two photos of the same face will match exactly. There are always slight variations caused by things like lighting, orientation, emotion and hair. We can however calculate how similar one embedding is to another using a distance formula. The recommended formula for FaceNet is the [Euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance) which can compare all 512 dimensions of our embedding and give us a single number as a result.
 
 A threshold is decided upon and if the Euclidean distance of two face embeddings is below this value then we assume the photos to be of the same person.
 
@@ -91,3 +91,14 @@ An interesting point to note is that similar faces can be grouped together even 
 We are slightly cautious while we are grouping faces together as it is much easier for a user to merge two groups that are actually the same rather than having to remove faces from a group.
 
 Our user interface shows bounding boxes for faces and allows quick approval, rejection and editing of automatic face tags.
+
+
+## Semantic Search (CLIP)
+
+Added in 2026, this is the seventh analyzer and powers the "Natural language" search mode — you describe what you're looking for ("dog on a beach at sunset") and get photos ranked by how well they match. It is opt-in per library because the models are the largest download in the system (~340 MB).
+
+We use OpenAI's [CLIP](https://openai.com/research/clip) ViT-B/32, which embeds images and text into the same 512-dimensional space. The image encoder runs int8-quantized (89 MB, verified to preserve retrieval quality) and embeds each photo once at import time (~20 ms per photo on a desktop CPU). The text encoder stays at full precision (254 MB) since it only runs once per search query — our testing showed quantizing it measurably degraded ranking quality. Text is tokenized with a vendored pure-Python implementation of CLIP's BPE tokenizer.
+
+Photo embeddings are stored in the database and indexed per-library into an [Annoy](https://github.com/spotify/annoy) approximate-nearest-neighbour index (the same library the face recognition uses), refreshed every few minutes. A search encodes the query text, pulls the top matches from the index, brute-force-scans any embeddings newer than the index, and returns photos ordered by cosine similarity.
+
+The CLIP weights are MIT-licensed (via [immich-app's ONNX exports](https://huggingface.co/immich-app/ViT-B-32__openai)).

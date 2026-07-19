@@ -6,17 +6,24 @@ In the user interface you can enable and disable individual types of image analy
 
 You can turn these on or off at any time. Newly imported photos still get queued up when turned off so will be analysed when/if you turn it back on.
 
+Semantic search ("Natural language" search mode, powered by CLIP) is the one analysis type that is off by default — it involves the largest model download (~340 MB) so you opt in per library from Settings or during onboarding.
+
 ### Benchmarks
 
-Here are some benchmarks to help determine impact of each type of analysis. These are average times measured on a Raspberry Pi 4 for a single photo, single worker.
+The 2026 migration to ONNX Runtime made analysis dramatically cheaper than earlier releases. Average per-photo times on an 8-core x86 desktop CPU (thread caps at their defaults), measured over a mixed set of 6-16 megapixel photos:
 
-| Analysis | Average time (seconds) |
-| -------- | ---------------------: |
-| Color    |                  2.083 |
-| Style    |                  2.240 |
-| Location |                  3.707 |
-| Face     |                 47.464 |
-| Object   |                 52.796 |
+| Analysis | Average time (seconds) | Peak process RAM |
+| -------- | ---------------------: | ---------------: |
+| Color    |                   0.08 |           205 MB |
+| Style    |                   0.05 |           295 MB |
+| Location |                 < 0.01 |            ~50 MB |
+| Face     |                   0.08 |           325 MB |
+| Object   |                   0.07 |           399 MB |
+| Semantic (CLIP) |            0.02 |           350 MB |
+
+For comparison, the TensorFlow stack these replaced needed several seconds per photo for object and face analysis (75× and 26× slower respectively) and up to 4 GB of RAM for the object detector. Raspberry Pi timings will be proportionally slower than the desktop numbers above but benefit from the same speedups.
+
+If image analysis is still too heavy for the machine serving your photos, it can be moved wholly into a separate `photonix-ml` container, optionally on a different machine — see [Installing](installing.md).
 
 ## Environment variables
 
@@ -42,3 +49,9 @@ Docker containers are commonly configured to run via envirnment varables. You wi
 | `DJANGO_SECRET_KEY` | String        | random     | Sets value for Django to use as a [secret key](https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-SECRET_KEY) (sessions, hashing, signing etc.). By default we automatically generate a cryptographically secure key on first run and store it in Redis for future. |
 | `LOG_LEVEL`         | `DEBUG`, `INFO`, `WARNING`, `ERROR`, `CRITICAL` | `INFO`     | Determines what level of logging to output to terminal. |
 | `DJANGO_LOG_LEVEL`  | `DEBUG`, `INFO`, `WARNING`, `ERROR`, `CRITICAL` | `WARNING`  | Determines what level of Django logging to output to terminal. |
+| `CLASSIFICATION_DISABLED` | `0`, `1` | `0`   | When `1`, this container runs no image-analysis workers — for deployments running classification in a separate `photonix-ml` container (see [Installing](installing.md)). |
+| `CLASSIFIER_MAX_INFERENCE_SIZE` | Integer | `1024` | Longest edge (pixels) images are downscaled to before object/face analysis. `0` runs on full-resolution originals (much slower, rarely better). |
+| `CLASSIFIER_INTRA_OP_THREADS` | Integer | `2`  | CPU threads each analysis model may use for a single operation. Keeps the six analysis workers from saturating every core; `0` leaves the runtime default. |
+| `CLASSIFIER_INTER_OP_THREADS` | Integer | `2`  | CPU threads each analysis model may use across independent operations. `0` leaves the runtime default. |
+| `CLASSIFIER_IDLE_TIMEOUT` | Integer (seconds) | `300` | How long an analysis model stays loaded in memory after its last use before being unloaded. |
+| `CLASSIFIER_MEMORY_BUFFER_MB` | Integer | `500` | Free-memory safety buffer that must remain available before an analysis model is allowed to load. |
