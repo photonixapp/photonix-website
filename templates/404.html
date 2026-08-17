@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Page Not Found — Photonix Photo Manager{% endblock %}
+{% block meta_description %}Sorry, the page you were looking for could not be found.{% endblock %}
+
+{% block content %}
+
+<header>
+  <h1>Page not found</h1>
+</header>
+
+<article>
+  <p>Sorry, we couldn’t find the page you were looking for. It may have been moved or may no longer exist.</p>
+  <p>You could go back to the <a href="/">homepage</a>, browse the <a href="/docs/">documentation</a>, read the <a href="{% url 'blog-post-list' %}">blog</a> or check the <a href="{% url 'faqs-list' %}">FAQs</a>.</p>
+</article>
+{% endblock %}

@@ -28,6 +28,11 @@ DEBUG = os.environ.get('ENV', 'prd') != 'prd'
 
 ALLOWED_HOSTS = ['*']
 
+# Without SITE_ID the sites framework resolves the current Site from the
+# request's Host header, and the redirects middleware then raises
+# Site.DoesNotExist on every 404 for any host missing from django_site.
+SITE_ID = 1
+
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 if 'DJANGO_ADMINS' in os.environ:
