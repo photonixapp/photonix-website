@@ -1,4 +1,4 @@
-from django.http import HttpResponse, Http404
+from django.http import Http404, HttpResponse
 from django.shortcuts import render
 from django.template.exceptions import TemplateDoesNotExist
 from matomo_monorail.utils import get_client_ip

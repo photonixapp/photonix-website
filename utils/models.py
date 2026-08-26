@@ -23,4 +23,4 @@ class VersionedModel(models.Model):
         if not self.created_at:
             self.created_at = now
         self.updated_at = now
-        super(VersionedModel, self).save()
+        super().save()

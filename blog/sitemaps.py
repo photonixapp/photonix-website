@@ -13,23 +13,23 @@ class BlogSitemap(sitemaps.Sitemap):
         return items
 
     def priority(self, item):
-        if type(item) == Post:
+        if isinstance(item, Post):
             return 0.5
         return 0.7
 
     def lastmod(self, item):
-        if type(item) == Post:
+        if isinstance(item, Post):
             return item.created_at
         if not Post.objects.filter(status='published').order_by('-created_at'):
             return None
         return Post.objects.filter(status='published').order_by('-created_at')[0].created_at
 
     def changefreq(self, item):
-        if type(item) == Post:
+        if isinstance(item, Post):
             return 'monthly'
         return 'weekly'
 
     def location(self, item):
-        if type(item) == Post:
+        if isinstance(item, Post):
             return reverse('blog-post-detail', kwargs={'slug': item.slug})
         return reverse(item)

@@ -1,8 +1,8 @@
-from django import template
-import time
 import os
 import random
+import time
 
+from django import template
 
 register = template.Library()
 

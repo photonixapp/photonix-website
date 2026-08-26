@@ -1,0 +1,14 @@
+[tool.ruff]
+target-version = "py313"
+line-length = 120
+extend-exclude = ["volumes"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "UP", "DJ"]
+ignore = ["E501", "DJ001"]
+
+[tool.ruff.lint.per-file-ignores]
+"*/migrations/*.py" = ["E", "F", "I", "W", "UP", "DJ"]
+
+[tool.ruff.format]
+quote-style = "single"

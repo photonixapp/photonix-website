@@ -1,10 +1,10 @@
-
 from django.contrib import admin
 from django.db import models
 from pagedown.widgets import AdminPagedownWidget
 
-from .models import Testimonial
 from utils.admin import VersionedAdmin
+
+from .models import Testimonial
 
 
 class TestimonialAdmin(VersionedAdmin):
@@ -17,9 +17,18 @@ class TestimonialAdmin(VersionedAdmin):
         models.TextField: {'widget': AdminPagedownWidget},
     }
     fieldsets = (
-        (None, {
-            'fields': ('profile_name', 'profile_url', 'avatar_url', 'comment', 'comment_url',),
-        }),
+        (
+            None,
+            {
+                'fields': (
+                    'profile_name',
+                    'profile_url',
+                    'avatar_url',
+                    'comment',
+                    'comment_url',
+                ),
+            },
+        ),
     ) + VersionedAdmin.fieldsets
 
 

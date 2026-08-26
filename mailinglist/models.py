@@ -1,8 +1,8 @@
 import os
 
+import requests
 from django.db import models
 from django.utils import timezone
-import requests
 
 from utils.models import UUIDModel
 
@@ -21,7 +21,7 @@ class Subscription(UUIDModel):
     campaign = models.CharField(blank=True, max_length=50)
 
     def __str__(self):
-        return '{}'.format(self.email)
+        return f'{self.email}'
 
     def save(self, *args, **kwargs):
         now = timezone.now()
@@ -35,7 +35,7 @@ class Subscription(UUIDModel):
                     response = requests.get(
                         f'https://geoip.epixstudios.co.uk/{self.ip}',
                         headers={'Authorization': f'Bearer {api_key}'},
-                        timeout=5
+                        timeout=5,
                     )
                     if response.status_code == 200:
                         data = response.json()
@@ -46,4 +46,4 @@ class Subscription(UUIDModel):
                     pass
 
         self.updated_at = now
-        super(Subscription, self).save()
+        super().save()

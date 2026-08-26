@@ -1,7 +1,8 @@
+import random
 
 from django import template
+
 from ..models import Testimonial
-import random
 
 register = template.Library()
 

@@ -1,6 +1,6 @@
 import logging
 import os
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 import requests
 
@@ -9,9 +9,9 @@ logger = logging.getLogger(__name__)
 
 def notify_mattermost(
     text: str,
-    alias: str = "Epix Bot",
-    webhook_url: Optional[str] = None,
-    attachments: Optional[List[Dict[str, Any]]] = None,
+    alias: str = 'Epix Bot',
+    webhook_url: str | None = None,
+    attachments: list[dict[str, Any]] | None = None,
 ) -> bool:
     """
     Send a notification to Mattermost (only in production environment).
@@ -54,35 +54,37 @@ def notify_mattermost(
         bool: True if notification was sent successfully, False otherwise
     """
     if not webhook_url:
-        webhook_url = os.getenv("MATTERMOST_WEBHOOK_URL")
+        webhook_url = os.getenv('MATTERMOST_WEBHOOK_URL')
 
     if not webhook_url:
-        logger.warning("No Mattermost webhook URL configured")
+        logger.warning('No Mattermost webhook URL configured')
         return False
 
     payload = {
-        "alias": alias,
-        "text": text,
+        'alias': alias,
+        'text': text,
     }
 
     if attachments:
-        payload["attachments"] = attachments
+        payload['attachments'] = attachments
 
     try:
         response = requests.post(
             webhook_url,
             json=payload,
-            headers={"Content-Type": "application/json"},
+            headers={'Content-Type': 'application/json'},
             timeout=5,
         )
 
         if response.status_code == 200:
-            logger.info(f"Rocket Chat notification sent successfully: {text}")
+            logger.info(f'Rocket Chat notification sent successfully: {text}')
             return True
         else:
-            logger.error(f"Failed to send Rocket Chat notification. Status: {response.status_code}, Response: {response.text}")
+            logger.error(
+                f'Failed to send Rocket Chat notification. Status: {response.status_code}, Response: {response.text}'
+            )
             return False
 
     except requests.exceptions.RequestException as e:
-        logger.error(f"Error sending Rocket Chat notification: {e}")
+        logger.error(f'Error sending Rocket Chat notification: {e}')
         return False

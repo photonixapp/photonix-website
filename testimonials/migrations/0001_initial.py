@@ -5,11 +5,9 @@ import uuid
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
@@ -18,7 +16,12 @@ class Migration(migrations.Migration):
                 ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
                 ('created_at', models.DateTimeField(blank=True, db_index=True)),
                 ('updated_at', models.DateTimeField(blank=True)),
-                ('profile_name', models.CharField(help_text='required 50 characters or fewer.', max_length=50, verbose_name='Profile Name')),
+                (
+                    'profile_name',
+                    models.CharField(
+                        help_text='required 50 characters or fewer.', max_length=50, verbose_name='Profile Name'
+                    ),
+                ),
                 ('profile_url', models.URLField(blank=True, max_length=255, null=True, verbose_name='Profile URL')),
                 ('avatar_url', models.URLField(blank=True, max_length=255, null=True, verbose_name='Avatar URL')),
                 ('comment', models.TextField(verbose_name='Comment')),

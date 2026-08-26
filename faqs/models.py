@@ -1,16 +1,17 @@
+import itertools
 
 from django.db import models
 from django.urls import reverse
-from utils.models import UUIDModel, VersionedModel
 from django.utils.text import slugify
-import itertools
+
+from utils.models import UUIDModel, VersionedModel
 
 
 class Question(UUIDModel, VersionedModel):
     """Question model."""
 
-    title = models.CharField(max_length=200, verbose_name="Question", help_text='Question asked')
-    answer = models.TextField(verbose_name="Answer", null=True, blank=True, help_text='Answer to the question')
+    title = models.CharField(max_length=200, verbose_name='Question', help_text='Question asked')
+    answer = models.TextField(verbose_name='Answer', null=True, blank=True, help_text='Answer to the question')
     slug = models.SlugField(null=True, blank=True, max_length=100)
 
     def __str__(self):
@@ -28,7 +29,7 @@ class Question(UUIDModel, VersionedModel):
         for i in itertools.count(1):
             if not Question.objects.filter(slug=slug_candidate).exists():
                 break
-            slug_candidate = '{}-{}'.format(slug_original, i)
+            slug_candidate = f'{slug_original}-{i}'
 
         self.slug = slug_candidate
 
@@ -36,4 +37,4 @@ class Question(UUIDModel, VersionedModel):
         """Slug field will save only once when object created not updated."""
         if not self.slug:
             self._generate_slug()
-        super(Question, self).save(*args, **kwargs)
+        super().save(*args, **kwargs)
