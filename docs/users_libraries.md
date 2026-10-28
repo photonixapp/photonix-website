@@ -14,7 +14,7 @@ You will be propted to create a library when you first run Photonix.
 
 To create an additional library and assign a user to it, run the following from the host machine where you have your `docker-compose.yml` file. Replace `USERNAME` and `LIBRARY NAME` with your own values.
 
-    docker-compose exec photonix ./manage.py create_library USERNAME "LIBRARY NAME"
+    docker compose exec photonix ./manage.py create_library USERNAME "LIBRARY NAME"
 
 ### Creating users
 
@@ -22,4 +22,4 @@ You likely already created an admin user if you went through the onboarding proc
 
 For each additional user you wish to add, run this from the host machine (where you have your `docker-compose.yml` file). You will also be asked whether you wish to add the new user to an existing library;
 
-    docker-compose exec photonix ./manage.py create_user
+    docker compose exec photonix ./manage.py create_user
