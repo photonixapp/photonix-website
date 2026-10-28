@@ -39,7 +39,8 @@ if 'DJANGO_ADMINS' in os.environ:
     # Environment variable in the form DJANGO_ADMINS="First Last,username@example.com;First Last 2,username2@example.com"
     ADMINS = [admin.split(',') for admin in os.environ.get('DJANGO_ADMINS').split(';')]
 
-SERVER_EMAIL = 'photonix-website@localhost'
+SERVER_EMAIL = os.environ.get('SERVER_EMAIL', 'photonix-website@localhost')
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'webmaster@localhost')
 EMAIL_HOST = os.environ.get('EMAIL_HOST', None)
 EMAIL_PORT = os.environ.get('EMAIL_PORT', None)
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', None)
