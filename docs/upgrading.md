@@ -5,9 +5,9 @@
 Assuming you already have Photonix running using Docker Compose, this will let you upgrade to the latest version with minimum downtime. Pulling the new image may take several minutes, depending on your download speed.
 
 ```bash
-docker-compose pull photonix
-docker-compose stop photonix
-docker-compose up -d photonix
+docker compose pull photonix
+docker compose stop photonix
+docker compose up -d photonix
 ```
 
 ## Automatic upgrades via Watchtower

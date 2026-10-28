@@ -2,4 +2,5 @@ from django.apps import AppConfig
 
 
 class FaqsConfig(AppConfig):
-    name = 'FAQs'
+    name = 'faqs'
+    verbose_name = 'FAQs'

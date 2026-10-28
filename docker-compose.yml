@@ -5,9 +5,9 @@ services:
     container_name: photonix-website
     build: .
     ports:
-      - '8880:80'
-      - '8001:8001'
-      - '8002:8002'
+      - '${WS_PORT_80:-8880}:80'
+      - '${WS_PORT_8001:-8001}:8001'
+      - '${WS_PORT_8002:-8002}:8002'
     volumes:
       - ./blog:/srv/blog
       - ./docs:/srv/docs
@@ -55,7 +55,7 @@ services:
     container_name: photonix-website-postgres
     image: postgres:17.5
     ports:
-      - '127.0.0.1:5432:5432'
+      - '127.0.0.1:${WS_PORT_5432:-5432}:5432'
     environment:
       POSTGRES_DB: photonix_website
       POSTGRES_PASSWORD: password
@@ -66,7 +66,7 @@ services:
     container_name: photonix-website-redis
     image: redis:6.2.2
     ports:
-      - '6379:6379'
+      - '${WS_PORT_6379:-6379}:6379'
 
   # matomo-mysql:
   #   container_name: matomo-mysql

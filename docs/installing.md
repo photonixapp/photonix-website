@@ -42,11 +42,11 @@ Make volume directory for photo data to be stored outside the container.
 
 Bring up Docker Compose which will pull and run the required Docker images.
 
-    docker-compose up -d
+    docker compose up -d
 
 The above command will run the service in the background. Instead, if you want to watch the logs (useful for debugging problems) you can use the following.
 
-    docker-compose up
+    docker compose up
 
 A few seconds after starting you should be able to go to [http://localhost:8888/](http://localhost:8888/) in your browser.
 
@@ -56,5 +56,5 @@ You can move some photos into the folder `data/photos` and they should get detec
 
 You can add extra users and libraries but this needs to be done on the command-line right now so run this in a new terminal window. Replace `USERNAME` with your own username.
 
-    docker-compose run photonix python photonix/manage.py createsuperuser --username USERNAME --email example@example.com
-    docker-compose run photonix python photonix/manage.py create_library USERNAME "My Library"
+    docker compose run photonix python photonix/manage.py createsuperuser --username USERNAME --email example@example.com
+    docker compose run photonix python photonix/manage.py create_library USERNAME "My Library"
